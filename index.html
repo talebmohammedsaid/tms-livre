@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TMS — Une loi, tracée dans l'espace | Théorie de Taleb Mohammed Said</title>
-<meta name="description" content="Un livre interactif sur la théorie TMS : de la géométrie complexe à la mécanique quantique, la matière, l'informatique et le cerveau. Preuves mathématiques, simulations réelles et code exécutable, par Taleb Mohammed Said (Université de Laghouat).">
-<meta name="keywords" content="théorie TMS, Taleb Mohammed Said, mécanique quantique, géométrie complexe, intrication quantique, effondrement du paquet d'onde, qubits, théorie des nombres, Université de Laghouat">
+<title>Ved'S Search</title>
+<meta name="description" content="Ved'S Search — un livre interactif sur la théorie TMS : de la géométrie complexe à la mécanique quantique, la matière, l'informatique et le cerveau. Preuves mathématiques, simulations réelles et code exécutable, par Taleb Mohammed Said (Université de Laghouat).">
+<meta name="keywords" content="Ved'S Search, théorie TMS, Taleb Mohammed Said, mécanique quantique, géométrie complexe, intrication quantique, effondrement du paquet d'onde, qubits, théorie des nombres, Université de Laghouat">
 <meta name="author" content="Taleb Mohammed Said">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#15589f">
-<link rel="canonical" href="https://tms-livre.vercel.app/">
+<link rel="canonical" href="https://search.veds.dev/">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="TMS — Une loi, tracée dans l'espace">
+<meta property="og:title" content="Ved'S Search">
 <meta property="og:description" content="Un livre interactif : de la géométrie complexe à la mécanique quantique, la matière, l'informatique et le cerveau. Preuves mathématiques, simulations réelles, code exécutable.">
-<meta property="og:url" content="https://tms-livre.vercel.app/">
+<meta property="og:url" content="https://search.veds.dev/">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Théorie TMS">
+<meta property="og:site_name" content="Ved'S Search">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TMS — Une loi, tracée dans l'espace">
+<meta name="twitter:title" content="Ved'S Search">
 <meta name="twitter:description" content="Un livre interactif sur la théorie TMS, par Taleb Mohammed Said (Université de Laghouat).">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315589f'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Georgia,serif' fill='white' text-anchor='middle'%3E%CE%94%3C/text%3E%3C/svg%3E">
@@ -65,13 +65,13 @@
     padding:0 1rem; gap:.8rem;}
   .topbar-toggle{width:36px; height:36px; border-radius:var(--r-md); border:1px solid var(--border);
     background:var(--surface); color:var(--fg); font-size:1.05rem; cursor:pointer;}
-  .topbar-brand{font-family:var(--serif); font-weight:700; letter-spacing:.02em; font-size:1.05rem; color:var(--primary);}
+  .topbar-brand{font-family:var(--sans); font-weight:700; letter-spacing:.01em; font-size:1.05rem; color:var(--fg);}
 
   /* ---- sidebar ---- */
   .sidebar{position:fixed; top:0; left:0; bottom:0; width:var(--sidebar-w); background:var(--surface);
     border-right:1px solid var(--border); z-index:70; overflow-y:auto; padding:1.6rem 0 2rem;}
   .sidebar-brand{padding:0 1.5rem 1.4rem; margin-bottom:.6rem; border-bottom:1px solid var(--border);}
-  .brand-mark{font-family:var(--serif); font-weight:700; font-size:1.5rem; color:var(--primary); letter-spacing:.01em;}
+  .brand-mark{font-family:var(--sans); font-weight:700; font-size:1.4rem; color:var(--fg); letter-spacing:.01em;}
   .brand-sub{font-size:.76rem; color:var(--muted); margin-top:.35rem; line-height:1.5;}
   .sidebar-nav{padding:.6rem .8rem;}
   .sidebar-part{font-size:.68rem; text-transform:uppercase; letter-spacing:.14em; color:var(--muted);
@@ -237,12 +237,12 @@
 
 <header class="topbar">
   <button class="topbar-toggle" id="sidebarToggle" aria-label="Sommaire">☰</button>
-  <span class="topbar-brand">TMS</span>
+  <span class="topbar-brand">Ved'S Search</span>
 </header>
 
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-brand">
-    <div class="brand-mark">TMS</div>
+    <div class="brand-mark">Ved'S Search</div>
     <div class="brand-sub">Théorie TMS<br>Taleb Mohammed Said — Univ. de Laghouat</div>
   </div>
   <nav class="sidebar-nav">
@@ -959,6 +959,77 @@ console.log(`Produit = ${produit.toFixed(3)}  (log2 = ${Math.log2(produit).toFix
       <div class="lesson reveal">
         <span class="lkicker">Intuition</span>
         <p>Une main touche, un œil capte la lumière ; les signaux remontent par la moelle épinière et le nerf optique jusqu'au cortex. Là où la description biologique s'arrête, l'article propose une lecture géométrique : chaque neurone est un point, chaque synapse un poids qui croît de façon non linéaire avec l'intensité du signal.</p>
+      </div>
+
+      <h3 class="reveal">L'opération, en une image</h3>
+      <p class="reveal">Avant le détail, la vue d'ensemble. Ce chapitre raconte une seule opération, en cinq temps — le reste n'en est que le commentaire.</p>
+      <div class="diagram reveal">
+        <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+          <line x1="124" y1="90" x2="196" y2="90" stroke="var(--border)" stroke-width="1.5"/>
+          <polygon points="196,90 186,85 186,95" fill="var(--muted)"/>
+          <line x1="264" y1="90" x2="336" y2="90" stroke="var(--border)" stroke-width="1.5"/>
+          <polygon points="336,90 326,85 326,95" fill="var(--muted)"/>
+          <line x1="404" y1="90" x2="476" y2="90" stroke="var(--border)" stroke-width="1.5"/>
+          <polygon points="476,90 466,85 466,95" fill="var(--muted)"/>
+          <line x1="544" y1="90" x2="616" y2="90" stroke="var(--border)" stroke-width="1.5"/>
+          <polygon points="616,90 606,85 606,95" fill="var(--muted)"/>
+
+          <!-- 1: sens (eye) -->
+          <circle cx="90" cy="90" r="34" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.6" filter="url(#glow)"/>
+          <ellipse cx="90" cy="90" rx="15" ry="8" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+          <circle cx="90" cy="90" r="3.5" fill="var(--accent)"/>
+          <text x="90" y="148" text-anchor="middle" fill="var(--fg)" font-size="12">Sens</text>
+          <text x="90" y="163" text-anchor="middle" fill="var(--muted)" font-size="10">œil / oreille</text>
+
+          <!-- 2: mesure/transduction (bolt) -->
+          <circle cx="230" cy="90" r="34" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.6" filter="url(#glow)"/>
+          <polygon points="234,68 214,94 227,94 222,112 244,84 230,84" fill="var(--accent)"/>
+          <text x="230" y="148" text-anchor="middle" fill="var(--fg)" font-size="12">Mesure</text>
+          <text x="230" y="163" text-anchor="middle" fill="var(--muted)" font-size="10">quantique / mécanique</text>
+
+          <!-- 3: R4 (4 dots) -->
+          <circle cx="370" cy="90" r="34" fill="var(--surface)" stroke="var(--accent2)" stroke-width="1.6" filter="url(#glow)"/>
+          <circle cx="360" cy="80" r="4" fill="var(--accent2)"/>
+          <circle cx="380" cy="80" r="4" fill="var(--accent2)"/>
+          <circle cx="360" cy="100" r="4" fill="var(--accent2)"/>
+          <circle cx="380" cy="100" r="4" fill="var(--accent2)"/>
+          <text x="370" y="148" text-anchor="middle" fill="var(--fg)" font-size="12">ℝ⁴</text>
+          <text x="370" y="163" text-anchor="middle" fill="var(--muted)" font-size="10">(R,V,B,t)</text>
+
+          <!-- 4: reseau ferme N -->
+          <circle cx="510" cy="90" r="34" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.6" filter="url(#glow)"/>
+          <circle cx="510" cy="90" r="20" fill="none" stroke="var(--border)" stroke-dasharray="3 3"/>
+          <circle cx="500" cy="84" r="3" fill="var(--accent)"/>
+          <circle cx="520" cy="84" r="3" fill="var(--accent)"/>
+          <circle cx="510" cy="100" r="3" fill="var(--accent)"/>
+          <line x1="500" y1="84" x2="520" y2="84" stroke="var(--accent)" stroke-width="1"/>
+          <line x1="500" y1="84" x2="510" y2="100" stroke="var(--accent)" stroke-width="1"/>
+          <line x1="520" y1="84" x2="510" y2="100" stroke="var(--accent)" stroke-width="1"/>
+          <text x="510" y="148" text-anchor="middle" fill="var(--fg)" font-size="12">Réseau N</text>
+          <text x="510" y="163" text-anchor="middle" fill="var(--muted)" font-size="10">espace fermé</text>
+
+          <!-- 5: boucle comparaison -->
+          <circle cx="650" cy="90" r="34" fill="rgba(21,88,159,.07)" stroke="var(--accent)" stroke-width="1.6" filter="url(#glow)"/>
+          <path d="M638,75 A18,18 0 1 1 636,105" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <polygon points="636,105 630,96 642,98" fill="var(--accent)"/>
+          <text x="650" y="148" text-anchor="middle" fill="var(--fg)" font-size="12">Comparaison</text>
+          <text x="650" y="163" text-anchor="middle" fill="var(--muted)" font-size="10">wait()</text>
+
+          <!-- fork to two outcomes -->
+          <line x1="640" y1="118" x2="530" y2="205" stroke="var(--border)" stroke-width="1.3"/>
+          <polygon points="530,205 542,203 536,214" fill="var(--muted)"/>
+          <line x1="670" y1="118" x2="790" y2="205" stroke="var(--border)" stroke-width="1.3"/>
+          <polygon points="790,205 778,207 784,196" fill="var(--muted)"/>
+
+          <rect x="400" y="212" width="240" height="58" rx="12" fill="rgba(21,88,159,.06)" stroke="var(--accent)"/>
+          <text x="520" y="236" text-anchor="middle" fill="var(--fg)" font-size="12">✓ Référence trouvée</text>
+          <text x="520" y="254" text-anchor="middle" fill="var(--muted)" font-size="10.5">renforcer — chemin plus court</text>
+
+          <rect x="670" y="212" width="220" height="58" rx="12" fill="rgba(180,83,9,.06)" stroke="var(--gold)"/>
+          <text x="780" y="236" text-anchor="middle" fill="var(--fg)" font-size="12">+ Aucun match</text>
+          <text x="780" y="254" text-anchor="middle" fill="var(--muted)" font-size="10.5">nouvelle référence Pₙ₊₁</text>
+        </svg>
+        <p class="dcap">Cinq étapes, une seule opération : sentir, mesurer, encoder, comparer, décider.</p>
       </div>
 
       <h3 class="reveal">L'œil : une mesure quantique littérale</h3>
