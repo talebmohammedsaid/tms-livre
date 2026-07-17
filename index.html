@@ -1,0 +1,1926 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMS — Une loi, tracée dans l'espace | Théorie de Taleb Mohammed Said</title>
+<meta name="description" content="Un livre interactif sur la théorie TMS : de la géométrie complexe à la mécanique quantique, la matière, l'informatique et le cerveau. Preuves mathématiques, simulations réelles et code exécutable, par Taleb Mohammed Said (Université de Laghouat).">
+<meta name="keywords" content="théorie TMS, Taleb Mohammed Said, mécanique quantique, géométrie complexe, intrication quantique, effondrement du paquet d'onde, qubits, théorie des nombres, Université de Laghouat">
+<meta name="author" content="Taleb Mohammed Said">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#15589f">
+<link rel="canonical" href="https://tms-livre.vercel.app/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="TMS — Une loi, tracée dans l'espace">
+<meta property="og:description" content="Un livre interactif : de la géométrie complexe à la mécanique quantique, la matière, l'informatique et le cerveau. Preuves mathématiques, simulations réelles, code exécutable.">
+<meta property="og:url" content="https://tms-livre.vercel.app/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Théorie TMS">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TMS — Une loi, tracée dans l'espace">
+<meta name="twitter:description" content="Un livre interactif sur la théorie TMS, par Taleb Mohammed Said (Université de Laghouat).">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315589f'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Georgia,serif' fill='white' text-anchor='middle'%3E%CE%94%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fafafa;
+    --surface:#ffffff;
+    --fg:#0a0a0b;
+    --muted-bg:#f4f4f5;
+    --muted:#74747d;
+    --border:#e4e4e7;
+    --line:#e4e4e7;
+    --primary:#15589f;
+    --primary-hover:#0e3d70;
+    --accent:#15589f;
+    --accent2:#ff7c00;
+    --gold:#b45309;
+    --serif:Georgia,Cambria,'Times New Roman',Times,serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display','Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --r-md:10px; --r-lg:14px; --r-xl:12px; --r-2xl:16px; --r-3xl:24px;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow-md:0 6px 20px rgba(10,10,20,.06);
+    --sidebar-w:272px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:var(--sans); line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(21,88,159,.18); color:var(--fg);}
+
+  .progress{position:fixed; top:0; left:0; height:3px; width:0%; z-index:80;
+    background:linear-gradient(90deg,var(--primary),var(--accent2));}
+
+  /* ---- topbar (mobile) ---- */
+  .topbar{display:none; position:fixed; top:0; left:0; right:0; height:56px; z-index:60;
+    background:var(--surface); border-bottom:1px solid var(--border); align-items:center;
+    padding:0 1rem; gap:.8rem;}
+  .topbar-toggle{width:36px; height:36px; border-radius:var(--r-md); border:1px solid var(--border);
+    background:var(--surface); color:var(--fg); font-size:1.05rem; cursor:pointer;}
+  .topbar-brand{font-family:var(--serif); font-weight:700; letter-spacing:.02em; font-size:1.05rem; color:var(--primary);}
+
+  /* ---- sidebar ---- */
+  .sidebar{position:fixed; top:0; left:0; bottom:0; width:var(--sidebar-w); background:var(--surface);
+    border-right:1px solid var(--border); z-index:70; overflow-y:auto; padding:1.6rem 0 2rem;}
+  .sidebar-brand{padding:0 1.5rem 1.4rem; margin-bottom:.6rem; border-bottom:1px solid var(--border);}
+  .brand-mark{font-family:var(--serif); font-weight:700; font-size:1.5rem; color:var(--primary); letter-spacing:.01em;}
+  .brand-sub{font-size:.76rem; color:var(--muted); margin-top:.35rem; line-height:1.5;}
+  .sidebar-nav{padding:.6rem .8rem;}
+  .sidebar-part{font-size:.68rem; text-transform:uppercase; letter-spacing:.14em; color:var(--muted);
+    font-weight:600; margin:1.3rem .7rem .5rem;}
+  .sidebar-part:first-child{margin-top:.3rem;}
+  .sidebar-nav a{display:block; padding:.5rem .7rem; margin:.1rem 0; border-radius:var(--r-md);
+    color:var(--muted); text-decoration:none; font-size:.87rem; transition:background .15s,color .15s;}
+  .sidebar-nav a:hover{background:var(--muted-bg); color:var(--fg);}
+  .sidebar-nav a.active{background:rgba(21,88,159,.08); color:var(--primary); font-weight:600;}
+  .sidebar-overlay{position:fixed; inset:0; background:rgba(10,10,15,.35); z-index:65; opacity:0;
+    pointer-events:none; transition:opacity .25s;}
+  .sidebar-overlay.open{opacity:1; pointer-events:all;}
+
+  @media (max-width:960px){
+    .topbar{display:flex;}
+    .sidebar{transform:translateX(-100%); transition:transform .3s ease; box-shadow:var(--shadow-md);}
+    .sidebar.open{transform:translateX(0);}
+    .main{margin-left:0 !important; padding-top:56px;}
+  }
+
+  /* ---- main content ---- */
+  .main{margin-left:var(--sidebar-w);}
+  .page{position:relative; padding:4.2rem 2.5rem; border-bottom:1px solid var(--border);}
+  .content{max-width:700px; width:100%; margin:0 auto;}
+  .content.wide{max-width:780px;}
+
+  .chapter-head{display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem;}
+  .chapter-badge{display:inline-flex; align-items:center; justify-content:center; width:2.1rem; height:2.1rem;
+    border-radius:50%; background:var(--primary); color:#fff; font-family:var(--serif); font-size:.85rem; flex:none;}
+  .kicker{font-family:var(--sans); text-transform:uppercase; letter-spacing:.16em; font-size:.72rem;
+    color:var(--muted); font-weight:600;}
+  h2{font-family:var(--serif); font-weight:700; font-size:clamp(1.7rem,3.4vw,2.5rem); margin:0 0 1.3rem;
+    color:var(--fg); letter-spacing:-.01em;}
+  h3{font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--primary); margin:2.3rem 0 .9rem;}
+  p{font-size:1rem; color:#3a3a42; margin:0 0 1.1rem; max-width:68ch;}
+  em{color:var(--fg); font-style:italic;}
+  .muted{color:var(--muted); font-size:.85em;}
+
+  .eq{font-family:var(--serif); font-size:1.12rem; color:var(--fg); padding:1rem 1.4rem; margin:1.4rem 0;
+    border:1px solid var(--border); border-radius:var(--r-xl); background:var(--muted-bg);
+    display:inline-block; letter-spacing:.01em;}
+  .eqnum{color:var(--muted); font-size:.8em; margin-left:1.4rem; font-family:var(--sans);}
+  .cite{color:var(--primary); font-weight:600; font-size:.9em; text-decoration:none;}
+  .cite:hover{text-decoration:underline;}
+  [id]{scroll-margin-top:70px;}
+  ul.refs li:target{background:rgba(21,88,159,.06); border-radius:var(--r-md);}
+  .abstract-block{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-2xl);
+    padding:1.8rem 2rem; box-shadow:var(--shadow-sm);}
+  .abstract-block p{font-size:.96rem;}
+  .aside-banner{background:rgba(180,83,9,.05); border:1px solid rgba(180,83,9,.18); border-left:4px solid var(--gold);
+    border-radius:var(--r-2xl); padding:1.6rem 1.8rem; margin-bottom:1.6rem;}
+  .aside-banner p{margin:0; font-size:.95rem;}
+  table.nt-table{width:100%; border-collapse:collapse; margin:1.4rem 0 1.8rem; font-size:.92rem;}
+  table.nt-table th{text-align:left; color:var(--muted); font-weight:600; font-size:.76rem; text-transform:uppercase;
+    letter-spacing:.08em; padding:.5rem .7rem; border-bottom:1px solid var(--border);}
+  table.nt-table td{padding:.55rem .7rem; border-bottom:1px solid var(--border); font-family:var(--serif); color:var(--fg);}
+  table.nt-table tr:last-child td{border-bottom:none;}
+
+  /* executable code blocks */
+  .code-box{background:#0d1117; color:#c9d1d9; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.8rem; padding:1.1rem 1.3rem; border-radius:var(--r-lg); overflow-x:auto; line-height:1.65;
+    margin:1.3rem 0 0; white-space:pre;}
+  .code-box .kw{color:#ff7c00;} .code-box .fn{color:#79c0ff;} .code-box .cm{color:#8b949e; font-style:italic;}
+  .code-box .str{color:#a5d6ff;} .code-box .num{color:#79c0ff;}
+  .run-row{display:flex; gap:.7rem; align-items:center; margin-top:.9rem; flex-wrap:wrap;}
+  .run-btn{background:var(--primary); color:#fff; border:none; padding:.55rem 1.3rem; border-radius:999px;
+    font-family:var(--sans); font-size:.82rem; font-weight:600; cursor:pointer; transition:.2s;}
+  .run-btn:hover{background:var(--primary-hover);}
+  .run-input{width:5rem; padding:.5rem .7rem; border-radius:var(--r-md); border:1px solid var(--border);
+    font-family:var(--sans); font-size:.85rem; color:var(--fg); background:var(--surface);}
+  .output-box{margin-top:.8rem; background:#0d1117; color:#7ee787; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.8rem; padding:1rem 1.2rem; border-radius:var(--r-lg); white-space:pre-wrap; min-height:1.6em; display:none;}
+  .output-box.show{display:block;}
+  .code-cap{font-size:.78rem; color:var(--muted); margin:.5rem 0 0;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  .lesson{border:1px solid rgba(21,88,159,.15); border-left:3px solid var(--primary); background:rgba(21,88,159,.05);
+    padding:1.15rem 1.35rem; border-radius:var(--r-lg); margin:1.6rem 0; font-size:.98rem;}
+  .lesson .lkicker{display:block; font-size:.68rem; text-transform:uppercase; letter-spacing:.16em;
+    color:var(--primary); font-weight:700; margin-bottom:.5rem;}
+  .lesson p{margin:0; color:#2c2c34;}
+
+  ol.steps{margin:1.3rem 0 1.8rem; padding:0; list-style:none; counter-reset:step;}
+  ol.steps li{counter-increment:step; position:relative; padding-left:2.6rem; margin-bottom:1rem;
+    color:#3a3a42; font-size:.98rem;}
+  ol.steps li::before{content:counter(step); position:absolute; left:0; top:-2px; width:1.8rem; height:1.8rem;
+    border-radius:50%; border:1.5px solid var(--accent2); color:var(--accent2); font-family:var(--serif);
+    font-weight:700; font-size:.86rem; display:flex; align-items:center; justify-content:center;}
+
+  ul.glossary{list-style:none; padding:0; margin:1.3rem 0 1.8rem;}
+  ul.glossary li{padding:.65rem 0; border-top:1px solid var(--border); color:#3a3a42; font-size:.95rem;}
+  ul.glossary li:last-child{border-bottom:1px solid var(--border);}
+  ul.glossary b{color:var(--primary); font-family:var(--serif); font-weight:700; margin-right:.4rem;}
+
+  .diagram{margin:1.8rem 0 .5rem; max-width:640px; width:100%; background:var(--surface);
+    border:1px solid var(--border); border-radius:var(--r-2xl); padding:1.4rem; box-shadow:var(--shadow-sm);}
+  .diagram svg{width:100%; height:auto; display:block;}
+  .dcap{font-size:.8rem; color:var(--muted); text-align:center; margin:1.6rem 0 1.4rem; font-style:italic;}
+
+  ul.refs{list-style:none; margin:0; padding:0;}
+  ul.refs li{padding:.85rem 0; border-top:1px solid var(--border); display:flex; gap:1rem; align-items:baseline; flex-wrap:wrap;}
+  ul.refs li:last-child{border-bottom:1px solid var(--border);}
+  ul.refs .n{color:var(--primary); font-family:var(--serif); font-weight:700; min-width:2ch;}
+  ul.refs .rtitle{color:var(--fg); font-style:italic;}
+  ul.refs .rdate{margin-left:auto; color:var(--muted); font-size:.8rem; white-space:nowrap;}
+
+  .part-banner{background:rgba(21,88,159,.045); border:1px solid rgba(21,88,159,.14); border-left:4px solid var(--primary);
+    border-radius:var(--r-2xl); padding:2.2rem 2.4rem;}
+  .part-banner .pnum{font-family:var(--sans); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--accent2); font-weight:700; margin-bottom:.5rem;}
+  .part-banner h2{font-size:clamp(1.5rem,3vw,2rem); margin-bottom:.5rem;}
+  .part-banner .pdesc{color:var(--muted); font-style:italic; margin:0; font-size:.96rem;}
+
+  /* cover */
+  .cover{padding-top:5.5rem;}
+  .cover-inner{max-width:640px;}
+  .title{font-family:var(--serif); font-weight:700; font-size:clamp(2.1rem,5vw,3.4rem); line-height:1.18;
+    margin:0 0 1rem; color:var(--fg); letter-spacing:-.01em;}
+  .subtitle{font-size:1.02rem; color:var(--muted); margin:0 0 2rem; font-style:italic;}
+  .byline{font-size:.9rem; color:var(--fg); margin-bottom:2.4rem; padding-top:1.4rem; border-top:1px solid var(--border);}
+  .byline span{display:block; color:var(--muted); margin-top:.3rem; font-size:.8rem;}
+  .scrollcue{font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted);}
+
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+
+  footer{padding:3.5rem 2.5rem 4.5rem; text-align:center; color:var(--muted); font-size:.84rem;}
+  footer .brand{color:var(--primary); font-weight:600;}
+
+  /* simulation lab */
+  .sim-wrap{display:flex; gap:1.6rem; flex-wrap:wrap; align-items:flex-start; justify-content:center; margin-top:1.4rem;}
+  #simCanvas{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-2xl);
+    touch-action:none; max-width:100%; height:auto; cursor:grab; box-shadow:var(--shadow-sm);}
+  #simCanvas.dragging{cursor:grabbing;}
+  .sim-panel{flex:1; min-width:230px; max-width:280px; display:flex; flex-direction:column; gap:.6rem;}
+  .sim-row{display:flex; justify-content:space-between; align-items:baseline; padding:.5rem .85rem;
+    border:1px solid var(--border); border-radius:var(--r-md); background:var(--surface);}
+  .sim-row span{color:var(--muted); font-size:.76rem;}
+  .sim-row b{color:var(--fg); font-weight:600; font-size:1rem; font-family:var(--serif);}
+  .sim-total{border-color:rgba(21,88,159,.3); background:rgba(21,88,159,.04);}
+  .sim-total b{color:var(--primary);}
+  .sim-power b{color:var(--accent2);}
+  .sim-status{font-size:.82rem; color:var(--muted); font-style:italic; min-height:3.2em; line-height:1.5;}
+  .sim-status.hit{color:var(--primary); font-style:normal; font-weight:600;}
+  .sim-reset{align-self:flex-start; background:var(--primary); border:1px solid var(--primary); color:#fff;
+    padding:.55rem 1.2rem; border-radius:999px; font-family:var(--sans); font-size:.8rem; font-weight:600;
+    cursor:pointer; transition:.2s;}
+  .sim-reset:hover{background:var(--primary-hover); border-color:var(--primary-hover);}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.6" flood-color="#15589f" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="progress" id="progress"></div>
+
+<header class="topbar">
+  <button class="topbar-toggle" id="sidebarToggle" aria-label="Sommaire">☰</button>
+  <span class="topbar-brand">TMS</span>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-mark">TMS</div>
+    <div class="brand-sub">Théorie TMS<br>Taleb Mohammed Said — Univ. de Laghouat</div>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="#cover">Couverture</a>
+    <a href="#abstract">Résumé & Mots-clés</a>
+    <a href="#prologue">Prologue — 2018</a>
+    <div class="sidebar-part">Partie I — Fondements</div>
+    <a href="#ch1">I · La Loi</a>
+    <div class="sidebar-part">Partie II — Grammaire Quantique</div>
+    <a href="#ch2">II · Effondrement</a>
+    <a href="#ch3">III · Quasi-Certitude</a>
+    <div class="sidebar-part">Partie III — Extensions</div>
+    <a href="#ch4">IV · Qubit et Univers</a>
+    <a href="#ch5">V · E = mc²</a>
+    <div class="sidebar-part">Partie IV — Applications</div>
+    <a href="#ch6">VI · La Matière</a>
+    <a href="#ch7">VII · Sémaphores</a>
+    <a href="#ch8">VIII · Le Cerveau</a>
+    <a href="#simulation">Laboratoire</a>
+    <a href="#annexe">Annexe — Théorie des Nombres</a>
+    <a href="#epilogue">Épilogue</a>
+  </nav>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<main class="main">
+
+  <!-- COVER -->
+  <section class="page cover" id="cover">
+    <div class="content cover-inner">
+      <div class="kicker">Théorie TMS</div>
+      <h1 class="title">Une loi,<br>tracée dans l'espace</h1>
+      <p class="subtitle">Des sables de Laghouat aux frontières de la physique quantique</p>
+      <p class="byline">Taleb Mohammed Said<br><span>Université de Laghouat — Faculté des Sciences, Mathématiques et Informatique</span></p>
+      <div class="scrollcue">Faites défiler ↓</div>
+    </div>
+  </section>
+
+  <!-- ABSTRACT -->
+  <section class="page" id="abstract" style="padding-top:2rem;">
+    <div class="content abstract-block reveal">
+      <div class="kicker">Résumé & Mots-clés</div>
+      <p style="margin-top:1rem;"><b>Résumé —</b> Cet ouvrage présente et démontre la théorie TMS (Tenseurs Multi-Scalaires), développée par Taleb Mohammed Said (Université de Laghouat, Faculté des Sciences, Département Mathématiques et Informatique) entre janvier et mars 2025 à travers dix articles [1–10]. La théorie repose sur une loi géométrique unique — le produit des distances complexes entre points d'un espace P = x + yi + zj — proposée comme langage relationnel pour décrire, de façon unifiée, le transfert d'énergie quantique, les transitions de qubits, la plasticité induite par transformation dans les matériaux, la gestion de ressources concurrentes en informatique, et l'activité neuronale. Chaque chapitre associe un rappel des notions de mécanique quantique nécessaires (superposition, règle de Born, intrication, effondrement du paquet d'onde), une démonstration mathématique pas à pas, et une visualisation graphique des résultats. L'ouvrage conclut par une évaluation critique du statut épistémique de la théorie, présentée comme un programme de recherche exploratoire et non comme un ensemble de résultats validés par la communauté scientifique.</p>
+      <p><b>Mots-clés —</b> théorie TMS · géométrie complexe · intrication quantique · effondrement du paquet d'onde · qubits · plasticité induite par transformation (TRIP) · sémaphores · réseaux de neurones · Université de Laghouat.</p>
+    </div>
+  </section>
+
+  <!-- PROLOGUE -->
+  <section class="page" id="prologue">
+    <div class="content">
+      <div class="chapter-head reveal">
+        <span class="chapter-badge">2018</span>
+        <span class="kicker">Prologue</span>
+      </div>
+      <h2 class="reveal">Laghouat</h2>
+      <p class="reveal">Un Baccalauréat en mathématiques, à peine obtenu. Une ville aux portes du Sahara, où la lumière tombe droite sur les murs ocres et où le ciel, la nuit, se déploie sans obstacle. C'est ici, à l'Université de Laghouat, qu'une question simple commence à prendre racine : et si l'espace lui-même pouvait s'écrire avec des nombres qui gardent la mémoire de leur propre distance ?</p>
+      <p class="reveal">Ce n'est pas encore une théorie. C'est une intuition — la conviction qu'un même langage géométrique pourrait relier des domaines que l'on enseigne comme séparés : la mécanique quantique, la relativité, la matière, le calcul, et peut-être la pensée elle-même.</p>
+      <p class="reveal">Ce qui suit est le résultat de cette intuition, poursuivie d'année en année jusqu'à prendre la forme, entre janvier et mars 2025, de dix articles. Une seule loi y revient, obstinée, sous des formes chaque fois nouvelles. Ce livre l'enseigne comme un cours : en quatre mouvements, du plus fondamental au plus concret.</p>
+    </div>
+  </section>
+
+  <!-- PART I -->
+  <section class="page" id="part1">
+    <div class="content part-banner reveal">
+      <div class="pnum">Partie I</div>
+      <h2>Les Fondements</h2>
+      <p class="pdesc">Une question philosophique vieille d'un siècle, et la loi géométrique qui en hérite.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER I -->
+  <section class="page" id="ch1">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="chapter-badge">I</span><span class="kicker">Chapitre I</span></div>
+      <h2 class="reveal">La Loi</h2>
+
+      <h3 class="reveal">Deux hommes, une question</h3>
+      <p class="reveal">En 1930, dans une chambre d'hôtel berlinoise, deux hommes que presque tout sépare — un physicien qui vient de refaçonner l'espace et le temps, un poète qui vient de refonder les lettres du Bengale — se retrouvent pour parler de la réalité. Albert Einstein et Rabindranath Tagore ne discutent ni de relativité ni de poésie, mais d'une question plus ancienne : le monde existe-t-il indépendamment de l'esprit qui l'observe ?</p>
+      <p class="reveal">Einstein défend une réalité objective, détachée de toute conscience — le théorème de Pythagore, dit-il en substance, reste vrai que l'humanité existe ou non. Tagore répond que toute vérité, même mathématique, ne prend sens qu'à travers un esprit qui la pense : la beauté, la cohérence d'une loi, n'existent que rapportées à une conscience qui les reconnaît comme telles.</p>
+      <p class="reveal">Aucun des deux ne convainc l'autre ce jour-là. Mais la question qu'ils posent — la réalité est-elle donnée, ou construite dans la relation entre l'observateur et le monde ? — est exactement celle que la mécanique quantique allait bientôt rendre impossible à ignorer.</p>
+
+      <h3 class="reveal">2022 : une réponse expérimentale</h3>
+      <p class="reveal">Cinq ans plus tard, en 1935, Einstein lui-même bute sur cette question depuis l'intérieur de la physique. Avec Boris Podolsky et Nathan Rosen, il décrit ce qu'il appelle une <em>action fantôme à distance</em> : selon la mécanique quantique, deux particules intriquées restent corrélées instantanément, où qu'elles se trouvent dans l'univers — une prédiction si étrange, juge-t-il, qu'elle doit signaler une théorie incomplète, cachant des variables encore inconnues qui restaureraient une réalité locale et objective, celle-là même qu'il défendait face à Tagore.</p>
+      <p class="reveal">Il faudra attendre près d'un siècle pour trancher. En 2022, le Prix Nobel de physique récompense Alain Aspect, John Clauser et Anton Zeilinger pour des expériences sur des photons intriqués qui violent les inégalités de Bell — une limite mathématique que toute théorie à variables cachées locales devrait respecter. Leurs résultats la violent sans ambiguïté : la nature ne se comporte pas comme une réalité strictement locale et indépendante de la mesure. L'intrication est réelle, non locale, et irréductible.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Deux particules intriquées ne sont pas deux objets séparés qui portaient déjà, en secret, la réponse à toute mesure future — comme deux dés truqués d'avance. Elles forment un système unique dont les propriétés ne se fixent qu'au moment de la mesure, où qu'elles soient dans l'espace. Le débat de 1930 trouve, sans le savoir, sa réponse expérimentale : la réalité qu'Einstein voulait strictement objective et locale ne tient pas telle quelle. Une part de ce que soutenait Tagore — que le réel se noue dans la relation, pas dans l'objet isolé — trouve, elle, un écho inattendu dans les laboratoires.</p>
+      </div>
+
+      <h3 class="reveal">Preuve : une connectivité universelle</h3>
+      <p class="reveal">Les expériences de 2022 ne mesurent que deux particules à la fois. Mais rien, dans leur logique, ne limite le principe à une paire : si deux points intriqués sont indissociablement liés, pourquoi pas trois, dix, ou un million ? La théorie TMS répond à cette question en généralisant sa propre loi à un nombre quelconque de points.</p>
+      <p class="reveal">Pour n points P₁, P₂, …, Pₙ — n atomes, n particules, n états, peu importe leur nature — l'énergie totale de transition ne se limite plus à trois distances : elle devient le produit de <em>toutes</em> les distances possibles entre chaque paire de points, une généralisation posée dans <a class="cite" href="#ref4">[4]</a>.</p>
+      <div class="eq reveal">ΔE_TMS &nbsp;=&nbsp; ∏<sub>1≤i&lt;j≤n</sub> |Pᵢ − Pⱼ| <span class="eqnum">(1)</span></div>
+      <p class="reveal">Cette écriture condensée cache une affirmation forte. Le symbole produit parcourt <em>toutes</em> les paires (i,j) possibles parmi les n points — il n'en oublie aucune. Pour n points, cela représente n(n−1)/2 distances multipliées ensemble.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve</span>
+        <p>Un axiome fondamental de toute distance (c'est l'une des propriétés qui définissent une métrique) est qu'elle est strictement positive entre deux points distincts : |Pᵢ − Pⱼ| &gt; 0 dès que Pᵢ ≠ Pⱼ. Chaque facteur du produit ΔE_TMS est donc, par construction, un nombre non nul. Retirer un seul point Pₖ de l'ensemble ferait disparaître (n−1) facteurs du produit — un pour chacune de ses relations aux autres points. Autrement dit : dans ce cadre mathématique, aucun point ne peut être exclu du système sans modifier l'énergie totale. Chaque atome est, par la structure même de la loi, relié à tous les autres — une connectivité logique qui n'est pas une image, mais une conséquence directe de la définition d'une distance.</p>
+      </div>
+
+      <h3 class="reveal">Un calcul, pas à pas : quatre points</h3>
+      <p class="reveal">Prenons quatre points : P₁ = 0, P₂ = 1+i, P₃ = 2+3i, P₄ = 4i.</p>
+      <ol class="steps reveal">
+        <li>|P₁−P₂| = √[(0−1)²+(0−1)²] = √2</li>
+        <li>|P₁−P₃| = √[(0−2)²+(0−3)²] = √13</li>
+        <li>|P₁−P₄| = √[(0−0)²+(0−4)²] = 4</li>
+        <li>|P₂−P₃| = √[(1−2)²+(1−3)²] = √5</li>
+        <li>|P₂−P₄| = √[(1−0)²+(1−4)²] = √10</li>
+        <li>|P₃−P₄| = √[(2−0)²+(3−4)²] = √5</li>
+        <li>Produit des six distances : √2 · √13 · 4 · √5 · √10 · √5 = 4√6500 = <b>40√65 ≈ 322,5</b>. Six relations, une seule énergie totale — aucune paire n'est laissée de côté.</li>
+      </ol>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+          <line x1="300" y1="70" x2="480" y2="220" stroke="var(--accent)" stroke-width="1.3" filter="url(#glow)"/>
+          <line x1="300" y1="70" x2="300" y2="330" stroke="var(--accent2)" stroke-width="1.3" filter="url(#glow)"/>
+          <line x1="300" y1="70" x2="120" y2="220" stroke="var(--accent)" stroke-width="1.3" filter="url(#glow)"/>
+          <line x1="480" y1="220" x2="300" y2="330" stroke="var(--accent2)" stroke-width="1.3" filter="url(#glow)"/>
+          <line x1="480" y1="220" x2="120" y2="220" stroke="var(--gold)" stroke-width="1.3" filter="url(#glow)"/>
+          <line x1="120" y1="220" x2="300" y2="330" stroke="var(--accent)" stroke-width="1.3" filter="url(#glow)"/>
+          <circle cx="300" cy="70" r="7" fill="var(--fg)" filter="url(#glow)"/>
+          <circle cx="480" cy="220" r="7" fill="var(--fg)" filter="url(#glow)"/>
+          <circle cx="300" cy="330" r="7" fill="var(--fg)" filter="url(#glow)"/>
+          <circle cx="120" cy="220" r="7" fill="var(--fg)" filter="url(#glow)"/>
+          <text x="300" y="52" text-anchor="middle" fill="var(--fg)" font-size="13" font-family="var(--serif)">P₁</text>
+          <text x="500" y="225" fill="var(--fg)" font-size="13" font-family="var(--serif)">P₂</text>
+          <text x="300" y="356" text-anchor="middle" fill="var(--fg)" font-size="13" font-family="var(--serif)">P₃</text>
+          <text x="95" y="225" text-anchor="middle" fill="var(--fg)" font-size="13" font-family="var(--serif)">P₄</text>
+        </svg>
+        <p class="dcap">Le graphe complet à quatre points : six distances, aucune paire oubliée — la connectivité logique rendue visible.</p>
+      </div>
+
+      <p class="reveal">C'est exactement l'intuition que confirment les expériences de 2022 : aucune particule n'existe véritablement isolée. Ce qu'Aspect, Clauser et Zeilinger ont mesuré pour deux photons intriqués, la loi TMS le généralise mathématiquement à un nombre quelconque de points — chaque atome entre dans le produit total, donc dans la relation avec tous les autres, qu'il soit son voisin immédiat ou situé à l'autre bout du système.</p>
+
+      <h3 class="reveal">La proposition TMS</h3>
+      <p class="reveal">C'est cette tension non résolue qu'hérite la théorie TMS. Plutôt que de trancher entre les deux camps, elle propose un troisième chemin : décrire la réalité non comme un ensemble d'objets isolés, ni comme une pure construction de l'esprit, mais comme un réseau de relations mesurables — des distances, dans un espace complexe, entre des points qui n'ont de sens que rapportés les uns aux autres. La géométrie devient ici le langage commun entre l'objectivité qu'Einstein réclamait et la relation que Tagore mettait au centre.</p>
+      <p class="reveal">Tout commence par une manière de regarder l'espace : non comme un vide neutre, mais comme un ensemble de points, chacun porteur d'une identité complexe.</p>
+      <div class="eq reveal">P = x + yi + zj &nbsp; <span class="muted">x, y, z ∈ ℝ, &nbsp; i² = j² = −1</span> <span class="eqnum">(2)</span></div>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Pourquoi des nombres complexes pour décrire un espace à trois dimensions déjà bien réelles ? Parce qu'un nombre complexe porte deux informations à la fois — une amplitude et une orientation. En attachant un axe imaginaire à chaque coordonnée, la théorie transforme trois nombres indépendants (x, y, z) en une seule entité géométrique qui se manipule, se compare et se mesure comme un tout. C'est un choix de modélisation, pas une nécessité physique — mais c'est ce choix qui rend tout le reste possible.</p>
+      </div>
+
+      <h3 class="reveal">Deux propriétés, avant de bâtir</h3>
+      <p class="reveal">Avant d'ériger quoi que ce soit sur cet espace, il faut vérifier qu'il se comporte raisonnablement. Deux propriétés sont établies dans l'article fondateur.</p>
+      <ol class="steps reveal">
+        <li><b>Commutativité.</b> Pour deux points P₁ et P₂, l'ordre ne change rien : |P₁+P₂| = |P₂+P₁| et |P₁·P₂| = |P₂·P₁| — la commutativité ordinaire des nombres complexes, héritée telle quelle.</li>
+        <li><b>Conservation.</b> Pour trois points P₁, P₂, P₃, la somme des trajets partiels ne peut jamais être plus courte que le trajet direct : |P₁−P₂| + |P₂−P₃| ≥ |P₁−P₃|. La preuve se ramène à l'inégalité triangulaire ordinaire du plan ℝ², appliquée aux parties réelle et imaginaire de chaque point.</li>
+      </ol>
+
+      <h3 class="reveal">La loi de transition</h3>
+      <p class="reveal">Sur cette géométrie, l'article fondateur <a class="cite" href="#ref2">[2]</a> pose sa proposition centrale : le transfert d'énergie entre trois états P₁, P₂, P₃ est le produit de leurs trois distances mutuelles.</p>
+      <div class="eq reveal">ΔE &nbsp;=&nbsp; |P₁−P₂| · |P₂−P₃| · |P₁−P₃| <span class="eqnum">(3)</span></div>
+      <div class="lesson reveal">
+        <span class="lkicker">Postulat, pas théorème</span>
+        <p>Contrairement aux propriétés qui précèdent (commutativité, inégalité triangulaire), cette équation n'est démontrée à partir de rien de plus fondamental : c'est l'axiome que la théorie TMS choisit de poser, au même titre que la règle de Born ou le principe de superposition sont posés en mécanique quantique standard. Ce livre le signale chaque fois par le mot <em>postulat</em> plutôt que <em>preuve</em>. L'Annexe montre toutefois qu'un cas particulier de cette équation — lorsque P₁, P₂, P₃ sont des nombres premiers et ΔE une puissance de 2 exacte — admet, lui, une démonstration rigoureuse complète.</p>
+      </div>
+      <p class="reveal">Dans les applications les plus abouties de la théorie — les sémaphores du chapitre VII, par exemple — cette quantité est contrainte à valoir une puissance de 2, ΔE = 2ⁿ : une manière de discrétiser l'énergie, à la façon dont la physique quantique discrétise déjà les niveaux d'un atome.</p>
+
+      <h3 class="reveal">Un calcul, pas à pas</h3>
+      <p class="reveal">Prenons trois points concrets, comme le fait l'article : P₁ = 1+2i, P₂ = 2+3i, P₃ = 4+5i.</p>
+      <ol class="steps reveal">
+        <li>Distance P₁–P₂ : √[(1−2)² + (2−3)²] = √2</li>
+        <li>Distance P₂–P₃ : √[(2−4)² + (3−5)²] = √8 = 2√2</li>
+        <li>Distance P₁–P₃ : √[(1−4)² + (2−5)²] = √18 = 3√2</li>
+        <li>Produit des trois : √2 × 2√2 × 3√2 = 6 × (√2)³ = 6 × 2√2 = <b>12√2 ≈ 16,97</b>. L'article original arrondit ce résultat à 12 joules pour garder l'exemple lisible.</li>
+      </ol>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg">
+          <line x1="150" y1="260" x2="290" y2="150" stroke="var(--accent)" stroke-width="1.4" filter="url(#glow)"/>
+          <line x1="290" y1="150" x2="470" y2="80" stroke="var(--accent2)" stroke-width="1.4" filter="url(#glow)"/>
+          <line x1="150" y1="260" x2="470" y2="80" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 5" opacity="0.85"/>
+          <circle cx="150" cy="260" r="6" fill="var(--accent)" filter="url(#glow)"/>
+          <circle cx="290" cy="150" r="6" fill="var(--accent)" filter="url(#glow)"/>
+          <circle cx="470" cy="80" r="6" fill="var(--accent)" filter="url(#glow)"/>
+          <text x="112" y="288" fill="var(--fg)" font-size="14" font-family="var(--serif)">P₁ = 1+2i</text>
+          <text x="252" y="132" fill="var(--fg)" font-size="14" font-family="var(--serif)">P₂ = 2+3i</text>
+          <text x="418" y="62" fill="var(--fg)" font-size="14" font-family="var(--serif)">P₃ = 4+5i</text>
+          <text x="172" y="196" fill="var(--accent)" font-size="13">√2</text>
+          <text x="358" y="103" fill="var(--accent2)" font-size="13">2√2</text>
+          <text x="292" y="180" fill="var(--gold)" font-size="13">3√2</text>
+          <text x="300" y="322" text-anchor="middle" fill="var(--muted)" font-size="14" font-family="var(--serif)">ΔE = √2 · 2√2 · 3√2 = 12√2 J</text>
+        </svg>
+        <p class="dcap">Le triangle énergétique : trois points, trois distances, un seul produit.</p>
+      </div>
+
+      <p class="reveal">C'est ainsi que se referme la boucle ouverte par Einstein et Tagore, puis rouverte par le Prix Nobel 2022. La loi de transition ne tranche pas leur débat philosophique — mais elle offre un cadre où intrication, distance et énergie s'écrivent avec le même alphabet, celui d'une géométrie relationnelle plutôt que d'objets isolés.</p>
+    </div>
+  </section>
+
+  <!-- PART II -->
+  <section class="page" id="part2">
+    <div class="content part-banner reveal">
+      <div class="pnum">Partie II</div>
+      <h2>La Grammaire Quantique</h2>
+      <p class="pdesc">Superposition, mesure, probabilité : le vocabulaire indispensable avant d'aller plus loin.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER II -->
+  <section class="page" id="ch2">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="chapter-badge">II</span><span class="kicker">Chapitre II</span></div>
+      <h2 class="reveal">L'Effondrement de l'Onde</h2>
+      <p class="reveal">Avant toute mesure, une particule quantique n'occupe pas un état unique : elle existe dans une superposition, une somme pondérée de tous les états qu'elle pourrait révéler <a class="cite" href="#ref8">[8]</a>.</p>
+      <div class="eq reveal">|Ψ⟩ = Σᵢ cᵢ|ψᵢ⟩ <span class="eqnum">(4)</span></div>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Chaque coefficient cᵢ est une amplitude complexe ; son carré, |cᵢ|², donne la probabilité d'obtenir l'état |ψᵢ⟩ si l'on mesure. Tant qu'aucune mesure n'a lieu, tous ces états coexistent mathématiquement — c'est le principe de superposition.</p>
+      </div>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — Σ|cᵢ|² = 1</span>
+        <p>Soit {|ψᵢ⟩} une base orthonormée : ⟨ψᵢ|ψⱼ⟩ = 1 si i=j, 0 sinon. Un état physique doit être normé, ⟨Ψ|Ψ⟩ = 1. Développons :<br>
+        ⟨Ψ|Ψ⟩ = (Σᵢ cᵢ*⟨ψᵢ|)(Σⱼ cⱼ|ψⱼ⟩) = Σᵢ,ⱼ cᵢ*cⱼ⟨ψᵢ|ψⱼ⟩.<br>
+        L'orthonormalité annule tous les termes i≠j et laisse ⟨Ψ|Ψ⟩ = Σᵢ |cᵢ|² = 1. La règle de Born n'est donc pas arbitraire : c'est la seule lecture de |cᵢ|² comme probabilité qui rend la somme des probabilités égale à 1, exigence que toute distribution de probabilité doit satisfaire.</p>
+      </div>
+
+      <h3 class="reveal">Le moment de la mesure</h3>
+      <p class="reveal">Mesurer, c'est forcer un choix. Le formalisme l'exprime par un projecteur Pₖ = |ψₖ⟩⟨ψₖ|, qui isole l'état finalement observé :</p>
+      <div class="eq reveal">|Ψ'⟩ = Pₖ|Ψ⟩ / √⟨Ψ|Pₖ|Ψ⟩ &nbsp;&nbsp;→&nbsp;&nbsp; |Ψ⟩ → |ψₖ⟩ <span class="eqnum">(5)</span></div>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — pourquoi diviser par √⟨Ψ|Pₖ|Ψ⟩</span>
+        <p>Un projecteur est idempotent : Pₖ² = |ψₖ⟩⟨ψₖ|ψₖ⟩⟨ψₖ| = |ψₖ⟩⟨ψₖ| = Pₖ (puisque ⟨ψₖ|ψₖ⟩=1), et hermitien : Pₖ† = Pₖ. La norme au carré de l'état non normalisé Pₖ|Ψ⟩ vaut donc :<br>
+        ⟨Ψ|Pₖ†Pₖ|Ψ⟩ = ⟨Ψ|Pₖ²|Ψ⟩ = ⟨Ψ|Pₖ|Ψ⟩.<br>
+        Ce nombre — qui n'est autre que la probabilité P(k) = |cₖ|² du chapitre III — n'est en général pas 1. Diviser par sa racine carrée est donc la seule opération qui restaure ‖|Ψ'⟩‖ = 1, condition nécessaire pour que |Ψ'⟩ reste un état physique valide après la mesure.</p>
+      </div>
+
+      <h3 class="reveal">Un calcul, pas à pas : mesurer une position</h3>
+      <ol class="steps reveal">
+        <li>Avant la mesure, la particule est répartie dans l'espace, décrite par une fonction d'onde étalée ψ(x) = ∫φ(p)e^{ipx/ħ}dp.</li>
+        <li>Si une mesure de position donne le résultat x₀, la fonction d'onde devient instantanément une pointe infiniment étroite : ψ(x) → δ(x−x₀).</li>
+        <li>Ce resserrement brutal a un prix, fixé par le principe d'incertitude de Heisenberg : Δx · Δp ≥ ħ/2.</li>
+      </ol>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+          <line x1="40" y1="220" x2="260" y2="220" stroke="var(--line)"/>
+          <path d="M40,220 C70,180 90,260 120,220 C150,180 170,260 200,220 C220,195 240,220 260,220" fill="none" stroke="var(--accent2)" stroke-width="1.8" filter="url(#glow)"/>
+          <text x="150" y="252" text-anchor="middle" fill="var(--muted)" font-size="13">superposition ψ(x)</text>
+          <line x1="285" y1="150" x2="345" y2="150" stroke="var(--gold)" stroke-width="1.5"/>
+          <polygon points="345,144 358,150 345,156" fill="var(--gold)"/>
+          <text x="315" y="130" text-anchor="middle" fill="var(--gold)" font-size="12">mesure</text>
+          <line x1="370" y1="220" x2="580" y2="220" stroke="var(--line)"/>
+          <path d="M370,220 L465,220 L475,60 L485,220 L580,220" fill="none" stroke="var(--accent)" stroke-width="1.8" filter="url(#glow)"/>
+          <text x="475" y="252" text-anchor="middle" fill="var(--muted)" font-size="13">δ(x − x₀)</text>
+        </svg>
+        <p class="dcap">Avant la mesure, une onde étalée ; après, une certitude ponctuelle.</p>
+      </div>
+
+      <h3 class="reveal">L'électron : n'importe où, mais pas également</h3>
+      <p class="reveal">L'exemple le plus concret de cette superposition de position est aussi le plus fondamental de toute la chimie : l'électron d'un atome d'hydrogène. Autour du noyau, il n'occupe pas une orbite précise, comme le suggérait le modèle de Bohr en 1913 — il est décrit par une fonction d'onde ψ(r), qui s'étend, en principe, sur tout l'espace :</p>
+      <div class="eq reveal">ψ₁ₛ(r) = 1/√(π a₀³) · e^{−r/a₀} &nbsp; <span class="muted">a₀ = rayon de Bohr ≈ 5,29 × 10⁻¹¹ m</span> <span class="eqnum">(6)</span></div>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — ψ₁ₛ résout l'équation de Schrödinger</span>
+        <p>L'équation radiale de Schrödinger pour l'hydrogène s'écrit −(ℏ²/2m)·(1/r²)·d/dr(r²dψ/dr) − (e²/4πε₀r)ψ = Eψ. En substituant ψ = A·e^{−r/a₀} et en dérivant deux fois, le terme en 1/r ne s'annule — condition nécessaire pour que l'équation soit satisfaite pour tout r — que si a₀ = 4πε₀ℏ²/(me²), exactement la définition du rayon de Bohr. L'énergie propre associée vaut alors E₁ = −ℏ²/(2ma₀²) ≈ −13,6 eV, l'énergie de liaison mesurée de l'atome d'hydrogène. ψ₁ₛ n'est donc pas une forme choisie librement : c'est la seule fonction qui satisfait l'équation fondamentale pour ce système, et sa forme même impose la valeur du rayon de Bohr.</p>
+      </div>
+      <p class="reveal">La probabilité de présence par unité de volume est le carré de cette fonction :</p>
+      <div class="eq reveal">|ψ₁ₛ(r)|² = 1/(π a₀³) · e^{−2r/a₀} <span class="eqnum">(7)</span></div>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve</span>
+        <p>Cette expression a une propriété remarquable : l'exponentielle e^{−2r/a₀} n'est <em>jamais</em> strictement nulle, quelle que soit la valeur de r, aussi grande soit-elle. À dix rayons de Bohr, elle a déjà chuté d'un facteur e^{−20}, soit environ dix milliards de fois moins probable qu'au centre, mais elle ne s'annule jamais tout à fait. C'est la preuve mathématique de l'intuition posée : l'électron peut, en principe, être détecté à n'importe quel endroit de l'espace qui entoure l'atome.</p>
+      </div>
+
+      <h3 class="reveal">Où est-il le plus probable de le trouver ?</h3>
+      <p class="reveal">La quantité pertinente est la densité de probabilité radiale, qui tient compte du volume croissant des coquilles sphériques : une fine coquille sphérique de rayon r et d'épaisseur dr a pour volume sa surface 4πr² multipliée par dr — donc la probabilité de trouver l'électron entre r et r+dr vaut |ψ(r)|² fois ce volume, d'où la formule.</p>
+      <div class="eq reveal">P(r) = 4πr² |ψ₁ₛ(r)|² = (4r²/a₀³) · e^{−2r/a₀} <span class="eqnum">(8)</span></div>
+      <ol class="steps reveal">
+        <li>Dérivée : dP/dr = (4/a₀³) e^{−2r/a₀} · [2r − 2r²/a₀].</li>
+        <li>Points critiques (dP/dr = 0) : 2r(1 − r/a₀) = 0 &nbsp;→&nbsp; r = 0 ou r = a₀.</li>
+        <li>En r = 0 : P(0) = 0. Le volume de la coquille y est nul, donc la probabilité l'est aussi.</li>
+        <li>En r = a₀ : P(r) atteint son maximum — la distance la plus probable, exactement le rayon deviné par Bohr en 1913.</li>
+        <li>Normalisation : ∫₀^∞ P(r) dr = 1 — la probabilité totale vaut exactement 1, répartie sur tout l'espace.</li>
+      </ol>
+
+      <div class="diagram reveal">
+        <canvas id="electronCanvas" width="600" height="280" style="max-width:100%; cursor:grab;"></canvas>
+        <p class="dcap" id="electronCaption">Glissez le long de l'axe r : la probabilité P(r) se recalcule en direct, à partir de la vraie formule.</p>
+      </div>
+
+      <p class="reveal">Ce nuage de probabilité, qui ne s'annule jamais tout à fait, est l'illustration la plus concrète de la quasi-certitude du chapitre III.</p>
+
+      <h3 class="reveal">Trois manières de raconter ce moment</h3>
+      <p class="reveal"><em>Réduction du Paquet d'Onde en Mécanique Quantique</em> <a class="cite" href="#ref8">[8]</a> revient sur ce moment fondateur et ses trois lectures possibles.</p>
+      <ul class="glossary reveal">
+        <li><b>Copenhague</b> — l'acte de mesure lui-même provoque l'effondrement ; la réalité ne se fixe qu'à l'instant de l'observation.</li>
+        <li><b>Mondes multiples</b> — rien ne s'effondre : chaque résultat possible se réalise, mais dans un univers qui se sépare du nôtre.</li>
+        <li><b>Décohérence</b> — l'interaction avec l'environnement suffit à faire apparaître un comportement classique, sans qu'un véritable effondrement n'ait lieu.</li>
+      </ul>
+      <p class="reveal">Trois récits pour un même instant : celui où le possible devient réel.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER III -->
+  <section class="page" id="ch3">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="chapter-badge">III</span><span class="kicker">Chapitre III</span></div>
+      <h2 class="reveal">La Quasi-Certitude</h2>
+      <p class="reveal">En mécanique quantique, une mesure ne donne jamais un résultat garanti à l'avance — seulement une probabilité, régie par la règle de Born <a class="cite" href="#ref9">[9]</a>.</p>
+      <div class="eq reveal">P(ψ) = |⟨φ|ψ⟩|² <span class="eqnum">(9)</span></div>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Prenez un état |ψ⟩ = α|0⟩ + β|1⟩. Si un processus quantique pousse progressivement α vers 1, la probabilité de mesurer |0⟩, qui vaut |α|², s'approche elle aussi de 1. Mais elle ne l'atteint jamais tout à fait : les interférences, la décohérence, l'imperfection des opérations réelles laissent toujours une marge, aussi infime soit-elle.</p>
+      </div>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — les probabilités somment à 1</span>
+        <p>Soit {|φᵢ⟩} une base orthonormée complète, donc Σᵢ|φᵢ⟩⟨φᵢ| = I (relation de fermeture). Pour un état normé |ψ⟩ :<br>
+        Σᵢ P(φᵢ) = Σᵢ ⟨ψ|φᵢ⟩⟨φᵢ|ψ⟩ = ⟨ψ| (Σᵢ|φᵢ⟩⟨φᵢ|) |ψ⟩ = ⟨ψ|I|ψ⟩ = ⟨ψ|ψ⟩ = 1.<br>
+        La règle de Born est donc cohérente : quel que soit l'état, la somme des probabilités de tous les résultats possibles vaut exactement 1 — ni plus, ni moins.</p>
+      </div>
+
+      <h3 class="reveal">L'exemple de Grover</h3>
+      <p class="reveal">L'algorithme de recherche de Grover illustre ce régime à la perfection. Il fait pivoter un vecteur d'état, itération après itération, pour l'aligner de plus en plus précisément sur la réponse cherchée.</p>
+      <ol class="steps reveal">
+        <li>Départ : tous les résultats possibles sont également probables.</li>
+        <li>Chaque itération fait pivoter légèrement l'état vers la bonne réponse.</li>
+        <li>Après un nombre d'itérations proche de √N, la probabilité est proche de 1 — sans jamais l'être exactement.</li>
+      </ol>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — la formule exacte oscille</span>
+        <p>Pour N éléments dont un seul marqué, l'état après k itérations de Grover s'écrit exactement |ψ_k⟩ = sin((2k+1)θ)|marqué⟩ + cos((2k+1)θ)|reste⟩, où θ = arcsin(1/√N). La probabilité de succès est donc P(k) = sin²((2k+1)θ) — une fonction périodique, pas une simple asymptote : elle grimpe jusqu'à un pic proche de l'itération optimale k_opt ≈ (π/4θ) − ½, puis <em>redescend</em> si l'on continue à itérer. La quasi-certitude n'est donc pas un plateau qu'on approche indéfiniment ; c'est un maximum précis, qu'il faut savoir s'arrêter d'atteindre.</p>
+      </div>
+
+      <div class="diagram reveal">
+        <div class="sim-wrap" style="justify-content:center;">
+          <canvas id="groverCanvas" width="600" height="260" style="max-width:100%;"></canvas>
+        </div>
+        <div style="display:flex; gap:.7rem; align-items:center; justify-content:center; margin-top:1rem; flex-wrap:wrap;">
+          <button class="sim-reset" id="groverStep">Itérer →</button>
+          <button class="sim-reset" id="groverReset" style="background:transparent; color:var(--fg); border-color:var(--border);">Réinitialiser</button>
+          <span id="groverStatus" style="font-size:.85rem; color:var(--muted);">k = 0 · P = 6,3 % (N=16 éléments)</span>
+        </div>
+        <p class="dcap">La vraie courbe de Grover : P(k) = sin²((2k+1)θ) — un pic, pas une asymptote.</p>
+      </div>
+
+      <p class="reveal"><em>La Quasi-Certitude Quantique</em> <a class="cite" href="#ref9">[9]</a> nomme ce régime intermédiaire : ni le hasard total, ni la certitude absolue — la texture même du monde quantique.</p>
+    </div>
+  </section>
+
+  <!-- PART III -->
+  <section class="page" id="part3">
+    <div class="content part-banner reveal">
+      <div class="pnum">Partie III</div>
+      <h2>Extensions et Ambitions</h2>
+      <p class="pdesc">La même loi, étirée jusqu'au qubit, jusqu'à l'univers, jusqu'à E = mc².</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER IV -->
+  <section class="page" id="ch4">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="chapter-badge">IV</span><span class="kicker">Chapitre IV</span></div>
+      <h2 class="reveal">Le Qubit et l'Univers</h2>
+      <p class="reveal">Si la loi tient pour des points de l'espace ordinaire, tient-elle pour les états quantiques eux-mêmes ?</p>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Un qubit n'est ni tout à fait 0, ni tout à fait 1 — il est une combinaison des deux, pondérée par deux nombres complexes α et β. Imaginez une pièce de monnaie qui, tant qu'elle tourne dans les airs, n'est ni pile ni face, mais les deux à la fois.</p>
+      </div>
+      <div class="eq reveal">|ψ⟩ = α|0⟩ + β|1⟩, &nbsp; α, β ∈ ℂ, &nbsp; |α|²+|β|² = 1 <span class="eqnum">(10)</span></div>
+
+      <h3 class="reveal">Plonger un qubit dans l'espace TMS</h3>
+      <p class="reveal">Un nombre complexe α = a+bi porte deux coordonnées réelles. Un qubit, construit à partir de deux nombres complexes α et β, en porte donc quatre :</p>
+      <div class="eq reveal">v_ψ = (Re α, Im α, Re β, Im β) ∈ ℝ⁴ <span class="eqnum">(11)</span></div>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — le plongement conserve la norme</span>
+        <p>Pour tout nombre complexe α = a+bi, |α|² = a²+b² = (Re α)² + (Im α)². Donc :<br>
+        ‖v_ψ‖² = (Re α)² + (Im α)² + (Re β)² + (Im β)² = |α|² + |β|² = 1.<br>
+        Le plongement de ℂ² dans ℝ⁴ envoie donc exactement la sphère unité complexe (les qubits normés) sur la sphère unité réelle de ℝ⁴ — aucune information de norme n'est perdue ni ajoutée, ce qui justifie que la loi de transition du chapitre I s'y applique sans modification.</p>
+      </div>
+      <p class="reveal">La loi de transition du chapitre I s'y transpose directement : la distance ordinaire entre deux vecteurs de ℝ⁴ se substitue à la distance complexe.</p>
+
+      <h3 class="reveal">Un calcul, pas à pas</h3>
+      <p class="reveal">Soit deux qubits : |ψ₁⟩ = (1/√2)|0⟩ + (1/√2)|1⟩ et |ψ₂⟩ = |0⟩.</p>
+      <ol class="steps reveal">
+        <li>Vecteurs associés : v_ψ1 = (1/√2, 0, 1/√2, 0) et v_ψ2 = (1, 0, 0, 0).</li>
+        <li>Différence : (1/√2 − 1, 0, 1/√2, 0).</li>
+        <li>Somme des carrés : (1/√2 − 1)² + (1/√2)² = 2 − √2.</li>
+        <li>Distance : √(2−√2) ≈ <b>0,765</b>.</li>
+      </ol>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="300" cy="200" r="140" fill="none" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="340" x2="300" y2="60" stroke="var(--line)" stroke-width="1"/>
+          <line x1="160" y1="200" x2="440" y2="200" stroke="var(--line)" stroke-width="1"/>
+          <text x="300" y="52" text-anchor="middle" fill="var(--muted)" font-size="13">|1⟩</text>
+          <text x="450" y="205" fill="var(--muted)" font-size="13">|0⟩</text>
+          <line x1="300" y1="200" x2="399" y2="101" stroke="var(--accent)" stroke-width="1.8" filter="url(#glow)"/>
+          <circle cx="399" cy="101" r="5" fill="var(--accent)" filter="url(#glow)"/>
+          <text x="395" y="88" text-anchor="middle" fill="var(--accent)" font-size="13" font-family="var(--serif)">ψ₁</text>
+          <line x1="300" y1="200" x2="440" y2="200" stroke="var(--accent2)" stroke-width="1.8" filter="url(#glow)"/>
+          <circle cx="440" cy="200" r="5" fill="var(--accent2)" filter="url(#glow)"/>
+          <text x="440" y="222" text-anchor="middle" fill="var(--accent2)" font-size="13" font-family="var(--serif)">ψ₂</text>
+          <line x1="399" y1="101" x2="440" y2="200" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 5"/>
+          <text x="450" y="150" fill="var(--gold)" font-size="13">≈ 0,765</text>
+        </svg>
+        <p class="dcap">Deux qubits, une distance : la géométrie mesure l'écart entre superposition et certitude.</p>
+      </div>
+
+      <h3 class="reveal">Une ambition d'unification</h3>
+      <p class="reveal">C'est dans <em>Un Modèle Géométrique des Transitions Quantique et Relativiste</em> <a class="cite" href="#ref1">[1]</a> que le geste se fait le plus audacieux : relier quatre piliers de la physique.</p>
+      <ul class="glossary reveal">
+        <li><b>Schrödinger</b> — l'évolution des états quantiques dans le temps.</li>
+        <li><b>Einstein</b> — la courbure de l'espace-temps par la masse et l'énergie.</li>
+        <li><b>Newton</b> — l'attraction gravitationnelle en 1/r².</li>
+        <li><b>Cordes</b> — l'hypothèse que les particules fondamentales sont des vibrations d'objets unidimensionnels.</li>
+      </ul>
+
+      <h3 class="reveal">Le temps, une dimension</h3>
+      <p class="reveal">Le geste le plus profond d'Einstein est d'avoir fusionné espace et temps en un seul continuum, l'espace-temps — le temps s'y comporte comme une dimension à part entière.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Le cerveau humain, façonné pour se déplacer dans un monde à trois dimensions spatiales, n'a aucune intuition native pour une quatrième. Il peut l'écrire, la calculer — mais pas la visualiser directement. Le diagramme ci-dessous traduit le temps dans le seul langage que l'intuition humaine maîtrise : un plan à deux axes, où l'un des deux est, secrètement, le temps.</p>
+      </div>
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="300,200 460,40 140,40" fill="var(--accent)" opacity="0.07"/>
+          <polygon points="300,200 460,360 140,360" fill="var(--accent2)" opacity="0.07"/>
+          <line x1="300" y1="200" x2="460" y2="40" stroke="var(--accent)" stroke-width="1.3"/>
+          <line x1="300" y1="200" x2="140" y2="40" stroke="var(--accent)" stroke-width="1.3"/>
+          <line x1="300" y1="200" x2="460" y2="360" stroke="var(--accent2)" stroke-width="1.3"/>
+          <line x1="300" y1="200" x2="140" y2="360" stroke="var(--accent2)" stroke-width="1.3"/>
+          <line x1="300" y1="380" x2="300" y2="20" stroke="var(--line)"/>
+          <line x1="50" y1="200" x2="550" y2="200" stroke="var(--line)"/>
+          <text x="310" y="30" fill="var(--muted)" font-size="13">t</text>
+          <text x="536" y="195" fill="var(--muted)" font-size="13">x</text>
+          <circle cx="300" cy="200" r="4" fill="var(--gold)" filter="url(#glow)"/>
+          <text x="308" y="217" fill="var(--gold)" font-size="12">ici, maintenant</text>
+          <text x="300" y="70" text-anchor="middle" fill="var(--accent)" font-size="12">cône futur</text>
+          <text x="300" y="335" text-anchor="middle" fill="var(--accent2)" font-size="12">cône passé</text>
+          <path d="M300,340 C320,300 280,220 300,200 C325,175 290,110 300,60" fill="none" stroke="var(--fg)" stroke-width="1.6" filter="url(#glow)"/>
+          <text x="345" y="118" fill="var(--fg)" font-size="12" font-family="var(--serif)">ligne d'univers</text>
+        </svg>
+        <p class="dcap">Tout ce qui peut m'influencer vient du cône passé ; tout ce que je peux influencer se trouve dans le cône futur.</p>
+      </div>
+
+      <h3 class="reveal">Le pilier de Newton, en graphique</h3>
+      <p class="reveal">La force gravitationnelle décroît avec le carré de la distance, F(r) = 1/r² — la même intuition qui anime, depuis le chapitre I, la loi de transition.</p>
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+          <line x1="70" y1="250" x2="560" y2="250" stroke="var(--line)"/>
+          <line x1="70" y1="250" x2="70" y2="40" stroke="var(--line)"/>
+          <text x="565" y="255" fill="var(--muted)" font-size="13">r</text>
+          <text x="45" y="45" fill="var(--muted)" font-size="13">F</text>
+          <path d="M90,55 C130,105 165,165 210,200 C260,228 330,242 420,247 C470,249 520,250 550,250"
+                fill="none" stroke="var(--gold)" stroke-width="2" filter="url(#glow)"/>
+          <circle cx="90" cy="55" r="5" fill="var(--gold)" filter="url(#glow)"/>
+          <text x="105" y="50" fill="var(--gold)" font-size="13" font-family="var(--serif)">F(r) = 1/r²</text>
+          <text x="300" y="278" text-anchor="middle" fill="var(--muted)" font-size="13">distance r →</text>
+        </svg>
+        <p class="dcap">La force de Newton s'estompe avec la distance — comme l'énergie de la loi de transition.</p>
+      </div>
+
+      <p class="reveal">Ce n'est pas une unification démontrée — c'est une direction proposée : et si leur point commun n'était pas une simple analogie, mais une même géométrie sous-jacente ?</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER V -->
+  <section class="page" id="ch5">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="chapter-badge">V</span><span class="kicker">Chapitre V</span></div>
+      <h2 class="reveal">E = mc², retrouvée</h2>
+      <p class="reveal">En 1905, Einstein établit l'équivalence entre masse et énergie : E = mc². <em>Intégration de la Théorie TMS avec E = mc²</em> <a class="cite" href="#ref3">[3]</a> se demande si cette relation peut elle aussi s'écrire dans le langage des distances complexes.</p>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>L'idée est directe : si le produit |P₁−P₂|·|P₂−P₃|·|P₁−P₃| mesure déjà un transfert d'énergie, alors il doit pouvoir s'égaler, à un facteur d'échelle près, à mc². Ce facteur k porte toute la responsabilité de convertir une grandeur géométrique abstraite en joules réels.</p>
+      </div>
+      <div class="eq reveal">E = mc² &nbsp;=&nbsp; k · |P₁−P₂| · |P₂−P₃| · |P₁−P₃| <span class="eqnum">(12)</span></div>
+
+      <h3 class="reveal">Un calcul, pas à pas</h3>
+      <p class="reveal">Pour une masse m = 1 kg et les mêmes distances qu'au chapitre I (√2, 2√2, 3√2) :</p>
+      <ol class="steps reveal">
+        <li>Produit géométrique : √2 × 2√2 × 3√2 = 12√2.</li>
+        <li>Relation posée : mc² = k × 12√2.</li>
+        <li>Le facteur k absorbe l'écart entre une distance dans l'espace abstrait et un mètre physique réel.</li>
+      </ol>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="300,260 322,300 278,300" fill="var(--line)"/>
+          <line x1="300" y1="260" x2="300" y2="150" stroke="var(--muted)" stroke-width="2"/>
+          <line x1="120" y1="150" x2="480" y2="150" stroke="var(--fg)" stroke-width="2"/>
+          <line x1="140" y1="150" x2="140" y2="185" stroke="var(--accent)" stroke-width="1"/>
+          <line x1="460" y1="150" x2="460" y2="185" stroke="var(--accent2)" stroke-width="1"/>
+          <circle cx="140" cy="212" r="36" fill="none" stroke="var(--accent)" stroke-width="1.5" filter="url(#glow)"/>
+          <circle cx="460" cy="212" r="36" fill="none" stroke="var(--accent2)" stroke-width="1.5" filter="url(#glow)"/>
+          <text x="140" y="217" text-anchor="middle" fill="var(--accent)" font-size="15" font-family="var(--serif)">mc²</text>
+          <text x="460" y="217" text-anchor="middle" fill="var(--accent2)" font-size="12" font-family="var(--serif)">k·d₁₂d₂₃d₁₃</text>
+          <text x="300" y="130" text-anchor="middle" fill="var(--gold)" font-size="20" font-family="var(--serif)">=</text>
+        </svg>
+        <p class="dcap">Deux expressions, une balance : physique et géométrie mises en équilibre par k.</p>
+      </div>
+
+      <p class="reveal">Le geste est celui d'un pont, pas d'une preuve : la géométrie des distances complexes et la physique de la masse-énergie, posées comme deux expressions possibles d'une même structure sous-jacente.</p>
+    </div>
+  </section>
+
+  <!-- PART IV -->
+  <section class="page" id="part4">
+    <div class="content part-banner reveal">
+      <div class="pnum">Partie IV</div>
+      <h2>Applications</h2>
+      <p class="pdesc">De l'acier à l'ordinateur, jusqu'au cerveau : la loi à l'épreuve du réel.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER VI -->
+  <section class="page" id="ch6">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="chapter-badge">VI</span><span class="kicker">Chapitre VI</span></div>
+      <h2 class="reveal">La Matière se Souvient</h2>
+      <p class="reveal">La théorie quitte alors le papier pour l'atelier. <em>Application de la Théorie TMS à l'Étude de la Plasticité Induite par Transformation</em> <a class="cite" href="#ref4">[4]</a> s'attaque à un problème bien réel de science des matériaux.</p>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Certains aciers, sous contrainte, ne se contentent pas de se déformer : une partie de leur structure cristalline change de phase — d'austénite en martensite — et ce changement de phase produit, à lui seul, une déformation plastique supplémentaire. C'est la plasticité induite par transformation, ou TRIP.</p>
+      </div>
+
+      <h3 class="reveal">Les contraintes comme des points</h3>
+      <div class="eq reveal">P₁=(σx,σy), &nbsp; P₂=(σx+Δσx,σy), &nbsp; P₃=(σx,σy+Δσy) <span class="eqnum">(13)</span></div>
+
+      <h3 class="reveal">Un calcul, pas à pas</h3>
+      <p class="reveal">Pour Δσx = 50 MPa et Δσy = 30 MPa :</p>
+      <ol class="steps reveal">
+        <li>Distance P₁–P₂ : |Δσx| = 50 MPa.</li>
+        <li>Distance P₂–P₃ : |Δσy| = 30 MPa.</li>
+        <li>Distance P₁–P₃ : √(50² + 30²) = √3400 ≈ 58,3 MPa.</li>
+        <li>Énergie de transition : 50 × 30 × 58,3 ≈ <b>87 450 MPa³</b>.</li>
+      </ol>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg">
+          <line x1="90" y1="280" x2="90" y2="60" stroke="var(--line)"/>
+          <line x1="90" y1="280" x2="520" y2="280" stroke="var(--line)"/>
+          <text x="528" y="285" fill="var(--muted)" font-size="13">σx</text>
+          <text x="70" y="52" fill="var(--muted)" font-size="13">σy</text>
+          <line x1="150" y1="230" x2="330" y2="230" stroke="var(--accent)" stroke-width="1.6" filter="url(#glow)"/>
+          <line x1="150" y1="230" x2="150" y2="120" stroke="var(--accent2)" stroke-width="1.6" filter="url(#glow)"/>
+          <line x1="330" y1="230" x2="150" y2="120" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 5"/>
+          <circle cx="150" cy="230" r="6" fill="var(--accent)" filter="url(#glow)"/>
+          <circle cx="330" cy="230" r="6" fill="var(--accent)" filter="url(#glow)"/>
+          <circle cx="150" cy="120" r="6" fill="var(--accent)" filter="url(#glow)"/>
+          <text x="200" y="248" fill="var(--accent)" font-size="13">Δσx = 50 MPa</text>
+          <text x="98" y="178" fill="var(--accent2)" font-size="13">Δσy = 30 MPa</text>
+          <text x="208" y="158" fill="var(--gold)" font-size="13">58,3 MPa</text>
+          <text x="150" y="250" text-anchor="middle" fill="var(--fg)" font-size="12" font-family="var(--serif)">P₁</text>
+          <text x="330" y="250" text-anchor="middle" fill="var(--fg)" font-size="12" font-family="var(--serif)">P₂</text>
+          <text x="150" y="112" text-anchor="middle" fill="var(--fg)" font-size="12" font-family="var(--serif)">P₃</text>
+        </svg>
+        <p class="dcap">L'espace des contraintes : chaque transformation de phase, une distance mesurable.</p>
+      </div>
+
+      <p class="reveal">La méthode classique calcule les déformations plastiques à l'aide de coefficients empiriques recalibrés matériau par matériau. La méthode TMS s'appuie uniquement sur des distances géométriques — un gain de généralité que l'article revendique, au prix d'une validation expérimentale encore à approfondir.</p>
+
+      <h3 class="reveal">Le code, exécutable</h3>
+      <p class="reveal">L'article original fournit une implémentation en C++ de la matrice des distances. En voici l'équivalent en JavaScript — exécutable directement dans cette page, sans rien installer :</p>
+      <div class="code-box">function <span class="fn">distance</span>(p1, p2) {
+  <span class="kw">return</span> Math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2 + (p1[2]-p2[2])**2);
+}
+function <span class="fn">distanceMatrix</span>(points) {
+  const n = points.length;
+  const M = Array.from({length: n}, () =&gt; Array(n).fill(0));
+  <span class="kw">for</span> (let i = 0; i &lt; n; i++)
+    <span class="kw">for</span> (let j = i+1; j &lt; n; j++) {
+      const d = <span class="fn">distance</span>(points[i], points[j]);
+      M[i][j] = M[j][i] = d;
+    }
+  <span class="kw">return</span> M;
+}
+<span class="cm">// trois points, comme dans l'article original</span>
+const points = [[1,2,3], [4,5,6], [7,8,9]];
+console.log(<span class="fn">distanceMatrix</span>(points));</div>
+      <div class="run-row">
+        <button class="run-btn" id="runTrip">▶ Exécuter</button>
+      </div>
+      <div class="output-box" id="outTrip"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER VII -->
+  <section class="page" id="ch7">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="chapter-badge">VII</span><span class="kicker">Chapitre VII</span></div>
+      <h2 class="reveal">Les Sémaphores</h2>
+      <p class="reveal">De la matière au calcul. Un sémaphore, en informatique, est un mécanisme introduit par Dijkstra en 1965 pour contrôler l'accès concurrent à une ressource partagée entre plusieurs processus.</p>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p><em>Application de la TMS aux Sémaphores</em> <a class="cite" href="#ref5">[5]</a> propose de remplacer le compteur simple des sémaphores classiques par une matrice Q, où chaque ligne représente les demandes d'un processus pour chaque ressource disponible.</p>
+      </div>
+
+      <h3 class="reveal">Un calcul, pas à pas</h3>
+      <p class="reveal">Pour trois processus (n=3) et Q = [[3,2],[4,1],[2,3]] :</p>
+      <ol class="steps reveal">
+        <li>d₁,₂ = √[(3−4)²+(2−1)²] = √2</li>
+        <li>d₂,₃ = √[(4−2)²+(1−3)²] = 2√2</li>
+        <li>d₁,₃ = √[(3−2)²+(2−3)²] = √2</li>
+        <li>Produit : √2 × 2√2 × √2 = <b>4√2 ≈ 5,66</b> — proche de la contrainte 2³ = 8.</li>
+      </ol>
+
+      <div class="code-box">function <span class="fn">dist</span>(a, b) { <span class="kw">return</span> Math.hypot(a[0]-b[0], a[1]-b[1]); }
+
+const Q = [[3,2], [4,1], [2,3]]; <span class="cm">// matrice de demandes des 3 processus</span>
+const d12 = <span class="fn">dist</span>(Q[0], Q[1]);
+const d23 = <span class="fn">dist</span>(Q[1], Q[2]);
+const d13 = <span class="fn">dist</span>(Q[0], Q[2]);
+const produit = d12 * d23 * d13;
+
+console.log(`d12=${d12.toFixed(3)}  d23=${d23.toFixed(3)}  d13=${d13.toFixed(3)}`);
+console.log(`Produit = ${produit.toFixed(3)}  (log2 = ${Math.log2(produit).toFixed(3)}, proche de n=3)`);</div>
+      <div class="run-row">
+        <button class="run-btn" id="runSem">▶ Exécuter</button>
+      </div>
+      <div class="output-box" id="outSem"></div>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+          <line x1="300" y1="70" x2="480" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="70" x2="390" y2="300" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="70" x2="210" y2="300" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="70" x2="120" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="480" y1="180" x2="390" y2="300" stroke="var(--accent)" stroke-width="1.6" filter="url(#glow)"/>
+          <line x1="390" y1="300" x2="120" y2="180" stroke="var(--accent2)" stroke-width="1.2" opacity="0.85"/>
+          <line x1="480" y1="180" x2="120" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="210" y1="300" x2="480" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="210" y1="300" x2="120" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="300" cy="70" r="7" fill="var(--accent)" filter="url(#glow)"/>
+          <circle cx="480" cy="180" r="7" fill="var(--accent)" filter="url(#glow)"/>
+          <circle cx="390" cy="300" r="7" fill="var(--accent)" filter="url(#glow)"/>
+          <circle cx="210" cy="300" r="7" fill="var(--accent2)" filter="url(#glow)"/>
+          <circle cx="120" cy="180" r="7" fill="var(--accent2)" filter="url(#glow)"/>
+          <text x="300" y="52" text-anchor="middle" fill="var(--fg)" font-size="13" font-family="var(--serif)">P₁</text>
+          <text x="500" y="185" fill="var(--fg)" font-size="13" font-family="var(--serif)">P₂</text>
+          <text x="400" y="325" fill="var(--fg)" font-size="13" font-family="var(--serif)">P₃</text>
+          <text x="188" y="325" text-anchor="middle" fill="var(--muted)" font-size="13" font-family="var(--serif)">P₄</text>
+          <text x="100" y="175" text-anchor="middle" fill="var(--muted)" font-size="13" font-family="var(--serif)">P₅</text>
+        </svg>
+        <p class="dcap">Chaque processus, un nœud ; chaque écart de ressources, une arête pondérée.</p>
+      </div>
+
+      <h3 class="reveal">Quand les nœuds deviennent des qubits</h3>
+      <p class="reveal"><em>Développement des Sémaphores de TMS avec des Qubits</em> <a class="cite" href="#ref6">[6]</a> pousse l'idée plus loin : chaque nœud devient un vecteur qubit q = [x,y,z], pondéré dynamiquement par softmax des distances :</p>
+      <div class="eq reveal">w_ij = softmax(−α · d(q_ij, q_kl)) <span class="eqnum">(14)</span></div>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — softmax normalise toujours</span>
+        <p>Par définition, softmax(xᵢ) = e^{xᵢ} / Σⱼ e^{xⱼ}. Chaque numérateur est strictement positif (une exponentielle réelle ne s'annule jamais), donc chaque poids w_ij &gt; 0 ; et par construction, la somme des poids issus d'un même nœud vaut :<br>
+        Σⱼ w_ij = Σⱼ e^{−α·d(qᵢ,qⱼ)} / Σₖ e^{−α·d(qᵢ,qₖ)} = 1.<br>
+        Quelle que soit la configuration géométrique des qubits, les poids sortants d'un nœud forment donc toujours une distribution de probabilité valide — aucun réglage supplémentaire n'est nécessaire.</p>
+      </div>
+      <p class="reveal">Le résultat est une file d'attente qui se réorganise en continu, plutôt qu'une structure figée en premier-arrivé-premier-servi.</p>
+
+      <h3 class="reveal">Un espace d'états complet : 2ᴺ configurations</h3>
+      <p class="reveal"><em>Modélisation des Réseaux de Neurones Quantiques avec TMS</em> <a class="cite" href="#ref10">[10]</a> pousse cette idée à son terme formel. Un réseau de N qubits n'occupe pas une seule configuration à la fois : avant toute mesure, il existe dans une superposition de la totalité de ses configurations binaires possibles — 2ᴺ d'entre elles.</p>
+      <div class="eq reveal">|Ψ⟩ = Σ<sub>k=0</sub><sup>2ᴺ−1</sup> c_k|k⟩ <span class="eqnum">(17)</span></div>
+      <p class="reveal">Deux qubits ne sont connectés que si leur distance reste sous un seuil ε — une matrice d'adjacence binaire, ensuite pondérée par la même fonction softmax rencontrée plus haut :</p>
+      <div class="eq reveal">A_ij = { 1 si d(qᵢ,qⱼ) ≤ ε &nbsp;·&nbsp; 0 sinon } <span class="eqnum">(18)</span></div>
+      <p class="reveal">Pour revenir, à chaque étape, à un état binaire exploitable — un qubit physique doit finir par livrer 0 ou 1 — le modèle applique une projection sigmoïde :</p>
+      <div class="eq reveal">qᵢ = { 1 si f(xᵢ) ≥ 0,5 &nbsp;·&nbsp; 0 sinon }, &nbsp; f(xᵢ) = 1/(1+e^{−xᵢ}) <span class="eqnum">(19)</span></div>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — la projection est bien définie</span>
+        <p>Puisque e^{−xᵢ} &gt; 0 pour tout xᵢ réel, le dénominateur 1+e^{−xᵢ} est toujours strictement supérieur à 1, donc 0 &lt; f(xᵢ) &lt; 1 pour tout xᵢ. De plus f est strictement croissante (sa dérivée f'(x)=f(x)(1−f(x)) est toujours positive), et f(0)=1/2. La règle « qᵢ=1 si f(xᵢ)≥0,5 » revient donc simplement à qᵢ=1 si xᵢ≥0 — un seuillage bien défini, sans ambiguïté ni valeur interdite, pour n'importe quelle entrée réelle xᵢ.</p>
+      </div>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg">
+          <text x="210" y="30" text-anchor="middle" fill="var(--fg)" font-size="14" font-family="var(--serif)">Matrice d'adjacence 4×4</text>
+          <g font-family="var(--sans)" font-size="12" fill="var(--muted)">
+            <text x="95" y="55" text-anchor="middle">0</text><text x="175" y="55" text-anchor="middle">1</text>
+            <text x="255" y="55" text-anchor="middle">2</text><text x="335" y="55" text-anchor="middle">3</text>
+            <text x="65" y="95" text-anchor="middle">0</text><text x="65" y="175" text-anchor="middle">1</text>
+            <text x="65" y="255" text-anchor="middle">2</text><text x="65" y="335" text-anchor="middle">3</text>
+          </g>
+          <g stroke="var(--border)" stroke-width="1">
+            <rect x="70" y="70" width="80" height="80" fill="var(--primary)"/>
+            <rect x="150" y="70" width="80" height="80" fill="var(--muted-bg)"/>
+            <rect x="230" y="70" width="80" height="80" fill="var(--primary)"/>
+            <rect x="310" y="70" width="80" height="80" fill="var(--muted-bg)"/>
+            <rect x="70" y="150" width="80" height="80" fill="var(--muted-bg)"/>
+            <rect x="150" y="150" width="80" height="80" fill="var(--primary)"/>
+            <rect x="230" y="150" width="80" height="80" fill="var(--muted-bg)"/>
+            <rect x="310" y="150" width="80" height="80" fill="var(--accent2)"/>
+            <rect x="70" y="230" width="80" height="80" fill="var(--primary)"/>
+            <rect x="150" y="230" width="80" height="80" fill="var(--muted-bg)"/>
+            <rect x="230" y="230" width="80" height="80" fill="var(--primary)"/>
+            <rect x="310" y="230" width="80" height="80" fill="var(--primary)"/>
+            <rect x="70" y="310" width="80" height="80" fill="var(--muted-bg)"/>
+            <rect x="150" y="310" width="80" height="80" fill="var(--accent2)"/>
+            <rect x="230" y="310" width="80" height="80" fill="var(--primary)"/>
+            <rect x="310" y="310" width="80" height="80" fill="var(--muted-bg)"/>
+          </g>
+        </svg>
+        <p class="dcap">Chaque cellule bleue : Aᵢⱼ = 1 (connexion sous le seuil ε) ; en clair : Aᵢⱼ = 0.</p>
+      </div>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Cette architecture est hybride par construction : le système explore, tant qu'il reste en superposition, la totalité de ses 2ᴺ configurations à la fois — un parallélisme impossible à reproduire classiquement au-delà de quelques dizaines de qubits — puis se discrétise, au moment de la mesure, en un graphe binaire ordinaire, sur lequel des algorithmes classiques comme celui du chapitre suivant peuvent enfin s'exécuter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER VIII -->
+  <section class="page" id="ch8">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="chapter-badge">VIII</span><span class="kicker">Chapitre VIII</span></div>
+      <h2 class="reveal">Le Cerveau, Réseau Quantique</h2>
+      <p class="reveal">Le dernier texte, <em>Le Cerveau : Un Réseau Quantique pour le Traitement et la Validation des Informations</em> <a class="cite" href="#ref7">[7]</a>, referme le cercle en le portant le plus loin : jusqu'à la pensée.</p>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Une main touche, un œil capte la lumière ; les signaux remontent par la moelle épinière et le nerf optique jusqu'au cortex. Là où la description biologique s'arrête, l'article propose une lecture géométrique : chaque neurone est un point, chaque synapse un poids qui croît de façon non linéaire avec l'intensité du signal.</p>
+      </div>
+
+      <h3 class="reveal">L'œil : une mesure quantique littérale</h3>
+      <p class="reveal">Avant même d'atteindre un neurone, l'entrée sensorielle mérite d'être suivie de plus près — car les deux sens les plus étudiés, la vue et l'ouïe, n'entrent pas dans le système de la même manière. Un photon qui atteint la rétine n'est pas encore une donnée : c'est une particule quantique, décrite par une fonction d'onde, dont la longueur d'onde reste indéterminée tant qu'aucune interaction n'a eu lieu. La rétine contient des molécules de rhodopsine, dont le chromophore — le rétinal — porte un système d'électrons délocalisés sensible à la lumière.</p>
+      <p class="reveal">Quand ce photon est absorbé, il provoque une véritable transition électronique : un électron du rétinal passe à un niveau d'énergie supérieur, ce qui déclenche l'isomérisation de la molécule (de sa forme 11-cis à sa forme tout-trans) et amorce la cascade qui produira le signal électrique. C'est un événement de mesure au sens strict du chapitre II : la fonction d'onde du photon s'effondre, cédant une information désormais classique et univoque — une longueur d'onde précise, immédiatement traduisible en un nombre.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>On peut formaliser cette entrée comme le fait ce livre pour tout le reste : un nombre. Les trois familles de cônes de la rétine (sensibles au bleu, au vert et au rouge) jouent le rôle de trois canaux — une manière naturelle d'écrire chaque couleur perçue comme un triplet, à la façon d'un code hexadécimal RVB (par exemple 0x0000FF pour un bleu pur). Ce triplet devient alors une entrée numérique légitime pour le réseau du chapitre : la couleur, avant d'être une sensation, est un nombre qui vient d'être mesuré au sens quantique du terme.</p>
+      </div>
+      <div class="eq reveal">I_visuel = (R, V, B) &nbsp;→&nbsp; 0xRRVVBB &nbsp;&nbsp;<span class="muted">ex. 0x0000FF = bleu pur</span></div>
+
+      <h3 class="reveal">L'oreille : une transduction, pas une mesure quantique</h3>
+      <p class="reveal">L'oreille suit un chemin physiquement différent. Le son est une onde mécanique — une variation de pression de l'air — captée dans la cochlée par des cellules ciliées qui transforment directement le mouvement en signal électrique : la vibration courbe des stéréocils, ce qui ouvre des canaux ioniques mécanosensibles et laisse entrer un courant. Aucune absorption de photon, aucune transition électronique isolée, aucun effondrement d'une fonction d'onde individuelle n'est nécessaire ici : c'est une transduction mécano-électrique classique, immédiate.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Le contraste est instructif. Voir commence, au sens propre, par une mesure quantique — l'absorption d'un photon par un seul électron du rétinal. Entendre commence par un phénomène mécanique classique — des milliards de molécules d'air déplaçant une membrane. Les deux entrées convergent ensuite vers le même langage, l'influx électrique, mais l'une naît d'un effondrement de fonction d'onde (chapitre II), l'autre d'une conversion mécanique directe, sans qu'aucune « observation » quantique n'ait été nécessaire.</p>
+      </div>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+          <text x="175" y="30" text-anchor="middle" fill="var(--accent)" font-size="13" font-family="var(--sans)" font-weight="700">ŒIL</text>
+          <text x="525" y="30" text-anchor="middle" fill="var(--muted)" font-size="13" font-family="var(--sans)" font-weight="700">OREILLE</text>
+
+          <rect x="60" y="55" width="230" height="40" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+          <text x="175" y="79" text-anchor="middle" fill="var(--fg)" font-size="12">Photon (longueur d'onde indéterminée)</text>
+          <line x1="175" y1="95" x2="175" y2="120" stroke="var(--border)"/>
+
+          <rect x="60" y="120" width="230" height="40" rx="10" fill="rgba(21,88,159,.07)" stroke="var(--accent)" stroke-width="1.4" filter="url(#glow)"/>
+          <text x="175" y="144" text-anchor="middle" fill="var(--fg)" font-size="12">✦ Absorption — électron excité (mesure)</text>
+          <line x1="175" y1="160" x2="175" y2="185" stroke="var(--border)"/>
+
+          <rect x="60" y="185" width="230" height="40" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+          <text x="175" y="209" text-anchor="middle" fill="var(--fg)" font-size="12">Isomérisation du rétinal</text>
+          <line x1="175" y1="225" x2="175" y2="250" stroke="var(--border)"/>
+
+          <rect x="60" y="250" width="230" height="40" rx="10" fill="var(--muted-bg)" stroke="var(--border)"/>
+          <text x="175" y="274" text-anchor="middle" fill="var(--fg)" font-size="12">Signal électrique → nombre (0xRRVVBB)</text>
+
+          <rect x="410" y="55" width="230" height="40" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+          <text x="525" y="79" text-anchor="middle" fill="var(--fg)" font-size="12">Vibration mécanique (pression d'air)</text>
+          <line x1="525" y1="95" x2="525" y2="185" stroke="var(--border)"/>
+
+          <rect x="410" y="185" width="230" height="40" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+          <text x="525" y="209" text-anchor="middle" fill="var(--fg)" font-size="12">Stéréocils courbés → canal ionique ouvert</text>
+          <line x1="525" y1="225" x2="525" y2="250" stroke="var(--border)"/>
+
+          <rect x="410" y="250" width="230" height="40" rx="10" fill="var(--muted-bg)" stroke="var(--border)"/>
+          <text x="525" y="274" text-anchor="middle" fill="var(--fg)" font-size="12">Signal électrique (charge directe)</text>
+        </svg>
+        <p class="dcap">Deux entrées, deux physiques : l'œil mesure (effondrement quantique), l'oreille transduit (mécanique classique) — les deux convergent en un nombre.</p>
+      </div>
+
+      <p class="reveal">Dans le réseau Pᵢ = xᵢ+yᵢi+zᵢj, ces deux entrées, bien que physiquement différentes à l'origine, convergent : l'une entre comme un triplet de couleur qui a déjà connu son effondrement quantique, l'autre comme une charge électrique qui n'en a jamais eu besoin. En aval, le cerveau ne distingue plus la nature de la mesure qui a produit le signal — seulement le nombre qu'elle lui a transmis.</p>
+
+      <h3 class="reveal">Le miroir de la rétine</h3>
+      <p class="reveal">Il y a un fait d'optique élémentaire, presque toujours oublié une fois qu'on sait voir : l'image qui se forme sur la rétine est inversée — retournée haut-bas et gauche-droite. C'est une conséquence géométrique inévitable du cristallin, une lentille convergente : un rayon issu du sommet d'un objet traverse le point focal et retombe en bas de l'image, et réciproquement. Mathématiquement, c'est une inversion ponctuelle — une transformation aussi simple que (x,y) → (−x,−y) autour du centre optique.</p>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+          <line x1="40" y1="170" x2="560" y2="170" stroke="var(--line)"/>
+          <line x1="300" y1="70" x2="300" y2="270" stroke="var(--fg)" stroke-width="1.5"/>
+          <path d="M290,70 L300,58 L310,70" fill="none" stroke="var(--fg)" stroke-width="1.5"/>
+          <path d="M290,270 L300,282 L310,270" fill="none" stroke="var(--fg)" stroke-width="1.5"/>
+          <text x="300" y="45" text-anchor="middle" fill="var(--muted)" font-size="12">cristallin (lentille)</text>
+
+          <line x1="80" y1="170" x2="80" y2="90" stroke="var(--accent)" stroke-width="2" filter="url(#glow)"/>
+          <polygon points="80,90 74,102 86,102" fill="var(--accent)"/>
+          <text x="80" y="188" text-anchor="middle" fill="var(--accent)" font-size="12">objet</text>
+
+          <line x1="480" y1="170" x2="480" y2="250" stroke="var(--accent2)" stroke-width="2" filter="url(#glow)"/>
+          <polygon points="480,250 474,238 486,238" fill="var(--accent2)"/>
+          <text x="480" y="270" text-anchor="middle" fill="var(--accent2)" font-size="12">image (inversée)</text>
+
+          <line x1="80" y1="90" x2="480" y2="250" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 4" opacity="0.85"/>
+          <path d="M80,90 L300,90 L480,250" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4" opacity="0.7"/>
+        </svg>
+        <p class="dcap">Deux rayons suffisent à le montrer : l'image se forme inversée, une conséquence géométrique inévitable de toute lentille convergente.</p>
+      </div>
+
+      <p class="reveal">Le cerveau ne reçoit donc jamais une image droite : il reçoit une image mathématiquement retournée, et construit sa perception d'un monde stable à partir de cette convention. La preuve la plus spectaculaire en revient à une expérience de 1896 : le psychologue George Stratton porta pendant plusieurs jours des lunettes qui ré-inversaient l'image — la rendant, pour la première fois, droite sur sa rétine. Après une période de désorientation totale, sa perception se réorganisa et le monde lui parut de nouveau normal ; en retirant les lunettes, il dut à nouveau se réadapter. La conclusion est nette : l'orientation perçue n'est pas une propriété fixe de l'image, mais une convention que le cerveau apprend, et peut réapprendre.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Hypothèse — l'inversion comme clé de déchiffrement</span>
+        <p>Une hypothèse, dans l'esprit de ce livre : si l'image entre toujours inversée par la même transformation géométrique fixe, cette transformation n'est pas un obstacle mais une clé. Un signal dont la déformation est connue d'avance se décode plus facilement qu'un signal de forme arbitraire — le principe même d'un chiffrement à clé connue. Le cerveau n'aurait donc pas à « deviner » l'orientation de chaque scène : il lui suffirait d'appliquer, une fois pour toutes, l'inverse de la transformation du cristallin, ce qui simplifierait la reconnaissance de formes en aval. Ce n'est pas (encore) un résultat établi de neurosciences — mais c'est cohérent avec l'idée, posée plus haut, que le cerveau ne lit jamais le monde directement : il en déchiffre une version transformée, selon une règle fixe.</p>
+      </div>
+
+      <h3 class="reveal">L'espace ℝ⁴ de l'information cérébrale</h3>
+      <p class="reveal">Le chapitre IV a montré que le temps se comporte comme une quatrième dimension, indissociable des trois dimensions spatiales, et que le plongement d'un qubit dans ℝ⁴ ne perd aucune information. La même construction s'applique ici : un événement sensoriel n'est jamais complet sans son instant d'arrivée. Le triplet de couleur (R,V,B) décrit <em>quoi</em> — il lui manque <em>quand</em>.</p>
+      <div class="eq reveal">Iᵢ(t) = (R, V, B, t) ∈ ℝ⁴ <span class="eqnum">(23)</span></div>
+      <p class="reveal">Ce quatrième axe n'est pas accessoire. La localisation d'un son, par exemple, ne dépend d'aucune « couleur » auditive : elle se calcule presque entièrement à partir d'un écart de quelques microsecondes entre l'oreille gauche et l'oreille droite — une différence purement temporelle, mesurée avec une précision que peu d'instruments artificiels égalent. Dans ce cadre, chaque information qui circule dans le cerveau — visuelle, auditive, tactile — est un point de ℝ⁴, exactement comme le qubit du chapitre IV : trois coordonnées de contenu, une coordonnée de temps, la même géométrie que celle posée au chapitre I pour l'espace lui-même.</p>
+
+      <h3 class="reveal">Un espace fermé : seuls les neurones y parlent</h3>
+      <p class="reveal">Une précision s'impose, et elle referme la boucle ouverte au chapitre I. L'espace ℝ⁴ qui vient d'être défini n'est pas un espace physique général, ouvert à n'importe quel point de l'univers : c'est un espace de communication interne, réservé aux nœuds du réseau — c'est-à-dire aux neurones eux-mêmes.</p>
+      <div class="eq reveal">N = {P₁, …, Pₙ} &nbsp;&nbsp;·&nbsp;&nbsp; |Pᵢ − Pⱼ| défini seulement pour Pᵢ, Pⱼ ∈ N <span class="eqnum">(24)</span></div>
+      <p class="reveal">Le monde extérieur n'entre dans cet espace que par les deux portes déjà décrites : la rétine, qui transforme un photon en un point (R,V,B,t) ; la cochlée, qui transforme une vibration en une charge. Une fois franchi ce seuil, l'information devient un point Pᵢ parmi les autres, et ne communique plus qu'avec d'autres points de N. Rien, dans ce cadre, ne permet à un neurone de « parler » directement à un objet extérieur au réseau : toute sortie doit, symétriquement, repasser par une interface de transduction inverse — un muscle, une glande — pour redevenir un événement physique dans le monde.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Cette fermeture n'est pas une limitation : c'est ce qui rend le réseau calculable. La preuve de connectivité universelle du chapitre I garantit que tout point de N est relié à tout autre point de N ; mais elle ne dit rien, et ne doit rien dire, des points hors de N. Un système qui communiquerait avec l'univers entier sans restriction ne serait plus un réseau — il serait l'univers lui-même. En limitant la communication à N × N, le cerveau reste un objet fini et mathématiquement traitable, malgré la richesse infinie du monde qu'il perçoit à travers ses seules portes d'entrée.</p>
+      </div>
+
+      <h3 class="reveal">Le neurone, avant l'abstraction</h3>
+      <p class="reveal">Des dendrites captent les signaux venus d'autres neurones et les acheminent vers le corps cellulaire, qui les intègre ; si le signal cumulé dépasse un seuil, une impulsion parcourt l'axone — isolé par une gaine de myéline — jusqu'à des terminaisons synaptiques, où elle est transmise au neurone suivant à travers la synapse.</p>
+      <div class="diagram reveal">
+        <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+          <line x1="30" y1="60" x2="133" y2="148" stroke="var(--accent2)" stroke-width="1.2"/>
+          <line x1="55" y1="40" x2="118" y2="120" stroke="var(--accent2)" stroke-width="1"/>
+          <line x1="18" y1="112" x2="132" y2="155" stroke="var(--accent2)" stroke-width="1.2"/>
+          <line x1="14" y1="168" x2="132" y2="163" stroke="var(--accent2)" stroke-width="1.2"/>
+          <line x1="24" y1="222" x2="132" y2="172" stroke="var(--accent2)" stroke-width="1.2"/>
+          <line x1="45" y1="42" x2="70" y2="30" stroke="var(--accent2)" stroke-width="1"/>
+          <line x1="30" y1="255" x2="60" y2="270" stroke="var(--accent2)" stroke-width="1"/>
+          <line x1="38" y1="260" x2="133" y2="182" stroke="var(--accent2)" stroke-width="1.2"/>
+          <text x="10" y="20" fill="var(--muted)" font-size="12">dendrites</text>
+
+          <ellipse cx="163" cy="163" rx="32" ry="27" fill="rgba(21,88,159,0.06)" stroke="var(--accent)" stroke-width="1.4" filter="url(#glow)"/>
+          <circle cx="163" cy="163" r="8" fill="var(--accent)" opacity="0.55"/>
+          <text x="122" y="215" fill="var(--muted)" font-size="12">corps cellulaire</text>
+
+          <line x1="195" y1="163" x2="520" y2="163" stroke="var(--accent)" stroke-width="2" filter="url(#glow)"/>
+          <rect x="238" y="154" width="36" height="18" rx="9" fill="var(--surface)" stroke="var(--accent)" stroke-width="1"/>
+          <rect x="296" y="154" width="36" height="18" rx="9" fill="var(--surface)" stroke="var(--accent)" stroke-width="1"/>
+          <rect x="354" y="154" width="36" height="18" rx="9" fill="var(--surface)" stroke="var(--accent)" stroke-width="1"/>
+          <rect x="412" y="154" width="36" height="18" rx="9" fill="var(--surface)" stroke="var(--accent)" stroke-width="1"/>
+          <text x="330" y="130" text-anchor="middle" fill="var(--muted)" font-size="12">axone</text>
+          <text x="300" y="200" text-anchor="middle" fill="var(--muted)" font-size="12">gaine de myéline</text>
+
+          <line x1="520" y1="163" x2="560" y2="120" stroke="var(--accent)" stroke-width="1.4"/>
+          <line x1="520" y1="163" x2="575" y2="163" stroke="var(--accent)" stroke-width="1.4"/>
+          <line x1="520" y1="163" x2="560" y2="206" stroke="var(--accent)" stroke-width="1.4"/>
+          <circle cx="560" cy="120" r="4" fill="var(--gold)" filter="url(#glow)"/>
+          <circle cx="577" cy="163" r="4" fill="var(--gold)" filter="url(#glow)"/>
+          <circle cx="560" cy="206" r="4" fill="var(--gold)" filter="url(#glow)"/>
+          <text x="500" y="245" fill="var(--muted)" font-size="12">terminaisons synaptiques</text>
+
+          <line x1="590" y1="163" x2="620" y2="163" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 4"/>
+          <text x="583" y="190" fill="var(--gold)" font-size="12">synapse</text>
+          <circle cx="640" cy="163" r="6" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
+          <text x="625" y="145" fill="var(--muted)" font-size="11">neurone suivant</text>
+        </svg>
+        <p class="dcap">Le neurone biologique : dendrites → corps cellulaire → axone → synapse. C'est ce que Pᵢ et W réduisent à l'essentiel.</p>
+      </div>
+
+      <div class="eq reveal">Pᵢ = xᵢ + yᵢi + zᵢj &nbsp;&nbsp;·&nbsp;&nbsp; W = k · xⁿ <span class="eqnum">(15)</span></div>
+
+      <h3 class="reveal">Du neurone au réseau</h3>
+      <p class="reveal">Un neurone isolé ne pense pas. C'est leur mise en réseau qui produit la cognition. Le schéma classique d'un réseau de neurones en donne une image simplifiée : des couches de nœuds, connectées par des poids qui ne sont pas tous égaux.</p>
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+          <line x1="90" y1="70" x2="300" y2="40" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="70" x2="300" y2="110" stroke="var(--accent)" stroke-width="1.8" filter="url(#glow)"/>
+          <line x1="90" y1="70" x2="300" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="70" x2="300" y2="250" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="160" x2="300" y2="40" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="160" x2="300" y2="110" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="160" x2="300" y2="180" stroke="var(--accent2)" stroke-width="1.8" filter="url(#glow)"/>
+          <line x1="90" y1="160" x2="300" y2="250" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="250" x2="300" y2="40" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="250" x2="300" y2="110" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="250" x2="300" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="90" y1="250" x2="300" y2="250" stroke="var(--line)" stroke-width="1"/>
+
+          <line x1="300" y1="40" x2="510" y2="110" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="40" x2="510" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="110" x2="510" y2="110" stroke="var(--accent)" stroke-width="1.8" filter="url(#glow)"/>
+          <line x1="300" y1="110" x2="510" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="180" x2="510" y2="110" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="180" x2="510" y2="180" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="250" x2="510" y2="110" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="250" x2="510" y2="180" stroke="var(--line)" stroke-width="1"/>
+
+          <circle cx="90" cy="70" r="7" fill="var(--accent2)" filter="url(#glow)"/>
+          <circle cx="90" cy="160" r="7" fill="var(--accent2)" filter="url(#glow)"/>
+          <circle cx="90" cy="250" r="7" fill="var(--accent2)" filter="url(#glow)"/>
+          <circle cx="300" cy="40" r="7" fill="var(--fg)" opacity="0.85"/>
+          <circle cx="300" cy="110" r="7" fill="var(--fg)" opacity="0.85"/>
+          <circle cx="300" cy="180" r="7" fill="var(--fg)" opacity="0.85"/>
+          <circle cx="300" cy="250" r="7" fill="var(--fg)" opacity="0.85"/>
+          <circle cx="510" cy="110" r="7" fill="var(--gold)" filter="url(#glow)"/>
+          <circle cx="510" cy="180" r="7" fill="var(--gold)" filter="url(#glow)"/>
+
+          <text x="90" y="25" text-anchor="middle" fill="var(--muted)" font-size="12">entrée</text>
+          <text x="300" y="20" text-anchor="middle" fill="var(--muted)" font-size="12">couche cachée</text>
+          <text x="510" y="80" text-anchor="middle" fill="var(--muted)" font-size="12">sortie</text>
+        </svg>
+        <p class="dcap">Un réseau de neurones : trois couches, vingt connexions — certaines déjà plus sollicitées que d'autres.</p>
+      </div>
+
+      <h3 class="reveal">Le phénomène, en graphique : une croissance non linéaire</h3>
+      <p class="reveal">La fonction W = k·xⁿ décrit un phénomène précis : plus un signal neuronal est intense, plus la connexion qu'il emprunte se renforce, et ce renforcement s'accélère à mesure que n augmente.</p>
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+          <line x1="90" y1="260" x2="520" y2="260" stroke="var(--line)"/>
+          <line x1="90" y1="260" x2="90" y2="50" stroke="var(--line)"/>
+          <text x="528" y="265" fill="var(--muted)" font-size="13">x</text>
+          <text x="65" y="46" fill="var(--muted)" font-size="13">W</text>
+          <text x="120" y="278" text-anchor="middle" fill="var(--muted)" font-size="11">1</text>
+          <text x="240" y="278" text-anchor="middle" fill="var(--muted)" font-size="11">2</text>
+          <text x="360" y="278" text-anchor="middle" fill="var(--muted)" font-size="11">3</text>
+          <text x="480" y="278" text-anchor="middle" fill="var(--muted)" font-size="11">4</text>
+          <polyline points="120,257 240,247 360,232 480,210" fill="none" stroke="var(--accent)" stroke-width="2" filter="url(#glow)"/>
+          <circle cx="120" cy="257" r="4" fill="var(--accent)"/><circle cx="240" cy="247" r="4" fill="var(--accent)"/>
+          <circle cx="360" cy="232" r="4" fill="var(--accent)"/><circle cx="480" cy="210" r="4" fill="var(--accent)"/>
+          <polyline points="120,257 240,235 360,176 480,60" fill="none" stroke="var(--gold)" stroke-width="2" filter="url(#glow)"/>
+          <circle cx="120" cy="257" r="4" fill="var(--gold)"/><circle cx="240" cy="235" r="4" fill="var(--gold)"/>
+          <circle cx="360" cy="176" r="4" fill="var(--gold)"/><circle cx="480" cy="60" r="4" fill="var(--gold)"/>
+          <line x1="380" y1="80" x2="410" y2="80" stroke="var(--accent)" stroke-width="2"/>
+          <text x="416" y="84" fill="var(--accent)" font-size="12" font-family="var(--serif)">W = x²</text>
+          <line x1="380" y1="100" x2="410" y2="100" stroke="var(--gold)" stroke-width="2"/>
+          <text x="416" y="104" fill="var(--gold)" font-size="12" font-family="var(--serif)">W = x³</text>
+          <text x="300" y="302" text-anchor="middle" fill="var(--muted)" font-size="13">intensité du signal (x) →</text>
+        </svg>
+        <p class="dcap">À x = 4, W passe de 16 (n=2) à 64 (n=3) : un simple changement d'exposant change tout le régime.</p>
+      </div>
+
+      <h3 class="reveal">Chercher plutôt que stocker</h3>
+      <p class="reveal">Le cerveau ne stockerait pas l'information comme une copie qu'on range dans un tiroir. Il la chercherait — comme l'algorithme de Grover du chapitre III — parmi les connexions qui existent déjà, pour ne renforcer que le chemin neuronal le plus pertinent.</p>
+      <div class="eq reveal">|ψ⟩ = Σᵢ cᵢ|Pᵢ⟩ &nbsp;&nbsp;→&nbsp;&nbsp; Pⱼ = |cⱼ|² <span class="eqnum">(16)</span></div>
+
+      <h3 class="reveal">La boucle de comparaison : un wait() neuronal</h3>
+      <p class="reveal">Ce qui se passe entre l'arrivée de la charge et sa résolution mérite d'être détaillé. Le signal transduit par l'œil ou l'oreille n'est pas immédiatement archivé : il déclenche d'abord une opération de comparaison, le réseau calculant, l'un après l'autre, sa distance à chaque nœud déjà présent dans N — exactement la matrice de demandes comparée à ses voisines au chapitre VII.</p>
+      <p class="reveal">Tant qu'aucune correspondance suffisamment proche n'est trouvée, la charge reste — au sens propre — en attente : bloquée dans une boucle de comparaison, ni perdue ni intégrée. C'est très exactement le mécanisme wait() des sémaphores du chapitre VII : un processus ne peut poursuivre tant que la ressource qu'il attend — ici, une référence, un nœud déjà connu auquel se rattacher — n'est pas disponible. On ne peut pas garder une information sans lui trouver une référence.</p>
+      <div class="eq reveal">wait(P_new) : tant que min<sub>i</sub> d(P_new, Pᵢ) &gt; seuil, boucler <span class="eqnum">(25)</span></div>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg">
+          <rect x="210" y="20" width="220" height="42" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+          <text x="320" y="46" text-anchor="middle" fill="var(--fg)" font-size="12">Charge entrante (P_new)</text>
+          <line x1="320" y1="62" x2="320" y2="90" stroke="var(--border)"/>
+
+          <rect x="180" y="90" width="280" height="52" rx="10" fill="rgba(21,88,159,.07)" stroke="var(--accent)" stroke-width="1.4" filter="url(#glow)"/>
+          <text x="320" y="112" text-anchor="middle" fill="var(--fg)" font-size="12">wait() — comparer à chaque Pᵢ ∈ N</text>
+          <text x="320" y="130" text-anchor="middle" fill="var(--muted)" font-size="11">(chapitre VII)</text>
+
+          <path d="M460,105 C520,95 520,145 460,135" fill="none" stroke="var(--gold)" stroke-width="1.3"/>
+          <polygon points="460,135 448,132 452,142" fill="var(--gold)"/>
+          <text x="530" y="122" text-anchor="middle" fill="var(--gold)" font-size="11">distance &gt; seuil :<tspan x="530" dy="13">boucler</tspan></text>
+
+          <line x1="280" y1="142" x2="200" y2="210" stroke="var(--border)"/>
+          <text x="200" y="185" text-anchor="middle" fill="var(--accent)" font-size="11">distance ≤ seuil</text>
+          <line x1="380" y1="142" x2="480" y2="210" stroke="var(--border)" stroke-dasharray="4 4"/>
+          <text x="470" y="185" text-anchor="middle" fill="var(--muted)" font-size="11">boucle épuisée,<tspan x="470" dy="13">aucun match</tspan></text>
+
+          <rect x="80" y="210" width="220" height="46" rx="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.2"/>
+          <text x="190" y="238" text-anchor="middle" fill="var(--fg)" font-size="12">signal() — référence trouvée</text>
+          <line x1="190" y1="256" x2="190" y2="284" stroke="var(--border)"/>
+
+          <rect x="60" y="284" width="260" height="52" rx="10" fill="rgba(21,88,159,.07)" stroke="var(--accent)" stroke-width="1.4" filter="url(#glow)"/>
+          <text x="190" y="306" text-anchor="middle" fill="var(--fg)" font-size="12">Renforcer Pᵢ</text>
+          <text x="190" y="324" text-anchor="middle" fill="var(--muted)" font-size="11">chemin qui se raccourcit (ch. VIII)</text>
+
+          <rect x="370" y="210" width="230" height="52" rx="10" fill="rgba(180,83,9,.06)" stroke="var(--gold)"/>
+          <text x="485" y="232" text-anchor="middle" fill="var(--fg)" font-size="12">Créer une référence Pₙ₊₁</text>
+          <text x="485" y="250" text-anchor="middle" fill="var(--muted)" font-size="11">nouveau nœud dans N</text>
+        </svg>
+        <p class="dcap">La charge boucle — wait() — jusqu'à trouver sa référence ou en devenir une nouvelle elle-même.</p>
+      </div>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Une charge qui ne trouve aucune correspondance ne disparaît pas pour autant : au terme de la boucle, elle devient elle-même une nouvelle référence — un nouveau point Pₙ₊₁ ajouté à N. Toute information retenue par le cerveau a donc, par construction, une référence : soit un nœud existant qu'elle vient renforcer, soit elle-même, la première fois qu'un chemin de ce genre est parcouru. C'est la même puissance que celle des sémaphores en informatique — un processus bloqué jusqu'à ce que sa condition soit remplie — appliquée ici à la mémoire elle-même.</p>
+      </div>
+
+      <h3 class="reveal">Un calcul, pas à pas</h3>
+      <p class="reveal">Soit P_new = 2+3i+4j, et trois nœuds : P₁=1+2i+3j, P₂=3+4i+5j, P₃=2+3i+4j.</p>
+      <ol class="steps reveal">
+        <li>Distance à P₁ : √[(2−1)²+(3−2)²+(4−3)²] = √3</li>
+        <li>Distance à P₂ : √[(2−3)²+(3−4)²+(4−5)²] = √3</li>
+        <li>Distance à P₃ : √[(2−2)²+(3−3)²+(4−4)²] = 0</li>
+        <li>P₃ est identifié comme le nœud contenant exactement l'information cherchée — retrouvée par la géométrie plutôt que relue depuis une mémoire linéaire.</li>
+      </ol>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+          <path d="M120,220 C90,140 150,60 260,55 C300,30 380,40 420,90 C480,100 500,170 470,220 C500,260 470,320 410,330 C380,360 300,360 270,335 C200,350 130,300 120,220 Z"
+                fill="none" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="200" y1="150" x2="300" y2="120" stroke="var(--line)" stroke-width="1"/>
+          <line x1="300" y1="120" x2="380" y2="170" stroke="var(--line)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="240" y2="230" stroke="var(--line)" stroke-width="1"/>
+          <line x1="380" y1="170" x2="340" y2="260" stroke="var(--line)" stroke-width="1"/>
+          <line x1="240" y1="230" x2="340" y2="260" stroke="var(--accent)" stroke-width="1.6" filter="url(#glow)"/>
+          <line x1="300" y1="120" x2="340" y2="260" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="200" cy="150" r="6" fill="var(--accent2)" filter="url(#glow)"/>
+          <circle cx="300" cy="120" r="6" fill="var(--accent2)" filter="url(#glow)"/>
+          <circle cx="380" cy="170" r="6" fill="var(--accent2)" filter="url(#glow)"/>
+          <circle cx="240" cy="230" r="6" fill="var(--accent2)" filter="url(#glow)"/>
+          <circle cx="340" cy="260" r="8" fill="var(--accent)" filter="url(#glow)"/>
+          <text x="350" y="283" fill="var(--accent)" font-size="13" font-family="var(--serif)">P₃ — trouvé (d = 0)</text>
+          <text x="170" y="140" fill="var(--muted)" font-size="12">P₁ (d=√3)</text>
+          <text x="388" y="160" fill="var(--muted)" font-size="12">P₂ (d=√3)</text>
+        </svg>
+        <p class="dcap">Le réseau neuronal comme espace de recherche : la mémoire retrouvée, non relue.</p>
+      </div>
+
+      <h3 class="reveal">La répétition, ou le chemin qui se raccourcit</h3>
+      <p class="reveal">Cette idée rejoint une observation popularisée par James Clear dans <em>Atomic Habits</em> (2018) : le cerveau ne devient pas compétent en emmagasinant plus d'informations, mais en répétant. C'est ce que Donald Hebb résumait dès 1949 : les neurones qui s'activent ensemble se connectent ensemble.</p>
+      <p class="reveal">Trouver la meilleure branche revient à un problème que l'informatique connaît bien : celui que résout l'algorithme de Dijkstra, conçu pour déterminer le plus court chemin dans un graphe pondéré.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Ce n'est pas qu'une image</span>
+        <p><em>Modélisation des Réseaux de Neurones Quantiques avec TMS</em> <a class="cite" href="#ref10">[10]</a> formalise exactement ce rapprochement : une fois le réseau de qubits discrétisé en graphe pondéré par les poids TMS, la distance la plus courte entre deux nœuds qₛ (source) et q_t (destination) se définit comme la somme minimale de poids le long d'un chemin :</p>
+      </div>
+      <div class="eq reveal">dist(qₛ, q_t) = min<sub>chemin P∈G</sub> Σ<sub>(i,j)∈P</sub> w_ij <span class="eqnum">(20)</span></div>
+      <p class="reveal">L'algorithme qui la calcule est une variante de Dijkstra, où chaque relaxation de distance s'appuie directement sur les poids TMS :</p>
+      <div class="eq reveal">d[v] = min( d[v], &nbsp; d[u] + w_uv ) <span class="eqnum">(21)</span></div>
+      <ol class="steps reveal">
+        <li>Initialiser d[i] = 0 pour le nœud source, +∞ pour tous les autres.</li>
+        <li>Placer tous les nœuds dans une file de priorité Q.</li>
+        <li>Tant que Q n'est pas vide : extraire le nœud u de distance minimale, puis pour chaque voisin v, relâcher la distance : d[v] = min(d[v], d[u]+w_uv).</li>
+        <li>À l'épuisement de la file, d[] contient les plus courts chemins, pondérés par TMS, depuis la source vers tous les autres nœuds.</li>
+      </ol>
+      <div class="lesson reveal">
+        <span class="lkicker">Preuve — pourquoi Dijkstra trouve le vrai minimum</span>
+        <p>L'algorithme repose sur un invariant que l'on démontre par récurrence : à chaque extraction d'un nœud u de la file, d[u] est déjà sa distance définitive et minimale depuis la source. En effet, s'il existait un chemin plus court vers u, il passerait par un nœud w encore dans la file avec d[w] &lt; d[u] au moment de l'extraction — impossible, puisque u est justement choisi comme le nœud de distance minimale parmi ceux restants. Ce raisonnement glouton n'est valide que parce que les poids w_uv sont tous strictement positifs — exactement ce que garantit la preuve de normalisation du softmax ci-dessus (équation 14) : aucun raccourci de poids négatif ne peut jamais invalider l'invariant.</p>
+      </div>
+      <p class="reveal">Transposé au cerveau : une information nouvelle devient le nœud source ; le chemin neuronal déjà emprunté correspond au chemin de distance minimale ; et chaque répétition — en renforçant W = k·xⁿ, donc en abaissant w_uv sur ce chemin précis — rapproche un peu plus l'algorithme de sa solution optimale.</p>
+
+      <h3 class="reveal">Le code, exécutable</h3>
+      <p class="reveal">Traduction directe du Listing 3 de <em>Modélisation des Réseaux de Neurones Quantiques avec TMS</em> <a class="cite" href="#ref10">[10]</a> — l'algorithme tourne réellement dans cette page :</p>
+      <div class="code-box">function <span class="fn">tmsDijkstra</span>(adj, start) {
+  const n = adj.length;
+  const dist = Array(n).fill(Infinity); dist[start] = 0;
+  const visited = Array(n).fill(<span class="kw">false</span>);
+  <span class="kw">for</span> (let iter = 0; iter &lt; n; iter++) {
+    let u = -1, best = Infinity;
+    <span class="kw">for</span> (let i = 0; i &lt; n; i++)
+      <span class="kw">if</span> (!visited[i] &amp;&amp; dist[i] &lt; best) { best = dist[i]; u = i; }
+    <span class="kw">if</span> (u === -1) <span class="kw">break</span>;
+    visited[u] = <span class="kw">true</span>;
+    <span class="kw">for</span> (let v = 0; v &lt; n; v++)
+      <span class="kw">if</span> (adj[u][v] &gt; 0 &amp;&amp; dist[u]+adj[u][v] &lt; dist[v])
+        dist[v] = dist[u] + adj[u][v];
+  }
+  <span class="kw">return</span> dist;
+}
+<span class="cm">// graphe pondéré par TMS (5 nœuds, poids = distances qubits)</span>
+const adj = [
+  [0,   0.9, 0,   0.4, 0  ],
+  [0.9, 0,   0.6, 0,   1.1],
+  [0,   0.6, 0,   0.3, 0.5],
+  [0.4, 0,   0.3, 0,   0.7],
+  [0,   1.1, 0.5, 0.7, 0  ]
+];
+console.log(<span class="fn">tmsDijkstra</span>(adj, 0));</div>
+      <div class="run-row">
+        <button class="run-btn" id="runDijkstra">▶ Exécuter</button>
+      </div>
+      <div class="output-box" id="outDijkstra"></div>
+
+      <div class="diagram reveal">
+        <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="130" r="5" fill="var(--gold)" filter="url(#glow)"/>
+          <circle cx="170" cy="130" r="5" fill="var(--gold)" filter="url(#glow)"/>
+          <polyline points="30,130 65,60 105,185 145,85 170,130" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
+          <text x="100" y="230" text-anchor="middle" fill="var(--muted)" font-size="12">1ère fois</text>
+
+          <circle cx="240" cy="130" r="5" fill="var(--gold)" filter="url(#glow)"/>
+          <circle cx="380" cy="130" r="5" fill="var(--gold)" filter="url(#glow)"/>
+          <polyline points="240,130 310,85 380,130" fill="none" stroke="var(--accent2)" stroke-width="1.8" filter="url(#glow)"/>
+          <text x="310" y="230" text-anchor="middle" fill="var(--muted)" font-size="12">10<tspan baseline-shift="super" font-size="8">e</tspan> répétition</text>
+
+          <circle cx="450" cy="130" r="5" fill="var(--gold)" filter="url(#glow)"/>
+          <circle cx="590" cy="130" r="5" fill="var(--gold)" filter="url(#glow)"/>
+          <line x1="450" y1="130" x2="590" y2="130" stroke="var(--accent)" stroke-width="2.4" filter="url(#glow)"/>
+          <text x="520" y="230" text-anchor="middle" fill="var(--muted)" font-size="12">100<tspan baseline-shift="super" font-size="8">e</tspan> répétition</text>
+        </svg>
+        <p class="dcap">Le même trajet, parcouru cent fois : ce n'est pas cent souvenirs, c'est un seul chemin qui s'élague.</p>
+      </div>
+
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>C'est ce que l'on appelle, en langage courant, la maîtrise, ou le professionnalisme. Un geste répété mille fois n'est pas mille fois mémorisé séparément : c'est un seul chemin, devenu si court qu'il semble instantané. Le talent n'est pas un raccourci donné d'avance ; c'est un chemin qui a eu le temps de se raccourcir.</p>
+      </div>
+      <p class="reveal">Le chapitre III a montré qu'une probabilité quantique s'approche de la certitude sans jamais l'atteindre. La répétition neuronale suit une trajectoire semblable — une quasi-certitude, encore une fois.</p>
+      <p class="reveal">Se souvenir, dans ce cadre, ce n'est pas relire une archive. C'est effondrer une superposition de connexions possibles vers celle qui, déjà, était la plus probable — le chapitre II et ce chapitre se répondent.</p>
+
+      <h3 class="reveal">Une simulation, pas une lecture directe</h3>
+      <p class="reveal">Si le cerveau ne fait que chercher des distances entre points plutôt que lire directement le monde extérieur, alors ce que nous appelons « la réalité perçue » n'est pas le monde lui-même : c'est une reconstruction, une carte construite dans les limites du langage géométrique qu'il peut manipuler.</p>
+      <p class="reveal">Le cerveau humain pense intuitivement en trois dimensions. Il peut calculer, sur le papier, un espace à onze dimensions — la théorie des cordes du chapitre IV en réclame jusqu'à onze — mais il ne peut en visualiser directement aucune au-delà de trois.</p>
+      <div class="lesson reveal">
+        <span class="lkicker">Intuition</span>
+        <p>Si le cerveau ne perçoit jamais le monde directement, mais seulement l'interprétation qu'il en construit, alors le modèle P = x+yi+zj proposé au chapitre I n'est peut-être pas qu'un choix arbitraire de notation. Il pourrait être le reflet, formalisé en mathématiques, de la structure même que le cerveau utilise pour construire ce qu'il appelle « l'espace ».</p>
+      </div>
+      <p class="reveal">Cette hypothèse prolonge la question posée par Tagore et Einstein dès le chapitre I. La réalité que nous manipulons est peut-être moins « le monde en soi » qu'une simulation cohérente, suffisamment fidèle pour y survivre, y agir, et — comme le montre ce livre — y chercher des lois.</p>
+    </div>
+  </section>
+
+  <!-- SIMULATION LAB -->
+  <section class="page" id="simulation">
+    <div class="content wide">
+      <div class="chapter-head reveal"><span class="kicker">Laboratoire</span></div>
+      <h2 class="reveal">La Loi, en mouvement</h2>
+      <p class="reveal">Tout ce livre repose sur une seule relation : ΔE = |P₁−P₂| · |P₂−P₃| · |P₁−P₃|. Faites glisser les trois points ci-dessous et observez, en temps réel, comment leur géométrie détermine l'énergie de transition — cherchez une configuration où cette énergie s'approche d'une puissance de 2 exacte.</p>
+
+      <div class="sim-wrap reveal">
+        <canvas id="simCanvas" width="600" height="440"></canvas>
+        <div class="sim-panel">
+          <div class="sim-row"><span>|P₁−P₂|</span><b id="simD12">–</b></div>
+          <div class="sim-row"><span>|P₂−P₃|</span><b id="simD23">–</b></div>
+          <div class="sim-row"><span>|P₁−P₃|</span><b id="simD13">–</b></div>
+          <div class="sim-row sim-total"><span>ΔE</span><b id="simEnergy">–</b></div>
+          <div class="sim-row sim-power"><span>2ⁿ le plus proche</span><b id="simPower">–</b></div>
+          <div class="sim-status" id="simStatus">Faites glisser un point pour commencer.</div>
+          <button class="sim-reset" id="simReset">Réinitialiser</button>
+        </div>
+      </div>
+      <p class="dcap" style="margin-top:0.4rem;">Glissez P₁ (bleu), P₂ (orange) ou P₃ (ambre) — souris ou tactile.</p>
+    </div>
+  </section>
+
+  <!-- ANNEXE : NUMBER THEORY -->
+  <section class="page" id="annexe">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="kicker">Annexe</span></div>
+      <h2 class="reveal">La rigueur, ailleurs : théorie des nombres</h2>
+
+      <div class="aside-banner reveal">
+        <p>Ce qui suit n'appartient pas au corpus TMS. C'est un tout autre programme de recherche de Taleb Mohammed Said, en théorie des nombres pure, soumis à des revues à comité de lecture (<em>Journal of Number Theory</em>, <em>Rendiconti del Circolo Matematico di Palermo</em>, <em>Research in Number Theory</em>, <em>International Journal of Number Theory</em> — manuscrits en cours d'évaluation, 2026). Il est présenté ici à part, non parce qu'il prouve la théorie physique des chapitres précédents, mais parce qu'il en démontre, rigoureusement, un fragment de la structure mathématique centrale.</p>
+      </div>
+
+      <h3 class="reveal">La question que TMS n'a jamais démontrée</h3>
+      <p class="reveal">Depuis le chapitre I, une contrainte revient sans cesse dans les articles TMS : le produit de trois distances doit valoir une puissance de 2, ΔE = 2ⁿ — posée, mais jamais démontrée dans le corpus physique. Reformulée en arithmétique pure, pour trois nombres premiers x &gt; y &gt; z, la question devient : quand le produit (x−z)(x−y)(y−z) est-il exactement une puissance de 2 ? C'est précisément la question que résout <em>A Classification of Prime Triples with Binary Vandermonde Product</em> <a class="cite" href="#ref11">[11]</a>.</p>
+      <div class="eq reveal">(x − z)(x − y)(y − z) = 2ⁿ <span class="eqnum">(22)</span></div>
+
+      <h3 class="reveal">Théorème de classification complète</h3>
+      <ol class="steps reveal">
+        <li>Poser a = x−y, b = y−z ; alors x−z = a+b, et l'équation devient ab(a+b) = 2ⁿ.</li>
+        <li>Puisque 2ⁿ n'a aucun diviseur premier impair, a, b et a+b doivent chacun être des puissances de 2.</li>
+        <li>Si 2ⁱ + 2ʲ = 2ᵏ, une factorisation élémentaire force i = j (sinon le facteur restant serait impair) — d'où a = b = 2ᵗ et a+b = 2ᵗ⁺¹.</li>
+        <li>Les trois entiers x, y, z occupent alors trois classes de résidus distinctes modulo 3 : l'une d'elles est forcément divisible par 3, donc égale à 3 — le seul nombre premier divisible par 3.</li>
+        <li>Conclusion : z = 3, y = 3+2ᵗ, x = 3+2ᵗ⁺¹, avec n = 3t+1 — une classification complète et démontrée.</li>
+      </ol>
+
+      <h3 class="reveal">Une rigidité inattendue : jamais quatre points</h3>
+      <p class="reveal">Le théorème va plus loin : aucune configuration de quatre nombres premiers ou plus ne peut jamais satisfaire un produit de Vandermonde égal à une puissance de 2. Ce résultat éclaire d'un jour nouveau la généralisation à n points du chapitre I. Dans le cas particulier où les points sont des nombres premiers et où l'on exige l'égalité exacte à une puissance de 2 — la version la plus stricte de la loi de transition — la géométrie se referme brutalement : le triangle énergétique du chapitre I n'est pas qu'un choix d'exposition commode. Pour des coordonnées entières premières, c'est mathématiquement la seule configuration possible.</p>
+
+      <h3 class="reveal">Cinq triplets, et une conjecture ouverte</h3>
+      <p class="reveal">Une recherche informatique jusqu'à t = 2000 ne trouve que cinq solutions :</p>
+      <table class="nt-table reveal">
+        <tr><th>t</th><th>Triplet (z, y, x)</th><th>n = 3t+1</th></tr>
+        <tr><td>1</td><td>(3, 5, 7)</td><td>4</td></tr>
+        <tr><td>2</td><td>(3, 7, 11)</td><td>7</td></tr>
+        <tr><td>3</td><td>(3, 11, 19)</td><td>10</td></tr>
+        <tr><td>6</td><td>(3, 67, 131)</td><td>19</td></tr>
+        <tr><td>15</td><td>(3, 32771, 65539)</td><td>46</td></tr>
+      </table>
+      <p class="reveal">Un crible de congruences (modulo 5, 7, 11, 29, 211…) explique cette rareté : moins de 10 % des exposants survivent au crible par les premiers jusqu'à 43, et cette densité continue de chuter. La question de savoir s'il existe une infinité de tels triplets reste un problème ouvert.</p>
+
+      <h3 class="reveal">Le théorème, vérifié en direct</h3>
+      <p class="reveal">L'article original utilise <code>sympy</code> en Python. En voici l'équivalent JavaScript, exécutable ici même — cliquez sur « Exécuter » pour redécouvrir, en quelques millisecondes, les cinq triplets du théorème :</p>
+      <div class="code-box">function <span class="fn">isPrime</span>(n) {
+  <span class="kw">if</span> (n &lt; 2) <span class="kw">return</span> <span class="kw">false</span>;
+  <span class="kw">if</span> (n % 2 === 0) <span class="kw">return</span> n === 2;
+  <span class="kw">for</span> (let i = 3; i*i &lt;= n; i += 2)
+    <span class="kw">if</span> (n % i === 0) <span class="kw">return</span> <span class="kw">false</span>;
+  <span class="kw">return</span> <span class="kw">true</span>;
+}
+function <span class="fn">solutions</span>(T) {
+  const res = [];
+  <span class="kw">for</span> (let t = 1; t &lt;= T; t++) {
+    const A = 3 + 2**t, B = 3 + 2**(t+1);
+    <span class="kw">if</span> (<span class="fn">isPrime</span>(A) &amp;&amp; <span class="fn">isPrime</span>(B)) res.push([t, A, B]);
+  }
+  <span class="kw">return</span> res;
+}
+console.log(<span class="fn">solutions</span>(<span class="num">T</span>));</div>
+      <div class="run-row">
+        <input type="number" class="run-input" id="ntT" value="20" min="1" max="30">
+        <button class="run-btn" id="runNT">▶ Exécuter</button>
+      </div>
+      <div class="output-box" id="outNT"></div>
+      <p class="code-cap">T ≤ 30 pour rester instantané dans le navigateur (au-delà, 2ᵗ dépasse la précision entière exacte de JavaScript).</p>
+
+      <h3 class="reveal">Deux résultats compagnons</h3>
+      <ul class="glossary reveal">
+        <li><b>Distribution asymptotique</b> — <em>On the Asymptotic Distribution of Integers of the Form ab(a+b)</em> <a class="cite" href="#ref12">[12]</a> prouve que le nombre de couples (a,b) tels que ab(a+b) ≤ X croît comme A(X) ∼ C·X^(2/3), avec une constante remarquable C = ½B(⅓,⅓) = Γ(⅓)²/(2Γ(⅔)), obtenue par un argument de comptage de points entiers et une limite d'échelle.</li>
+        <li><b>Classification diophantienne</b> — <em>On the Diophantine Equation ab(a+b) = k</em> <a class="cite" href="#ref13">[13]</a> montre que tout entier représentable sous cette forme s'écrit k = g³xy(x+y) avec gcd(x,y)=1, établit un critère de discriminant pour tester la représentabilité, et prouve — écho direct du théorème précédent — que la seule puissance de nombre premier représentable ainsi est 2^(3t+1).</li>
+      </ul>
+
+      <p class="reveal">Ces trois textes n'ont pas été écrits pour appuyer la théorie TMS — ils appartiennent à un programme de recherche autonome. Mais leur rencontre avec la physique du chapitre I n'est pas un hasard total : les deux corps de travaux partagent la même fascination pour une structure arithmétique simple, un produit de trois écarts égal à une puissance de 2 — l'un la posant comme hypothèse physique, l'autre la démontrant comme théorème.</p>
+    </div>
+  </section>
+
+  <!-- EPILOGUE -->
+  <section class="page" id="epilogue">
+    <div class="content">
+      <div class="chapter-head reveal"><span class="kicker">Épilogue</span></div>
+      <h2 class="reveal">Une loi, huit chemins</h2>
+      <p class="reveal">De la géométrie pure à la pensée, en passant par la matière et le calcul, une même contrainte revient sous des formes chaque fois différentes. Ce n'est pas une théorie achevée — c'est un programme de recherche, ouvert, poursuivi article après article depuis Laghouat.</p>
+      <p class="reveal">Un professeur l'aurait sans doute enseignée en quatre mouvements, comme ce livre l'a fait : les fondements, la grammaire quantique, les extensions, les applications — quatre pas d'un même raisonnement, du plus abstrait vers le plus concret.</p>
+      <p class="reveal">Une précision s'impose, en refermant ce livre : ces dix textes forment un programme de recherche exploratoire, pas un ensemble de résultats validés par la communauté scientifique. La loi qui les traverse — |P₁−P₂|·|P₂−P₃|·|P₁−P₃| = 2ⁿ — est une hypothèse féconde, testée sur des exemples choisis, non une preuve définitive.</p>
+      <p class="reveal">Ce livre en est la première mise en récit. Il reste à approfondir, à tester, à confronter — le travail, comme la question posée en 2018, continue.</p>
+
+      <h3 class="reveal">Toute la recherche, en une image</h3>
+      <p class="reveal">Deux programmes de recherche distincts, une même fascination pour une contrainte arithmétique simple — un produit de trois écarts égal à une puissance de 2.</p>
+      <div class="diagram reveal">
+        <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg">
+          <text x="220" y="36" text-anchor="middle" fill="var(--accent)" font-size="13" font-family="var(--sans)" font-weight="700">PHYSIQUE — postulat</text>
+          <text x="580" y="36" text-anchor="middle" fill="var(--gold)" font-size="13" font-family="var(--sans)" font-weight="700">THÉORIE DES NOMBRES — théorème</text>
+
+          <rect x="270" y="230" width="260" height="60" rx="14" fill="rgba(21,88,159,.07)" stroke="var(--accent)" stroke-width="1.4" filter="url(#glow)"/>
+          <text x="400" y="255" text-anchor="middle" fill="var(--fg)" font-size="13" font-family="var(--serif)">ΔE = |P₁−P₂|·|P₂−P₃|·|P₁−P₃|</text>
+          <text x="400" y="274" text-anchor="middle" fill="var(--muted)" font-size="12" font-family="var(--serif)">= 2ⁿ</text>
+
+          <!-- physics nodes (left) -->
+          <g font-family="var(--sans)" font-size="12">
+            <line x1="270" y1="250" x2="150" y2="70" stroke="var(--accent)" stroke-width="1" opacity=".5"/>
+            <line x1="270" y1="255" x2="150" y2="180" stroke="var(--accent)" stroke-width="1" opacity=".5"/>
+            <line x1="270" y1="270" x2="150" y2="330" stroke="var(--accent)" stroke-width="1" opacity=".5"/>
+            <line x1="270" y1="280" x2="150" y2="440" stroke="var(--accent)" stroke-width="1" opacity=".5"/>
+
+            <rect x="40" y="50" width="220" height="42" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+            <text x="150" y="67" text-anchor="middle" fill="var(--fg)">Partie I — Fondements</text>
+            <text x="150" y="82" text-anchor="middle" fill="var(--muted)" font-size="10.5">Tagore·Einstein·Nobel 2022</text>
+
+            <rect x="40" y="160" width="220" height="42" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+            <text x="150" y="177" text-anchor="middle" fill="var(--fg)">Partie II — Grammaire</text>
+            <text x="150" y="192" text-anchor="middle" fill="var(--muted)" font-size="10.5">Effondrement·Quasi-certitude</text>
+
+            <rect x="40" y="310" width="220" height="42" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+            <text x="150" y="327" text-anchor="middle" fill="var(--fg)">Partie III — Extensions</text>
+            <text x="150" y="342" text-anchor="middle" fill="var(--muted)" font-size="10.5">Qubit·Univers·E=mc²</text>
+
+            <rect x="40" y="420" width="220" height="42" rx="10" fill="var(--surface)" stroke="var(--border)"/>
+            <text x="150" y="437" text-anchor="middle" fill="var(--fg)">Partie IV — Applications</text>
+            <text x="150" y="452" text-anchor="middle" fill="var(--muted)" font-size="10.5">Matière·Calcul·Cerveau</text>
+          </g>
+
+          <!-- number theory nodes (right) -->
+          <g font-family="var(--sans)" font-size="12">
+            <line x1="530" y1="250" x2="650" y2="90" stroke="var(--gold)" stroke-width="1" opacity=".6"/>
+            <line x1="530" y1="262" x2="650" y2="260" stroke="var(--gold)" stroke-width="1" opacity=".6"/>
+            <line x1="530" y1="278" x2="650" y2="430" stroke="var(--gold)" stroke-width="1" opacity=".6"/>
+
+            <rect x="540" y="68" width="220" height="46" rx="10" fill="rgba(180,83,9,.06)" stroke="var(--gold)"/>
+            <text x="650" y="88" text-anchor="middle" fill="var(--fg)">Classification des triplets premiers</text>
+            <text x="650" y="103" text-anchor="middle" fill="var(--muted)" font-size="10.5">(x−z)(x−y)(y−z)=2ⁿ — démontré</text>
+
+            <rect x="540" y="238" width="220" height="46" rx="10" fill="rgba(180,83,9,.06)" stroke="var(--gold)"/>
+            <text x="650" y="258" text-anchor="middle" fill="var(--fg)">Distribution asymptotique</text>
+            <text x="650" y="273" text-anchor="middle" fill="var(--muted)" font-size="10.5">A(X) ∼ C·X^(2/3)</text>
+
+            <rect x="540" y="408" width="220" height="46" rx="10" fill="rgba(180,83,9,.06)" stroke="var(--gold)"/>
+            <text x="650" y="428" text-anchor="middle" fill="var(--fg)">Équation diophantienne</text>
+            <text x="650" y="443" text-anchor="middle" fill="var(--muted)" font-size="10.5">ab(a+b)=k, k=g³xy(x+y)</text>
+          </g>
+
+          <text x="400" y="495" text-anchor="middle" fill="var(--muted)" font-size="12" font-family="var(--serif)" font-style="italic">Un côté pose l'hypothèse ; l'autre en démontre un fragment.</text>
+        </svg>
+        <p class="dcap">La carte complète du travail : la physique (postulat) et la théorie des nombres (théorème), reliées par une même contrainte.</p>
+      </div>
+
+      <h3 class="reveal">Références</h3>
+      <p class="reveal muted" style="font-size:.85rem; margin-top:-.6rem;">Said, T. M. — Université de Laghouat, Faculté des Sciences, Département Mathématiques et Informatique. Les numéros correspondent aux appels de citation [n] utilisés dans le texte.</p>
+      <ul class="refs reveal">
+        <li id="ref1"><span class="n">[1]</span><span class="rtitle">Un Modèle Géométrique des Transitions Quantique et Relativiste : Analyse Inspirée par Taleb Mohammed Said</span><span class="rdate">6 janv. 2025</span></li>
+        <li id="ref2"><span class="n">[2]</span><span class="rtitle">Modélisation de l'Espace et du Transfert d'Énergie : Une Approche Géométrique Tridimensionnelle Basée sur les Nombres Complexes</span><span class="rdate">8 janv. 2025</span></li>
+        <li id="ref3"><span class="n">[3]</span><span class="rtitle">Intégration de la Théorie TMS avec E = mc²</span><span class="rdate">8 janv. 2025</span></li>
+        <li id="ref4"><span class="n">[4]</span><span class="rtitle">Application de la Théorie TMS à l'Étude de la Plasticité Induite par Transformation : Approche Expérimentale et Numérique</span><span class="rdate">9 janv. 2025</span></li>
+        <li id="ref5"><span class="n">[5]</span><span class="rtitle">Application de la TMS aux Sémaphores</span><span class="rdate">10 janv. 2025</span></li>
+        <li id="ref6"><span class="n">[6]</span><span class="rtitle">Développement des Sémaphores de TMS avec des Qubits : Modélisation et Gestion des Files d'Attente</span><span class="rdate">12 janv. 2025</span></li>
+        <li id="ref7"><span class="n">[7]</span><span class="rtitle">Le Cerveau : Un Réseau Quantique pour le Traitement et la Validation des Informations</span><span class="rdate">26 janv. 2025</span></li>
+        <li id="ref8"><span class="n">[8]</span><span class="rtitle">Réduction du Paquet d'Onde en Mécanique Quantique</span><span class="rdate">15 mars 2025</span></li>
+        <li id="ref9"><span class="n">[9]</span><span class="rtitle">La Quasi-Certitude Quantique : Concept, Mathématiques et Illustration</span><span class="rdate">17 mars 2025</span></li>
+        <li id="ref10"><span class="n">[10]</span><span class="rtitle">Modélisation des Réseaux de Neurones Quantiques avec TMS : Théorie et Implémentation</span><span class="rdate">11 janv. 2025</span></li>
+        <li id="ref11"><span class="n">[11]</span><span class="rtitle">A Classification of Prime Triples with Binary Vandermonde Product</span><span class="rdate">soumis, 2026</span></li>
+        <li id="ref12"><span class="n">[12]</span><span class="rtitle">On the Asymptotic Distribution of Integers of the Form ab(a+b)</span><span class="rdate">soumis, 2026</span></li>
+        <li id="ref13"><span class="n">[13]</span><span class="rtitle">On the Diophantine Equation ab(a+b) = k</span><span class="rdate">soumis, 2026</span></li>
+      </ul>
+      <p class="reveal muted" style="font-size:.82rem;">[11]–[13] : programme de recherche distinct en théorie des nombres pure, présenté à l'Annexe — sans lien de preuve directe avec la théorie physique TMS.</p>
+    </div>
+  </section>
+
+  <footer>
+    Théorie TMS — <span class="brand">Taleb Mohammed Said</span>, Université de Laghouat, 2025
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var progress=document.getElementById('progress');
+  function updateProgress(){
+    var h=document.documentElement;
+    var pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    progress.style.width=pct+'%';
+  }
+  addEventListener('scroll',updateProgress,{passive:true});
+  updateProgress();
+
+  var revealEls=document.querySelectorAll('.reveal');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.1});
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  // sidebar nav active-state
+  var navLinks=document.querySelectorAll('.sidebar-nav a');
+  var linkMap={};
+  navLinks.forEach(function(a){ linkMap[a.getAttribute('href').slice(1)]=a; });
+  var sections=document.querySelectorAll('.page');
+  var navIo=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var link=linkMap[e.target.id];
+      if(!link) return;
+      if(e.isIntersecting){ navLinks.forEach(function(l){l.classList.remove('active');}); link.classList.add('active'); }
+    });
+  },{threshold:0.5});
+  sections.forEach(function(s){ navIo.observe(s); });
+
+  // mobile sidebar toggle
+  var sidebar=document.getElementById('sidebar'), overlay=document.getElementById('sidebarOverlay');
+  var toggle=document.getElementById('sidebarToggle');
+  function closeSidebar(){ sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+  toggle.addEventListener('click',function(){ sidebar.classList.toggle('open'); overlay.classList.toggle('open'); });
+  overlay.addEventListener('click',closeSidebar);
+  navLinks.forEach(function(a){ a.addEventListener('click',closeSidebar); });
+
+  // simulation lab
+  var simCanvas=document.getElementById('simCanvas');
+  if(simCanvas){
+    var sctx=simCanvas.getContext('2d');
+    var CW=simCanvas.width, CH=simCanvas.height, UNIT=42;
+    var cx=CW/2, cy=CH/2;
+    var colors=['#15589f','#ff7c00','#b45309'];
+    var initial=[{x:cx-140,y:cy+90},{x:cx-40,y:cy+10},{x:cx+140,y:cy-90}];
+    var pts=initial.map(function(p){return{x:p.x,y:p.y};});
+    var dragIdx=-1;
+
+    function dist(a,b){ return Math.hypot(a.x-b.x,a.y-b.y)/UNIT; }
+
+    function drawGrid(){
+      sctx.strokeStyle='rgba(10,10,15,0.05)'; sctx.lineWidth=1;
+      for(var x=cx%UNIT; x<CW; x+=UNIT){ sctx.beginPath(); sctx.moveTo(x,0); sctx.lineTo(x,CH); sctx.stroke(); }
+      for(var y=cy%UNIT; y<CH; y+=UNIT){ sctx.beginPath(); sctx.moveTo(0,y); sctx.lineTo(CW,y); sctx.stroke(); }
+      sctx.strokeStyle='rgba(10,10,15,0.16)';
+      sctx.beginPath(); sctx.moveTo(0,cy); sctx.lineTo(CW,cy); sctx.stroke();
+      sctx.beginPath(); sctx.moveTo(cx,0); sctx.lineTo(cx,CH); sctx.stroke();
+      sctx.fillStyle='rgba(10,10,15,0.4)'; sctx.font='12px Inter,sans-serif';
+      sctx.fillText('Re', CW-24, cy-8);
+      sctx.fillText('Im', cx+8, 16);
+    }
+
+    function drawEdge(a,b,color,label){
+      sctx.save();
+      sctx.strokeStyle=color; sctx.lineWidth=1.8;
+      sctx.beginPath(); sctx.moveTo(a.x,a.y); sctx.lineTo(b.x,b.y); sctx.stroke();
+      sctx.restore();
+      var mx=(a.x+b.x)/2, my=(a.y+b.y)/2;
+      sctx.fillStyle=color; sctx.font='12px Georgia,serif';
+      sctx.fillText(label, mx+6, my-6);
+    }
+
+    function drawPoint(p,color,label){
+      sctx.save();
+      sctx.fillStyle=color;
+      sctx.beginPath(); sctx.arc(p.x,p.y,7,0,Math.PI*2); sctx.fill();
+      sctx.restore();
+      sctx.fillStyle='#0a0a0b'; sctx.font='13px Georgia,serif';
+      sctx.fillText(label, p.x+11, p.y-11);
+    }
+
+    function fmt(n){ return n.toFixed(2); }
+
+    function render(){
+      sctx.clearRect(0,0,CW,CH);
+      drawGrid();
+      var d12=dist(pts[0],pts[1]), d23=dist(pts[1],pts[2]), d13=dist(pts[0],pts[2]);
+      drawEdge(pts[0],pts[1],colors[0],'d₁₂='+fmt(d12));
+      drawEdge(pts[1],pts[2],colors[1],'d₂₃='+fmt(d23));
+      drawEdge(pts[0],pts[2],colors[2],'d₁₃='+fmt(d13));
+      drawPoint(pts[0],colors[0],'P₁');
+      drawPoint(pts[1],colors[1],'P₂');
+      drawPoint(pts[2],colors[2],'P₃');
+
+      var energy=d12*d23*d13;
+      document.getElementById('simD12').textContent=fmt(d12);
+      document.getElementById('simD23').textContent=fmt(d23);
+      document.getElementById('simD13').textContent=fmt(d13);
+      document.getElementById('simEnergy').textContent=fmt(energy)+' J';
+
+      var statusEl=document.getElementById('simStatus');
+      if(energy>0.05){
+        var n=Math.round(Math.log2(energy));
+        var pow=Math.pow(2,n);
+        var diffPct=Math.abs(energy-pow)/pow*100;
+        document.getElementById('simPower').textContent='2^'+n+' = '+fmt(pow);
+        if(diffPct<6){
+          statusEl.className='sim-status hit';
+          statusEl.textContent='✦ ΔE ≈ 2^'+n+' à '+diffPct.toFixed(1)+'% près — la loi de transition est presque vérifiée !';
+        } else {
+          statusEl.className='sim-status';
+          statusEl.textContent='ΔE s\'écarte de '+diffPct.toFixed(0)+'% de la puissance de 2 la plus proche (2^'+n+'). Continuez à ajuster les points.';
+        }
+      } else {
+        document.getElementById('simPower').textContent='–';
+        statusEl.className='sim-status';
+        statusEl.textContent='Les points sont presque confondus : l\'énergie de transition tend vers zéro.';
+      }
+    }
+
+    function toCanvasCoords(clientX,clientY){
+      var rect=simCanvas.getBoundingClientRect();
+      var scaleX=CW/rect.width, scaleY=CH/rect.height;
+      return {x:(clientX-rect.left)*scaleX, y:(clientY-rect.top)*scaleY};
+    }
+
+    simCanvas.addEventListener('pointerdown',function(e){
+      var pos=toCanvasCoords(e.clientX,e.clientY);
+      var best=-1, bestD=18;
+      pts.forEach(function(p,i){
+        var d=Math.hypot(p.x-pos.x,p.y-pos.y);
+        if(d<bestD){ bestD=d; best=i; }
+      });
+      if(best>=0){ dragIdx=best; simCanvas.classList.add('dragging'); simCanvas.setPointerCapture(e.pointerId); }
+    });
+    simCanvas.addEventListener('pointermove',function(e){
+      if(dragIdx<0) return;
+      var pos=toCanvasCoords(e.clientX,e.clientY);
+      pts[dragIdx].x=Math.max(10,Math.min(CW-10,pos.x));
+      pts[dragIdx].y=Math.max(10,Math.min(CH-10,pos.y));
+      render();
+    });
+    ['pointerup','pointercancel','pointerleave'].forEach(function(evt){
+      simCanvas.addEventListener(evt,function(){ dragIdx=-1; simCanvas.classList.remove('dragging'); });
+    });
+
+    document.getElementById('simReset').addEventListener('click',function(){
+      pts=initial.map(function(p){return{x:p.x,y:p.y};});
+      render();
+    });
+
+    render();
+  }
+
+  // Grover simulation (real formula, N=16)
+  var groverCanvas=document.getElementById('groverCanvas');
+  if(groverCanvas){
+    var gctx=groverCanvas.getContext('2d');
+    var GW=groverCanvas.width, GH=groverCanvas.height;
+    var N=16, theta=Math.asin(1/Math.sqrt(N));
+    var kOpt=Math.round(Math.PI/(4*theta)-0.5);
+    var gk=0, gPoints=[{k:0,p:Math.pow(Math.sin(theta),2)}];
+    var gx0=70, gx1=GW-40, gy0=GH-40, gy1=30, gKmax=10;
+
+    function gxpx(k){ return gx0 + (gx1-gx0)*(k/gKmax); }
+    function gypx(p){ return gy0 - (gy0-gy1)*p; }
+
+    function groverRender(){
+      gctx.clearRect(0,0,GW,GH);
+      gctx.strokeStyle='rgba(10,10,15,0.14)'; gctx.lineWidth=1;
+      gctx.beginPath(); gctx.moveTo(gx0,gy0); gctx.lineTo(gx1,gy0); gctx.stroke();
+      gctx.beginPath(); gctx.moveTo(gx0,gy0); gctx.lineTo(gx0,gy1); gctx.stroke();
+      gctx.setLineDash([4,5]); gctx.strokeStyle='#ff7c00';
+      gctx.beginPath(); gctx.moveTo(gx0,gypx(1)); gctx.lineTo(gx1,gypx(1)); gctx.stroke();
+      gctx.setLineDash([]);
+      gctx.fillStyle='#ff7c00'; gctx.font='12px Inter,sans-serif';
+      gctx.fillText('certitude (1)', gx1-90, gypx(1)-8);
+      gctx.fillStyle='rgba(10,10,15,0.5)';
+      gctx.fillText('k (itérations)', (gx0+gx1)/2-30, gy0+28);
+      // theoretical curve (thin)
+      gctx.strokeStyle='rgba(21,88,159,0.25)'; gctx.lineWidth=1.5;
+      gctx.beginPath();
+      for(var kk=0; kk<=gKmax*4; kk++){
+        var kv=kk/4, pv=Math.pow(Math.sin((2*kv+1)*theta),2);
+        var px=gxpx(kv), py=gypx(pv);
+        if(kk===0) gctx.moveTo(px,py); else gctx.lineTo(px,py);
+      }
+      gctx.stroke();
+      // plotted points so far
+      gctx.strokeStyle='#15589f'; gctx.lineWidth=2.4;
+      gctx.beginPath();
+      gPoints.forEach(function(pt,i){
+        var px=gxpx(pt.k), py=gypx(pt.p);
+        if(i===0) gctx.moveTo(px,py); else gctx.lineTo(px,py);
+      });
+      gctx.stroke();
+      gPoints.forEach(function(pt,i){
+        var px=gxpx(pt.k), py=gypx(pt.p);
+        gctx.fillStyle = (i===gPoints.length-1) ? '#ff7c00' : '#15589f';
+        gctx.beginPath(); gctx.arc(px,py,i===gPoints.length-1?6:4,0,Math.PI*2); gctx.fill();
+      });
+      var last=gPoints[gPoints.length-1];
+      var statusEl=document.getElementById('groverStatus');
+      var pctTxt=(last.p*100).toFixed(1)+' %';
+      var extra='';
+      if(gPoints.length>1){
+        var prev=gPoints[gPoints.length-2];
+        if(last.p < prev.p) extra=' — la probabilité redescend : le pic optimal (k='+kOpt+') est dépassé.';
+        else if(last.k===kOpt) extra=' — pic optimal atteint.';
+      }
+      statusEl.textContent='k = '+last.k+' · P = '+pctTxt+' (N=16 éléments)'+extra;
+    }
+
+    document.getElementById('groverStep').addEventListener('click',function(){
+      if(gk>=gKmax) return;
+      gk++;
+      gPoints.push({k:gk, p:Math.pow(Math.sin((2*gk+1)*theta),2)});
+      groverRender();
+    });
+    document.getElementById('groverReset').addEventListener('click',function(){
+      gk=0; gPoints=[{k:0,p:Math.pow(Math.sin(theta),2)}];
+      groverRender();
+    });
+    groverRender();
+  }
+
+  // Electron cloud simulation (real radial density)
+  var electronCanvas=document.getElementById('electronCanvas');
+  if(electronCanvas){
+    var ectx=electronCanvas.getContext('2d');
+    var EW=electronCanvas.width, EH=electronCanvas.height;
+    var ex0=80, ex1=EW-30, ey0=EH-40, ey1=40, eRmax=6; // r in units of a0
+    var ePmax = 4*Math.exp(-2); // P(r)=4x^2 e^-2x has max at x=1 -> value 4e^-2
+    var eR = 1.0; // current r/a0, start at a0
+
+    function P_of_x(x){ return 4*x*x*Math.exp(-2*x); }
+    function expx(x){ return ex0 + (ex1-ex0)*(x/eRmax); }
+    function eypx(p){ return ey0 - (ey0-ey1)*(p/ePmax); }
+
+    function electronRender(){
+      ectx.clearRect(0,0,EW,EH);
+      ectx.strokeStyle='rgba(10,10,15,0.14)'; ectx.lineWidth=1;
+      ectx.beginPath(); ectx.moveTo(ex0,ey0); ectx.lineTo(ex1,ey0); ectx.stroke();
+      ectx.beginPath(); ectx.moveTo(ex0,ey0); ectx.lineTo(ex0,ey1); ectx.stroke();
+      ectx.fillStyle='rgba(10,10,15,0.5)'; ectx.font='12px Inter,sans-serif';
+      ectx.fillText('r (en rayons de Bohr a₀)', (ex0+ex1)/2-70, ey0+28);
+      ectx.fillText('P(r)', ex0-24, ey1-8);
+      // a0 marker
+      ectx.setLineDash([4,5]); ectx.strokeStyle='#b45309'; ectx.lineWidth=1;
+      ectx.beginPath(); ectx.moveTo(expx(1),ey0); ectx.lineTo(expx(1),ey1); ectx.stroke();
+      ectx.setLineDash([]);
+      ectx.fillStyle='#b45309'; ectx.fillText('a₀', expx(1)-6, ey0+16);
+      // curve
+      ectx.strokeStyle='#15589f'; ectx.lineWidth=2.2;
+      ectx.beginPath();
+      for(var i=0;i<=200;i++){
+        var x=eRmax*i/200;
+        var px=expx(x), py=eypx(P_of_x(x));
+        if(i===0) ectx.moveTo(px,py); else ectx.lineTo(px,py);
+      }
+      ectx.stroke();
+      // draggable marker
+      var mx=expx(eR), my=eypx(P_of_x(eR));
+      ectx.fillStyle='#ff7c00';
+      ectx.beginPath(); ectx.arc(mx,my,7,0,Math.PI*2); ectx.fill();
+      ectx.strokeStyle='rgba(255,124,0,0.35)'; ectx.setLineDash([3,4]); ectx.lineWidth=1;
+      ectx.beginPath(); ectx.moveTo(mx,ey0); ectx.lineTo(mx,my); ectx.stroke();
+      ectx.setLineDash([]);
+
+      var pr=P_of_x(eR);
+      var capEl=document.getElementById('electronCaption');
+      capEl.textContent = 'r = '+eR.toFixed(2)+'·a₀  →  P(r) ≈ '+(pr*100/ePmax).toFixed(1)+' % du maximum  ·  jamais rigoureusement nul, même loin du noyau.';
+    }
+
+    function eToCanvasX(clientX){
+      var rect=electronCanvas.getBoundingClientRect();
+      var scaleX=EW/rect.width;
+      return (clientX-rect.left)*scaleX;
+    }
+    var eDragging=false;
+    electronCanvas.addEventListener('pointerdown',function(e){ eDragging=true; electronCanvas.setPointerCapture(e.pointerId); updateFromEvent(e); });
+    electronCanvas.addEventListener('pointermove',function(e){ if(eDragging) updateFromEvent(e); });
+    ['pointerup','pointercancel','pointerleave'].forEach(function(evt){ electronCanvas.addEventListener(evt,function(){ eDragging=false; }); });
+    function updateFromEvent(e){
+      var px=eToCanvasX(e.clientX);
+      var x=((px-ex0)/(ex1-ex0))*eRmax;
+      eR=Math.max(0,Math.min(eRmax,x));
+      electronRender();
+    }
+    electronRender();
+  }
+
+  // executable code blocks
+  function showOutput(id, text){
+    var el=document.getElementById(id);
+    if(!el) return;
+    el.textContent=text;
+    el.classList.add('show');
+  }
+
+  var runTripBtn=document.getElementById('runTrip');
+  if(runTripBtn) runTripBtn.addEventListener('click',function(){
+    function distance(p1,p2){ return Math.sqrt(Math.pow(p1[0]-p2[0],2)+Math.pow(p1[1]-p2[1],2)+Math.pow(p1[2]-p2[2],2)); }
+    function distanceMatrix(points){
+      var n=points.length;
+      var M=[]; for(var i=0;i<n;i++){ M.push(new Array(n).fill(0)); }
+      for(var i=0;i<n;i++) for(var j=i+1;j<n;j++){ var d=distance(points[i],points[j]); M[i][j]=d; M[j][i]=d; }
+      return M;
+    }
+    var points=[[1,2,3],[4,5,6],[7,8,9]];
+    var M=distanceMatrix(points);
+    var lines=['> distanceMatrix([[1,2,3],[4,5,6],[7,8,9]])',''];
+    M.forEach(function(row){ lines.push('[ '+row.map(function(v){return v.toFixed(3);}).join(',  ')+' ]'); });
+    showOutput('outTrip', lines.join('\n'));
+  });
+
+  var runSemBtn=document.getElementById('runSem');
+  if(runSemBtn) runSemBtn.addEventListener('click',function(){
+    function dist(a,b){ return Math.hypot(a[0]-b[0], a[1]-b[1]); }
+    var Q=[[3,2],[4,1],[2,3]];
+    var d12=dist(Q[0],Q[1]), d23=dist(Q[1],Q[2]), d13=dist(Q[0],Q[2]);
+    var produit=d12*d23*d13;
+    var lines=[
+      '> d12='+d12.toFixed(3)+'  d23='+d23.toFixed(3)+'  d13='+d13.toFixed(3),
+      '> Produit = '+produit.toFixed(3)+'  (log2 = '+Math.log2(produit).toFixed(3)+', proche de n=3)'
+    ];
+    showOutput('outSem', lines.join('\n'));
+  });
+
+  var runDijkstraBtn=document.getElementById('runDijkstra');
+  if(runDijkstraBtn) runDijkstraBtn.addEventListener('click',function(){
+    function tmsDijkstra(adj,start){
+      var n=adj.length;
+      var dist=new Array(n).fill(Infinity); dist[start]=0;
+      var visited=new Array(n).fill(false);
+      for(var iter=0; iter<n; iter++){
+        var u=-1, best=Infinity;
+        for(var i=0;i<n;i++) if(!visited[i] && dist[i]<best){ best=dist[i]; u=i; }
+        if(u===-1) break;
+        visited[u]=true;
+        for(var v=0; v<n; v++) if(adj[u][v]>0 && dist[u]+adj[u][v]<dist[v]) dist[v]=dist[u]+adj[u][v];
+      }
+      return dist;
+    }
+    var adj=[
+      [0,0.9,0,0.4,0],
+      [0.9,0,0.6,0,1.1],
+      [0,0.6,0,0.3,0.5],
+      [0.4,0,0.3,0,0.7],
+      [0,1.1,0.5,0.7,0]
+    ];
+    var d=tmsDijkstra(adj,0);
+    showOutput('outDijkstra','> tmsDijkstra(adj, 0)\n[ '+d.map(function(v){return v.toFixed(2);}).join(', ')+' ]\n\ndistance depuis le nœud 0 vers 0,1,2,3,4.');
+  });
+
+  var runNTBtn=document.getElementById('runNT');
+  if(runNTBtn) runNTBtn.addEventListener('click',function(){
+    function isPrime(n){
+      if(n<2) return false;
+      if(n%2===0) return n===2;
+      for(var i=3; i*i<=n; i+=2) if(n%i===0) return false;
+      return true;
+    }
+    function solutions(T){
+      var res=[];
+      for(var t=1;t<=T;t++){
+        var A=3+Math.pow(2,t), B=3+Math.pow(2,t+1);
+        if(isPrime(A) && isPrime(B)) res.push([t,A,B]);
+      }
+      return res;
+    }
+    var T=Math.max(1,Math.min(30, parseInt(document.getElementById('ntT').value,10) || 20));
+    var t0=performance.now();
+    var res=solutions(T);
+    var ms=(performance.now()-t0).toFixed(1);
+    var lines=['> solutions('+T+')',''];
+    res.forEach(function(r){ lines.push('t='+r[0]+'  →  (3, '+r[1]+', '+r[2]+')  premiers ✓'); });
+    lines.push('','trouvé en '+ms+' ms — '+res.length+' triplet(s) sur '+T+' exposants testés.');
+    showOutput('outNT', lines.join('\n'));
+  });
+})();
+</script>
+
+</body>
+</html>
