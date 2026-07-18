@@ -442,6 +442,17 @@
   }
   .share-menu button:hover{background:rgba(21,88,159,.08);}
   .share-menu button svg{width:1.1rem; height:1.1rem; flex:none;}
+  .share-menu-label{padding:.35rem .7rem .2rem; font-size:.72rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--muted);}
+  .share-lang-pills{display:flex; gap:.4rem; padding:.2rem .7rem .5rem;}
+  .share-lang-btn{
+    flex:1; padding:.4rem 0; border-radius:999px; border:1px solid rgba(21,88,159,.18);
+    background:var(--surface); color:var(--muted); font-family:var(--sans); font-size:.78rem; font-weight:700;
+    cursor:pointer; transition:background .15s,color .15s,border-color .15s,transform .15s;
+  }
+  .share-lang-btn:hover{background:var(--muted-bg); color:var(--fg);}
+  .share-lang-btn.active{background:var(--primary); color:#fff; border-color:var(--primary); transform:scale(1.04);}
+  .share-menu-divider{height:1px; margin:.2rem .3rem .4rem; background:rgba(10,10,25,.08);}
   @media (max-width:960px){ .share-menu{left:1rem; bottom:7.2rem;} }
 
   [data-i18n]{display:none;}
@@ -563,6 +574,13 @@
   </svg>
 </button>
 <div class="share-menu" id="shareMenu" role="menu">
+  <div class="share-menu-label" id="shareMenuLabel">Partager en</div>
+  <div class="share-lang-pills" id="shareLangPills">
+    <button type="button" class="share-lang-btn" data-share-lang="fr">FR</button>
+    <button type="button" class="share-lang-btn" data-share-lang="en">EN</button>
+    <button type="button" class="share-lang-btn" data-share-lang="ar">AR</button>
+  </div>
+  <div class="share-menu-divider"></div>
   <button type="button" data-share="whatsapp">
     <svg viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.5 3.53 1.36 5L2 22l5.14-1.32C8.56 21.5 10.24 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.57 0-3.03-.44-4.28-1.2l-.3-.18-3.05.79.82-2.97-.2-.31A7.94 7.94 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.4-5.9c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42-.14-.01-.3-.01-.46-.01s-.42.06-.64.3c-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
     WhatsApp
@@ -2699,43 +2717,66 @@ console.log(<span class="fn">solutions</span>(<span class="num">T</span>));</div
   navLinks.forEach(function(a){ a.addEventListener('click',closeSidebar); });
   document.querySelectorAll('.topbar-brand, .sidebar-brand a').forEach(function(a){ a.addEventListener('click',closeSidebar); });
 
-  // share button — native share sheet when available, glass menu fallback otherwise
+  // share button — elegant language picker appears first, then native share sheet or glass menu
   var SHARE_URL='https://search.veds.dev/';
   var SHARE_TEXT={
     fr:'Théorie TMS — un livre interactif trilingue (FR/EN/AR) reliant mécanique quantique, géométrie complexe, matière, informatique et neurosciences.',
     en:'TMS Theory — an interactive trilingual (FR/EN/AR) book connecting quantum mechanics, complex geometry, materials science, computing, and neuroscience.',
     ar:'نظرية TMS — كتاب تفاعلي ثلاثي اللغة (عربي/فرنسي/إنجليزي) يربط الميكانيكا الكمومية والهندسة المركّبة والمادة والإعلام الآلي وعلم الأعصاب.'
   };
+  var SHARE_TITLE={fr:"Ved'S Search — Théorie TMS", en:"Ved'S Search — TMS Theory", ar:"Ved'S Search — نظرية TMS"};
+  var SHARE_MENU_LABEL={fr:'Partager en', en:'Share in', ar:'شارك بـ'};
   var COPY_LABEL={fr:'Copier le lien', en:'Copy link', ar:'نسخ الرابط'};
   var COPIED_LABEL={fr:'Copié ✓', en:'Copied ✓', ar:'تم النسخ ✓'};
   var shareFab=document.getElementById('shareFab');
   var shareMenu=document.getElementById('shareMenu');
+  var shareMenuLabel=document.getElementById('shareMenuLabel');
+  var shareLangPills=document.getElementById('shareLangPills');
   var shareCopyLabel=document.getElementById('shareCopyLabel');
   var canNativeShare = typeof navigator!=='undefined' && !!navigator.share;
+  var shareLang = L();
 
   function closeShareMenu(){ if(shareMenu) shareMenu.classList.remove('open'); }
-  function toggleShareMenu(){ if(shareMenu) shareMenu.classList.toggle('open'); }
+  function setShareLang(l){
+    shareLang = l;
+    if(shareLangPills) shareLangPills.querySelectorAll('.share-lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-share-lang')===l);
+    });
+  }
+  function openShareMenu(){
+    if(!shareMenu) return;
+    if(shareMenuLabel) shareMenuLabel.textContent = SHARE_MENU_LABEL[L()]||SHARE_MENU_LABEL.fr;
+    if(shareCopyLabel) shareCopyLabel.textContent = COPY_LABEL[L()]||COPY_LABEL.fr;
+    setShareLang(L());
+    shareMenu.classList.add('open');
+  }
 
   if(shareFab){
-    shareFab.addEventListener('click', function(){
-      var lang=L();
-      if(canNativeShare){
-        navigator.share({ title:document.title, text:SHARE_TEXT[lang]||SHARE_TEXT.fr, url:SHARE_URL }).catch(function(){});
-      } else {
-        if(shareCopyLabel) shareCopyLabel.textContent = COPY_LABEL[lang]||COPY_LABEL.fr;
-        toggleShareMenu();
-      }
+    shareFab.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(shareMenu && shareMenu.classList.contains('open')) closeShareMenu(); else openShareMenu();
     });
   }
   if(shareMenu){
     document.addEventListener('click', function(e){
       if(!shareMenu.contains(e.target) && e.target!==shareFab && !shareFab.contains(e.target)) closeShareMenu();
     });
+    if(shareLangPills){
+      shareLangPills.querySelectorAll('.share-lang-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var l=btn.getAttribute('data-share-lang');
+          setShareLang(l);
+          if(canNativeShare){
+            navigator.share({ title:SHARE_TITLE[l]||SHARE_TITLE.fr, text:SHARE_TEXT[l]||SHARE_TEXT.fr, url:SHARE_URL }).catch(function(){});
+            closeShareMenu();
+          }
+        });
+      });
+    }
     shareMenu.querySelectorAll('button[data-share]').forEach(function(btn){
       btn.addEventListener('click', function(){
         var kind=btn.getAttribute('data-share');
-        var lang=L();
-        var text=SHARE_TEXT[lang]||SHARE_TEXT.fr;
+        var text=SHARE_TEXT[shareLang]||SHARE_TEXT.fr;
         var links={
           whatsapp:'https://wa.me/?text='+encodeURIComponent(text+' '+SHARE_URL),
           x:'https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(SHARE_URL),
@@ -2747,8 +2788,8 @@ console.log(<span class="fn">solutions</span>(<span class="num">T</span>));</div
           if(navigator.clipboard && navigator.clipboard.writeText){
             navigator.clipboard.writeText(SHARE_URL).then(function(){
               if(shareCopyLabel){
-                shareCopyLabel.textContent = COPIED_LABEL[lang]||COPIED_LABEL.fr;
-                setTimeout(function(){ shareCopyLabel.textContent = COPY_LABEL[lang]||COPY_LABEL.fr; }, 1800);
+                shareCopyLabel.textContent = COPIED_LABEL[shareLang]||COPIED_LABEL.fr;
+                setTimeout(function(){ shareCopyLabel.textContent = COPY_LABEL[shareLang]||COPY_LABEL.fr; }, 1800);
               }
             }).catch(function(){});
           }
