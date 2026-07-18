@@ -148,19 +148,31 @@
       0 2px 6px rgba(10,10,25,.08);}
   .brand-sub{position:relative; z-index:1; font-size:.76rem; color:rgba(20,25,40,.68); margin-top:.4rem;
     line-height:1.55; letter-spacing:.01em;}
-  .sidebar-nav{padding:.6rem .8rem 1.4rem; font-family:var(--nav-font);
-    background:linear-gradient(180deg, rgba(54,150,255,.82), rgba(54,150,255,.66));
+  .sidebar-nav{
+    position:relative; overflow:hidden;
+    padding:.6rem .8rem 1.4rem; font-family:var(--nav-font);
+    border-top-left-radius:var(--r-2xl); border-top-right-radius:var(--r-2xl);
+    background:linear-gradient(180deg, rgba(54,150,255,.86), rgba(54,150,255,.62));
     -webkit-backdrop-filter:blur(20px) saturate(160%);
     backdrop-filter:blur(20px) saturate(160%);
-    box-shadow:0 1px 0 rgba(255,255,255,.35) inset;}
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.42) inset,
+      0 -26px 34px -26px rgba(6,20,45,.14) inset;
+  }
+  .sidebar-nav::before{
+    content:''; position:absolute; top:-8%; left:-28%; width:68%; height:52%;
+    background:linear-gradient(115deg, rgba(255,255,255,.3), rgba(255,255,255,0) 62%);
+    transform:rotate(8deg); pointer-events:none; z-index:0;
+  }
+  .sidebar-nav > *{position:relative; z-index:1;}
   .sidebar-part{font-size:.66rem; text-transform:uppercase; letter-spacing:.1em; color:rgba(255,255,255,.7);
     font-weight:700; margin:1.3rem .7rem .5rem;}
   .sidebar-part:first-child{margin-top:.3rem;}
   .sidebar-nav a{display:block; padding:.5rem .7rem; margin:.1rem 0; border-radius:var(--r-md);
-    color:rgba(255,255,255,.92); text-decoration:none; font-size:.86rem; font-weight:600; transition:background .2s,color .2s;}
-  .sidebar-nav a:hover{background:rgba(255,255,255,.16); color:#fff;}
-  .sidebar-nav a.active{background:rgba(255,255,255,.94); color:#3696ff; font-weight:600;
-    box-shadow:0 1px 4px rgba(10,10,25,.12), 0 1px 0 rgba(255,255,255,.6) inset;}
+    color:rgba(255,255,255,.92); text-decoration:none; font-size:.86rem; font-weight:600; transition:background .2s,color .2s,box-shadow .2s;}
+  .sidebar-nav a:hover{background:rgba(255,255,255,.17); color:#fff; box-shadow:0 1px 0 rgba(255,255,255,.25) inset;}
+  .sidebar-nav a.active{background:rgba(255,255,255,.96); color:#3696ff; font-weight:600;
+    box-shadow:0 4px 12px rgba(8,20,45,.2), 0 1px 0 rgba(255,255,255,.75) inset;}
   .sidebar-overlay{position:fixed; inset:0; background:rgba(10,10,15,.35); z-index:65; opacity:0;
     pointer-events:none; transition:opacity .25s;}
   .sidebar-overlay.open{opacity:1; pointer-events:all;}
