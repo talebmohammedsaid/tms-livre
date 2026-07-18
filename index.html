@@ -276,6 +276,34 @@
   @media (prefers-reduced-motion:reduce){ .lang-fab, .lang-btn{transition:none;} }
   @media (max-width:960px){ .lang-fab{bottom:1rem; right:1rem;} }
 
+  .contact-fab{
+    position:fixed; left:1.3rem; bottom:1.3rem; z-index:90;
+    width:3rem; height:3rem; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; line-height:1; color:var(--primary); text-decoration:none;
+    background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.42));
+    -webkit-backdrop-filter:blur(22px) saturate(180%);
+    backdrop-filter:blur(22px) saturate(180%);
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:
+      0 1px 1px rgba(255,255,255,.9) inset,
+      0 -6px 10px rgba(10,10,20,.05) inset,
+      0 10px 28px rgba(10,10,25,.16),
+      0 2px 6px rgba(10,10,25,.08);
+    transition:box-shadow .35s cubic-bezier(.2,.8,.2,1), transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .contact-fab:hover{
+    transform:translateY(-2px) scale(1.06);
+    color:var(--primary-hover);
+    box-shadow:
+      0 1px 1px rgba(255,255,255,.95) inset,
+      0 -6px 10px rgba(10,10,20,.05) inset,
+      0 14px 34px rgba(10,10,25,.2),
+      0 3px 8px rgba(10,10,25,.1);
+  }
+  .contact-fab:active{transform:scale(.93);}
+  @media (prefers-reduced-motion:reduce){ .contact-fab{transition:none;} }
+  @media (max-width:960px){ .contact-fab{left:1rem; bottom:1rem; width:2.7rem; height:2.7rem; font-size:1.15rem;} }
+
   [data-i18n]{display:none;}
   html[data-lang="fr"] [data-i18n="fr"]{display:revert;}
   html[data-lang="en"] [data-i18n="en"]{display:revert;}
@@ -365,6 +393,8 @@
   <button class="lang-btn" data-lang="en">EN</button>
   <button class="lang-btn" data-lang="ar">AR</button>
 </div>
+
+<a class="contact-fab" id="contactFab" href="mailto:ms.taleb.mi@lagh-univ.dz?subject=Question%20%E2%80%94%20TMS%20Theory%20(Ved%27S%20Search)" aria-label="Poser une question / Ask a question / اطرح سؤالاً" title="Poser une question / Ask a question">✉</a>
 
 <main class="main">
 
@@ -2358,12 +2388,15 @@ console.log(<span class="fn">solutions</span>(<span class="num">T</span>));</div
   var langBtns=document.querySelectorAll('.lang-btn');
   var htmlEl=document.documentElement;
   window.TMS_LANG='fr';
+  var CONTACT_TITLE = {fr:'Poser une question', en:'Ask a question', ar:'اطرح سؤالاً'};
   function setLang(l){
     window.TMS_LANG=l;
     htmlEl.setAttribute('data-lang', l);
     htmlEl.setAttribute('lang', l);
     langBtns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===l); });
     try{ localStorage.setItem('tms-lang', l); }catch(e){}
+    var contactFab=document.getElementById('contactFab');
+    if(contactFab) contactFab.title = CONTACT_TITLE[l] || CONTACT_TITLE.fr;
     if(typeof refreshDynamicText==='function') refreshDynamicText();
   }
   langBtns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
