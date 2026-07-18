@@ -102,7 +102,8 @@
     backdrop-filter:blur(26px) saturate(180%);
     border-right:1px solid rgba(255,255,255,.6);
     box-shadow:1px 0 0 rgba(255,255,255,.5) inset, 6px 0 24px rgba(10,10,25,.06);
-    z-index:70; overflow-y:auto; padding:1.6rem 0 2rem;}
+    z-index:70; overflow-y:auto; padding:1.6rem 0 2rem;
+    display:flex; flex-direction:column;}
   .sidebar-brand{
     position:relative; overflow:hidden;
     margin:.9rem .9rem 1.2rem; padding:1.2rem .95rem 1.3rem;
@@ -150,6 +151,7 @@
     line-height:1.55; letter-spacing:.01em;}
   .sidebar-nav{
     position:relative; overflow:hidden;
+    flex:1 0 auto; display:flex; flex-direction:column;
     padding:.6rem .8rem 1.4rem; font-family:var(--nav-font);
     border-top-left-radius:var(--r-2xl); border-top-right-radius:var(--r-2xl);
     background:linear-gradient(180deg, rgba(54,150,255,.86), rgba(54,150,255,.62));
@@ -173,6 +175,15 @@
   .sidebar-nav a:hover{background:rgba(255,255,255,.17); color:#fff; box-shadow:0 1px 0 rgba(255,255,255,.25) inset;}
   .sidebar-nav a.active{background:rgba(255,255,255,.96); color:#3696ff; font-weight:600;
     box-shadow:0 4px 12px rgba(8,20,45,.2), 0 1px 0 rgba(255,255,255,.75) inset;}
+  .origin-badge{
+    margin-top:auto; padding-top:1.4rem;
+    display:flex; align-items:center; justify-content:center; gap:.5rem;
+  }
+  .flag-dz{
+    width:26px; height:auto; flex:none; border-radius:3px; overflow:hidden;
+    box-shadow:0 0 0 1px rgba(255,255,255,.55), 0 2px 6px rgba(8,20,45,.25);
+  }
+  .origin-text{font-size:.72rem; font-weight:700; letter-spacing:.03em; color:rgba(255,255,255,.75);}
   .sidebar-overlay{position:fixed; inset:0; background:rgba(10,10,15,.35); z-index:65; opacity:0;
     pointer-events:none; transition:opacity .25s;}
   .sidebar-overlay.open{opacity:1; pointer-events:all;}
@@ -464,6 +475,26 @@
     <a href="#simulation"><span data-i18n="fr">Laboratoire</span><span data-i18n="en">Laboratory</span><span data-i18n="ar">المختبر</span></a>
     <a href="#annexe"><span data-i18n="fr">Annexe — Théorie des Nombres</span><span data-i18n="en">Appendix — Number Theory</span><span data-i18n="ar">ملحق — نظرية الأعداد</span></a>
     <a href="#epilogue"><span data-i18n="fr">Épilogue</span><span data-i18n="en">Epilogue</span><span data-i18n="ar">خاتمة</span></a>
+
+    <div class="origin-badge">
+      <svg class="flag-dz" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <mask id="crescentMask">
+            <rect x="0" y="0" width="300" height="200" fill="#fff"/>
+            <circle cx="163" cy="100" r="40" fill="#000"/>
+          </mask>
+        </defs>
+        <rect x="0" y="0" width="150" height="200" fill="#006233"/>
+        <rect x="150" y="0" width="150" height="200" fill="#ffffff"/>
+        <circle cx="150" cy="100" r="48" fill="#D21034" mask="url(#crescentMask)"/>
+        <polygon fill="#D21034" points="172,80 176.7,93.53 191.02,93.82 179.61,102.47 183.76,116.18 172,108 160.24,116.18 164.39,102.47 152.98,93.82 167.3,93.53"/>
+      </svg>
+      <span class="origin-text">
+        <span data-i18n="fr">Laghouat, Algérie</span>
+        <span data-i18n="en">Laghouat, Algeria</span>
+        <span data-i18n="ar">الأغواط، الجزائر</span>
+      </span>
+    </div>
   </nav>
 </aside>
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
