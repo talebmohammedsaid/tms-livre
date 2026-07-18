@@ -218,6 +218,8 @@
     margin:0 0 1rem; color:var(--fg); letter-spacing:-.01em;}
   .subtitle{font-size:1.02rem; color:var(--muted); margin:0 0 2rem; font-style:italic;}
   .byline{font-size:.9rem; color:var(--fg); margin-bottom:2.4rem; padding-top:1.4rem; border-top:1px solid var(--border);}
+  .author-link{color:inherit; text-decoration:none; border-bottom:1px solid rgba(21,88,159,.35); transition:color .15s,border-color .15s;}
+  .author-link:hover{color:var(--primary); border-color:var(--primary);}
   .byline span{display:block; color:var(--muted); margin-top:.3rem; font-size:.8rem;}
   .scrollcue{font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted);}
 
@@ -424,7 +426,7 @@
         <span data-i18n="en">From the sands of Laghouat to the frontiers of quantum physics</span>
         <span data-i18n="ar">من رمال الأغواط إلى حدود الفيزياء الكمومية</span>
       </p>
-      <p class="byline">Taleb Mohammed Said<br><span>
+      <p class="byline"><a class="author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a><br><span>
         <span data-i18n="fr">Université de Laghouat — Faculté des Sciences, Mathématiques et Informatique</span>
         <span data-i18n="en">University of Laghouat — Faculty of Sciences, Mathematics and Computer Science</span>
         <span data-i18n="ar">جامعة الأغواط — كلية العلوم، قسم الرياضيات والإعلام الآلي</span>
@@ -2383,9 +2385,9 @@ console.log(<span class="fn">solutions</span>(<span class="num">T</span>));</div
   </section>
 
   <footer>
-    <span data-i18n="fr">Théorie TMS — <span class="brand">Taleb Mohammed Said</span>, Université de Laghouat, 2025</span>
-    <span data-i18n="en">TMS Theory — <span class="brand">Taleb Mohammed Said</span>, University of Laghouat, 2025</span>
-    <span data-i18n="ar">نظرية TMS — <span class="brand">طالب محمد سعيد</span>، جامعة الأغواط، 2025</span>
+    <span data-i18n="fr">Théorie TMS — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a>, Université de Laghouat, 2025</span>
+    <span data-i18n="en">TMS Theory — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a>, University of Laghouat, 2025</span>
+    <span data-i18n="ar">نظرية TMS — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">طالب محمد سعيد</a>، جامعة الأغواط، 2025</span>
   </footer>
 
 </main>
