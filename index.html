@@ -77,28 +77,59 @@
 
   /* ---- galaxy backdrop (dark mode only) ---- */
   html[data-theme="dark"] body{
+    position:relative;
     background-color:var(--bg);
     background-image:
-      radial-gradient(1.6px 1.6px at 8% 12%, #fff, transparent),
-      radial-gradient(1.2px 1.2px at 22% 38%, #cfe0ff, transparent),
-      radial-gradient(1.8px 1.8px at 35% 8%, #fff, transparent),
-      radial-gradient(1.2px 1.2px at 48% 28%, #fff, transparent),
-      radial-gradient(1.4px 1.4px at 62% 55%, #cfe0ff, transparent),
-      radial-gradient(1.6px 1.6px at 78% 18%, #fff, transparent),
-      radial-gradient(1.2px 1.2px at 88% 42%, #fff, transparent),
-      radial-gradient(1.8px 1.8px at 15% 65%, #fff, transparent),
-      radial-gradient(1.2px 1.2px at 30% 82%, #cfe0ff, transparent),
-      radial-gradient(1.4px 1.4px at 55% 72%, #fff, transparent),
-      radial-gradient(1.6px 1.6px at 70% 88%, #fff, transparent),
-      radial-gradient(1.2px 1.2px at 92% 75%, #cfe0ff, transparent),
-      radial-gradient(1.4px 1.4px at 5% 92%, #fff, transparent),
-      radial-gradient(1.2px 1.2px at 42% 95%, #fff, transparent),
-      radial-gradient(ellipse 900px 560px at 12% 8%, rgba(110,70,220,.20), transparent 60%),
+      /* James-Webb-style nebula dust: warm amber/gold clouds layered with cool blue/magenta/teal */
+      radial-gradient(ellipse 950px 620px at 10% 6%, rgba(255,175,90,.14), transparent 62%),
+      radial-gradient(ellipse 900px 560px at 12% 10%, rgba(110,70,220,.18), transparent 60%),
       radial-gradient(ellipse 800px 620px at 92% 88%, rgba(40,110,230,.16), transparent 58%),
-      radial-gradient(ellipse 700px 500px at 70% 15%, rgba(180,70,190,.10), transparent 55%);
+      radial-gradient(ellipse 700px 500px at 70% 15%, rgba(180,70,190,.10), transparent 55%),
+      radial-gradient(ellipse 780px 540px at 86% 92%, rgba(255,150,70,.09), transparent 60%),
+      radial-gradient(ellipse 620px 460px at 28% 82%, rgba(80,210,190,.08), transparent 58%),
+      radial-gradient(ellipse 900px 640px at 50% 45%, rgba(255,130,80,.05), transparent 68%);
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-size:cover;
+  }
+  html[data-theme="dark"] body::before,
+  html[data-theme="dark"] body::after{
+    content:''; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-repeat:no-repeat; background-attachment:fixed; background-size:cover;
+  }
+  html[data-theme="dark"] body::before{
+    background-image:
+      radial-gradient(1.6px 1.6px at 8% 12%, #fff, transparent),
+      radial-gradient(1.8px 1.8px at 35% 8%, #fff, transparent),
+      radial-gradient(1.4px 1.4px at 62% 55%, #cfe0ff, transparent),
+      radial-gradient(1.2px 1.2px at 88% 42%, #fff, transparent),
+      radial-gradient(1.4px 1.4px at 55% 72%, #fff, transparent),
+      radial-gradient(1.2px 1.2px at 92% 75%, #ffd9b3, transparent),
+      radial-gradient(1.2px 1.2px at 42% 95%, #fff, transparent);
+    animation: tms-twinkle-a 4.6s ease-in-out infinite;
+  }
+  html[data-theme="dark"] body::after{
+    background-image:
+      radial-gradient(1.2px 1.2px at 22% 38%, #ffd9b3, transparent),
+      radial-gradient(1.2px 1.2px at 48% 28%, #fff, transparent),
+      radial-gradient(1.6px 1.6px at 78% 18%, #fff, transparent),
+      radial-gradient(1.8px 1.8px at 15% 65%, #fff, transparent),
+      radial-gradient(1.2px 1.2px at 30% 82%, #cfe0ff, transparent),
+      radial-gradient(1.6px 1.6px at 70% 88%, #fff, transparent),
+      radial-gradient(1.4px 1.4px at 5% 92%, #fff, transparent);
+    animation: tms-twinkle-b 5.8s ease-in-out infinite;
+    animation-delay: 1.3s;
+  }
+  @keyframes tms-twinkle-a{
+    0%, 100%{opacity:.55;} 18%{opacity:1;} 42%{opacity:.32;} 68%{opacity:.92;} 86%{opacity:.48;}
+  }
+  @keyframes tms-twinkle-b{
+    0%, 100%{opacity:.4;} 28%{opacity:.95;} 54%{opacity:.5;} 77%{opacity:1;} 90%{opacity:.42;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html[data-theme="dark"] body::before, html[data-theme="dark"] body::after{
+      animation:none; opacity:.75;
+    }
   }
 
   .progress{position:fixed; top:0; left:0; height:3px; width:0%; z-index:80;
