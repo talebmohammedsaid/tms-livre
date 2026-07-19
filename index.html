@@ -54,7 +54,7 @@
     --muted-bg:#182140;
     --muted:#93a0c2;
     --border:#2a3355;
-    --line:#2a3355;
+    --line:#4c5d94;
     --primary:#6db2ff;
     --primary-hover:#8ec4ff;
     --accent:#6db2ff;
@@ -375,12 +375,15 @@
     position:fixed; right:1.3rem; bottom:1.3rem; z-index:90;
     display:flex; gap:.2rem; padding:.28rem;
     border-radius:999px;
-    background:linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,.42));
-    -webkit-backdrop-filter:blur(22px) saturate(180%);
-    backdrop-filter:blur(22px) saturate(180%);
-    border:1px solid rgba(255,255,255,.7);
+    background:
+      linear-gradient(115deg, rgba(255,255,255,.65) 0%, rgba(255,255,255,0) 44%),
+      radial-gradient(130% 160% at 85% 110%, rgba(54,150,255,.14), transparent 62%),
+      linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,.42));
+    -webkit-backdrop-filter:blur(26px) saturate(200%);
+    backdrop-filter:blur(26px) saturate(200%);
+    border:1px solid rgba(255,255,255,.75);
     box-shadow:
-      0 1px 1px rgba(255,255,255,.9) inset,
+      0 1px 1px rgba(255,255,255,.95) inset,
       0 -6px 10px rgba(10,10,20,.05) inset,
       0 10px 28px rgba(10,10,25,.16),
       0 2px 6px rgba(10,10,25,.08);
@@ -414,12 +417,15 @@
     position:fixed; left:1.3rem; bottom:1.3rem; z-index:90;
     width:3rem; height:3rem; border-radius:50%; display:flex; align-items:center; justify-content:center;
     font-size:1.3rem; line-height:1; color:var(--primary); text-decoration:none;
-    background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.42));
-    -webkit-backdrop-filter:blur(22px) saturate(180%);
-    backdrop-filter:blur(22px) saturate(180%);
-    border:1px solid rgba(255,255,255,.7);
+    background:
+      linear-gradient(115deg, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 46%),
+      radial-gradient(140% 160% at 20% 110%, rgba(54,150,255,.16), transparent 62%),
+      linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.42));
+    -webkit-backdrop-filter:blur(26px) saturate(200%);
+    backdrop-filter:blur(26px) saturate(200%);
+    border:1px solid rgba(255,255,255,.75);
     box-shadow:
-      0 1px 1px rgba(255,255,255,.9) inset,
+      0 1px 1px rgba(255,255,255,.95) inset,
       0 -6px 10px rgba(10,10,20,.05) inset,
       0 10px 28px rgba(10,10,25,.16),
       0 2px 6px rgba(10,10,25,.08);
@@ -442,12 +448,15 @@
     position:fixed; left:1.3rem; bottom:5rem; z-index:90;
     width:3rem; height:3rem; border-radius:50%; display:flex; align-items:center; justify-content:center;
     color:var(--primary); background:none; padding:0; cursor:pointer;
-    background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.42));
-    -webkit-backdrop-filter:blur(22px) saturate(180%);
-    backdrop-filter:blur(22px) saturate(180%);
-    border:1px solid rgba(255,255,255,.7);
+    background:
+      linear-gradient(115deg, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 46%),
+      radial-gradient(140% 160% at 80% 110%, rgba(255,171,107,.14), transparent 62%),
+      linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.42));
+    -webkit-backdrop-filter:blur(26px) saturate(200%);
+    backdrop-filter:blur(26px) saturate(200%);
+    border:1px solid rgba(255,255,255,.75);
     box-shadow:
-      0 1px 1px rgba(255,255,255,.9) inset,
+      0 1px 1px rgba(255,255,255,.95) inset,
       0 -6px 10px rgba(10,10,20,.05) inset,
       0 10px 28px rgba(10,10,25,.16),
       0 2px 6px rgba(10,10,25,.08);
@@ -541,10 +550,13 @@
 
   html[data-theme="dark"] .lang-fab, html[data-theme="dark"] .contact-fab,
   html[data-theme="dark"] .share-fab, html[data-theme="dark"] .zoom-fab{
-    background:linear-gradient(180deg, rgba(30,38,64,.8), rgba(18,24,42,.55));
-    border-color:rgba(255,255,255,.14);
+    background:
+      linear-gradient(115deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 46%),
+      radial-gradient(140% 160% at 85% 110%, rgba(109,178,255,.16), transparent 62%),
+      linear-gradient(180deg, rgba(30,38,64,.8), rgba(18,24,42,.55));
+    border-color:rgba(255,255,255,.16);
     box-shadow:
-      0 1px 1px rgba(255,255,255,.14) inset,
+      0 1px 1px rgba(255,255,255,.16) inset,
       0 -6px 10px rgba(0,0,10,.2) inset,
       0 10px 28px rgba(0,0,10,.45),
       0 2px 6px rgba(0,0,10,.3);
@@ -565,6 +577,8 @@
   html[data-theme="dark"] .lesson p{color:#cfd8ee;}
   html[data-theme="dark"] .part-banner{background:rgba(109,178,255,.07); border-color:rgba(109,178,255,.22);}
   html[data-theme="dark"] p{color:#c7cfe4;}
+  html[data-theme="dark"] ol.steps li{color:#cfd8ee;}
+  html[data-theme="dark"] ul.glossary li{color:#cfd8ee;}
   html[data-theme="dark"] .code-cap, html[data-theme="dark"] .dcap{color:var(--muted);}
   html[data-theme="dark"] .output-box{background:#070b14;}
 
@@ -573,12 +587,15 @@
     position:fixed; top:1.3rem; right:1.3rem; z-index:92;
     display:flex; align-items:center; gap:.15rem; padding:.3rem;
     border-radius:999px;
-    background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.42));
-    -webkit-backdrop-filter:blur(22px) saturate(180%);
-    backdrop-filter:blur(22px) saturate(180%);
-    border:1px solid rgba(255,255,255,.7);
+    background:
+      linear-gradient(115deg, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 46%),
+      radial-gradient(140% 160% at 90% 110%, rgba(54,150,255,.14), transparent 62%),
+      linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.42));
+    -webkit-backdrop-filter:blur(26px) saturate(200%);
+    backdrop-filter:blur(26px) saturate(200%);
+    border:1px solid rgba(255,255,255,.75);
     box-shadow:
-      0 1px 1px rgba(255,255,255,.9) inset,
+      0 1px 1px rgba(255,255,255,.95) inset,
       0 -6px 10px rgba(10,10,20,.05) inset,
       0 10px 28px rgba(10,10,25,.16),
       0 2px 6px rgba(10,10,25,.08);
