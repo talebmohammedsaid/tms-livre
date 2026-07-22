@@ -138,7 +138,8 @@
   /* ---- topbar (mobile) ---- */
   .topbar{display:none; position:fixed; top:0; left:0; right:0; height:56px; z-index:60;
     background:var(--surface); border-bottom:1px solid var(--border); align-items:center;
-    padding:0 1rem; gap:.8rem;}
+    padding:0 1rem; gap:.8rem;
+    transform:translateZ(0); -webkit-backface-visibility:hidden; backface-visibility:hidden; will-change:transform;}
   .topbar-toggle{width:36px; height:36px; border-radius:var(--r-md); border:1px solid var(--border);
     background:var(--surface); color:var(--fg); font-size:1.05rem; cursor:pointer;}
   .topbar-brand{font-family:var(--sans); font-weight:700; letter-spacing:.01em; font-size:1.05rem; color:var(--fg);
@@ -507,6 +508,38 @@
   @media (prefers-reduced-motion:reduce){ .share-fab{transition:none;} }
   @media (max-width:960px){ .share-fab{left:1rem; bottom:4.3rem; width:2.7rem; height:2.7rem;} .share-fab svg{width:1.1rem; height:1.1rem;} }
 
+  .x-fab{
+    position:fixed; left:1.3rem; bottom:8.7rem; z-index:90;
+    width:3rem; height:3rem; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    color:var(--primary); text-decoration:none;
+    background:
+      linear-gradient(115deg, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 46%),
+      radial-gradient(140% 160% at 20% 110%, rgba(54,150,255,.16), transparent 62%),
+      linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.42));
+    -webkit-backdrop-filter:blur(26px) saturate(200%);
+    backdrop-filter:blur(26px) saturate(200%);
+    border:1px solid rgba(255,255,255,.75);
+    box-shadow:
+      0 1px 1px rgba(255,255,255,.95) inset,
+      0 -6px 10px rgba(10,10,20,.05) inset,
+      0 10px 28px rgba(10,10,25,.16),
+      0 2px 6px rgba(10,10,25,.08);
+    transition:box-shadow .35s cubic-bezier(.2,.8,.2,1), transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .x-fab svg{width:1.2rem; height:1.2rem;}
+  .x-fab:hover{
+    transform:translateY(-2px) scale(1.06);
+    color:var(--primary-hover);
+    box-shadow:
+      0 1px 1px rgba(255,255,255,.95) inset,
+      0 -6px 10px rgba(10,10,20,.05) inset,
+      0 14px 34px rgba(10,10,25,.2),
+      0 3px 8px rgba(10,10,25,.1);
+  }
+  .x-fab:active{transform:scale(.93);}
+  @media (prefers-reduced-motion:reduce){ .x-fab{transition:none;} }
+  @media (max-width:960px){ .x-fab{left:1rem; bottom:7.6rem; width:2.7rem; height:2.7rem;} .x-fab svg{width:1.05rem; height:1.05rem;} }
+
   .share-menu{
     position:fixed; left:1.3rem; bottom:8.3rem; z-index:91;
     display:none; flex-direction:column; gap:.3rem; padding:.5rem;
@@ -580,7 +613,7 @@
   }
 
   html[data-theme="dark"] .lang-fab, html[data-theme="dark"] .contact-fab,
-  html[data-theme="dark"] .share-fab, html[data-theme="dark"] .zoom-fab{
+  html[data-theme="dark"] .share-fab, html[data-theme="dark"] .zoom-fab, html[data-theme="dark"] .x-fab{
     background:
       linear-gradient(115deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 46%),
       radial-gradient(140% 160% at 85% 110%, rgba(109,178,255,.16), transparent 62%),
@@ -772,6 +805,10 @@
 
 <a class="contact-fab" id="contactFab" href="mailto:ms.taleb.mi@lagh-univ.dz?subject=Question%20%E2%80%94%20TMS%20Theory%20(Ved%27S%20Search)" aria-label="Poser une question / Ask a question / اطرح سؤالاً" title="Poser une question / Ask a question">✉</a>
 
+<a class="x-fab" id="xFab" href="https://x.com/talebmedsaid" target="_blank" rel="noopener" aria-label="Suivez-moi sur X / Follow me on X / تابعني على X" title="X (Twitter)">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.7L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.1L18.9 2zm-1.2 18h1.9L7.4 4H5.4L17.7 20z"/></svg>
+</a>
+
 <button class="share-fab" id="shareFab" type="button" aria-label="Partager / Share / مشاركة" title="Partager / Share">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
@@ -830,7 +867,7 @@
         <span data-i18n="en">From the sands of Laghouat to the frontiers of quantum physics</span>
         <span data-i18n="ar">من رمال الأغواط إلى حدود الفيزياء الكمومية</span>
       </p>
-      <p class="byline"><a class="author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a><br><span>
+      <p class="byline"><a class="author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a> <a class="author-link" href="https://x.com/talebmedsaid" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X (Twitter)" style="display:inline-flex;vertical-align:middle;"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.7L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.1L18.9 2zm-1.2 18h1.9L7.4 4H5.4L17.7 20z"/></svg></a><br><span>
         <span data-i18n="fr">Université de Laghouat — Faculté des Sciences, Mathématiques et Informatique</span>
         <span data-i18n="en">University of Laghouat — Faculty of Sciences, Mathematics and Computer Science</span>
         <span data-i18n="ar">جامعة الأغواط — كلية العلوم، قسم الرياضيات والإعلام الآلي</span>
@@ -2796,9 +2833,9 @@ console.log(<span class="fn">solutions</span>(<span class="num">T</span>));</div
   </section>
 
   <footer>
-    <span data-i18n="fr">Théorie TMS — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a>, Université de Laghouat, 2025</span>
-    <span data-i18n="en">TMS Theory — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a>, University of Laghouat, 2025</span>
-    <span data-i18n="ar">نظرية TMS — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">طالب محمد سعيد</a>، جامعة الأغواط، 2025</span>
+    <span data-i18n="fr">Théorie TMS — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a> (<a class="author-link" href="https://x.com/talebmedsaid" target="_blank" rel="noopener">X</a>), Université de Laghouat, 2025</span>
+    <span data-i18n="en">TMS Theory — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">Taleb Mohammed Said</a> (<a class="author-link" href="https://x.com/talebmedsaid" target="_blank" rel="noopener">X</a>), University of Laghouat, 2025</span>
+    <span data-i18n="ar">نظرية TMS — <a class="brand author-link" href="https://veds.dev/en/ceo" target="_blank" rel="noopener">طالب محمد سعيد</a> (<a class="author-link" href="https://x.com/talebmedsaid" target="_blank" rel="noopener">X</a>)، جامعة الأغواط، 2025</span>
   </footer>
 
 </main>
